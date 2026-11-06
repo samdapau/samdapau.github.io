@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empty Your Cup — Samdapau</title>
+<meta name="description" content="Laozi and the usefulness of nothing">
+<link rel="icon" href="../assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F6F7; --ink:#1A1A1A; --soft:#6E6E73; --faint:#A1A1A6;
+    --line:#E3E3E6; --card:#FFFFFF;
+    --gold:#B8862B; --gold-deep:#9A6E1F;
+    --red:#A63A2E; --red-deep:#8C2F24; --chip-bg:#F7E3DE;
+    --pill-bg:#EFEFF1;
+    --shadow:0 1px 2px rgba(26,26,26,.05),0 12px 32px rgba(26,26,26,.10);
+    --shadow-lift:0 2px 3px rgba(26,26,26,.06),0 18px 44px rgba(26,26,26,.16);
+    --ring:inset 0 0 0 1px rgba(26,26,26,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--paper);color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--gold-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  /* header */
+  header{position:relative;z-index:30;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px rgba(26,26,26,.08),0 2px 6px rgba(26,26,26,.18)}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .brand:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  /* language dropdown (details/summary, zero JS) */
+  .langmenu{position:relative;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif}
+  .lang-btn{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);box-shadow:0 1px 2px rgba(26,26,26,.05);white-space:nowrap}
+  .lang-btn::-webkit-details-marker{display:none}
+  .lang-btn:hover{border-color:var(--faint)}
+  .lang-btn .caret{font-size:10px;color:var(--gold);transition:transform .2s}
+  .langmenu[open ] .lang-btn .caret{transform:rotate(180deg)}
+  .lang-panel{position:absolute;right:0;top:calc(100% + 9px);background:var(--card);border-radius:14px;box-shadow:var(--shadow-lift);border:1px solid rgba(26,26,26,.05);padding:6px;min-width:min(228px,86vw);max-width:86vw}
+  .lang-row{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);white-space:nowrap}
+  a.lang-row:hover{background:#F2F2F4;text-decoration:none}
+  .lang-cur{background:rgba(184,134,43,.13);font-weight:700;cursor:default}
+  .lang-cur .ck{color:var(--gold-deep);font-size:13px}
+  .lang-row .ck{width:13px;flex:none}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero .rule{width:52px;height:3px;border-radius:2px;background:var(--gold);margin-top:24px}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
+  .framed img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:42px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .sec-note{color:var(--soft);font-size:16.5px;margin:-6px 0 16px}
+  /* unified cards: one card, one shadow, image flush inside */
+  .card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  a.card{display:block;color:var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+  a.card:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .cb{padding:20px 22px 22px}
+  .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
+  .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
+  /* people row */
+  .people{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:560px){.people{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.people{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.people{grid-template-columns:repeat(5,1fr)}}
+  .person{padding:24px 22px 22px}
+  .portrait{width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:16px}
+  .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:42px;line-height:1}
+  .p-name{font-size:24px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:15.5px;margin-top:2px}
+  .p-hook{color:var(--soft);font-size:16.5px;line-height:1.55;margin:9px 0 14px}
+  /* stories wall: masonry via CSS columns, natural varied heights */
+  .wall{columns:1;column-gap:26px}
+  @media (min-width:700px){.wall{columns:2}}
+  @media (min-width:1200px){.wall{columns:3}}
+  @media (min-width:2000px){.wall{columns:4}}
+  .wall .card{margin:0 0 26px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .story img{width:100%}
+  .s-title{font-size:23px;line-height:1.3;margin:2px 0 6px}
+  a.card:hover .s-title{color:var(--gold-deep)}
+  .s-excerpt{color:var(--soft);font-size:16.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .s-meta{color:var(--faint);font-size:14px;margin-top:12px;letter-spacing:.02em}
+  /* quote cards */
+  .quote{padding:28px 26px 24px;color:#FFFFFF}
+  .q-gold{background:linear-gradient(160deg,#C1912F,#A87A24)}
+  .q-red{background:linear-gradient(160deg,#AE4436,#96402F)}
+  .q-ink{background:linear-gradient(160deg,#2B2B2E,#1A1A1A)}
+  .q-text{font-size:25px;line-height:1.45;font-style:italic}
+  .q-note{font-size:15.5px;opacity:.85;margin-top:14px;line-height:1.5}
+  .q-foot{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:18px;opacity:.92}
+  /* watch cards */
+  .posts{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%}
+  .post .t{font-size:22.5px;line-height:1.3}
+  a.card:hover .t{color:var(--gold-deep)}
+  .post .d{color:var(--soft);font-size:17px;margin-top:4px;line-height:1.55}
+  .post .m{color:var(--faint);font-size:13.5px;margin-top:10px;letter-spacing:.05em;font-family:Montserrat,sans-serif}
+  /* read: book shelf cards */
+  .shelf{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:16px;padding:18px;align-items:flex-start}
+  .book img{width:72px;flex:none;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .t{font-size:20px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--gold-deep)}
+  .book .d{color:var(--soft);font-size:16.5px;margin-top:3px;line-height:1.5}
+  .book .buy{margin-left:auto;flex:none;font-size:15.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:4px 0;font-size:19px}
+  .follow a{color:var(--soft)}
+  .follow a:hover{color:var(--gold-deep)}
+  .about{max-width:68ch}
+  .about p{color:#333336;margin-bottom:12px}
+  footer{margin-top:56px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* reader pages */
+  .backlink{display:inline-block;margin:30px 0 6px;font-size:16.5px}
+  .article{max-width:68ch;margin:0 auto;padding-bottom:10px}
+  .article h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.18;letter-spacing:-.01em;margin:12px 0 10px}
+  .article .sub{color:var(--soft);font-size:21px;line-height:1.5;font-style:italic}
+  .article .byline{color:var(--faint);font-size:15px;margin:16px 0 24px;letter-spacing:.02em}
+  .article .framed{margin-bottom:30px}
+  .article p{margin:0 0 20px;font-size:20.5px;line-height:1.75;color:#232326}
+  .article h3{font-size:26px;font-weight:600;line-height:1.3;margin:36px 0 12px}
+  .article blockquote{border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;color:#333336;font-style:italic;font-size:20.5px;line-height:1.7}
+  .article hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+  .endblock{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:26px 28px;max-width:68ch;margin:44px auto 0}
+  .endblock .kick{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+  .endblock .bt{font-size:24px;line-height:1.3}
+  .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="../">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="../#watch">Watch</a>
+        <a href="../#stories">Stories</a>
+        <a href="../#read">Read</a>
+        <a href="../#about">About</a>
+      </nav>
+      <details class="langmenu"><summary class="lang-btn">English<span class="caret">▾</span></summary><div class="lang-panel"><span class="lang-row lang-cur"><span class="ck">✓</span>English</span><a class="lang-row" href="../es/"><span class="ck"></span>Español</a><a class="lang-row" href="../fr/"><span class="ck"></span>Français</a><a class="lang-row" href="../pt/"><span class="ck"></span>Português</a><a class="lang-row" href="../de/"><span class="ck"></span>Deutsch</a><a class="lang-row" href="../ja/"><span class="ck"></span>日本語</a><a class="lang-row" href="../ko/"><span class="ck"></span>한국어</a><a class="lang-row" href="../zh-hans/"><span class="ck"></span>简体中文</a><a class="lang-row" href="../zh-hant/"><span class="ck"></span>繁體中文</a></div></details>
+    </div>
+  </header>
+
+  <a class="backlink" href="../#stories">← All stories</a>
+
+  <article class="article">
+    <div><span class="pill">Short Note</span></div>
+    <h1>Empty Your Cup</h1>
+    <p class="sub">Laozi and the usefulness of nothing</p>
+    <div class="byline">Samdapau · 4 min read</div>
+    <div class="framed"><img src="../assets/story-cup.webp" alt="A potter shaping a vessel on the wheel — ink painting"></div>
+<p>Here is a riddle that is twenty-five centuries old. What is the most useful part of a cup?</p>
+<p>Not the clay. Not the glaze. The emptiness inside it — the part that is not there at all.</p>
+<p>Watch a potter at the wheel and you will see the riddle being made. His hands shape the walls of the vessel with enormous care, coaxing the clay up, thinning it, smoothing it. But he is not really making the walls. He is making the hollow the walls surround. Nobody has ever drunk from the clay. You drink from the space the clay protects.</p>
+<p>That is Laozi's Chapter 11, and once he starts, he does not stop at cups.</p>
+<h3>The hole that does the work</h3>
+<p>Look at a wheel, he says. Thirty spokes meet at the hub — but the wheel only turns because of the hole in the middle, the empty space the axle passes through. A wheel with a solid centre is just a disc of wood, a decoration. Take away the nothing, and the something stops working.</p>
+<p>It is the same with a house. A house is walls, beams and a roof — yet nobody lives inside the walls. You live in the empty rooms between them. And a flute is the same lesson carved in bamboo: a tube of nothing, shaped by holes, and the music lives exactly where the wood is not.</p>
+<p>Then Laozi lands the point. We work with being, he wrote, but non-being is what we use. The clay, the wood, the stone — they only draw the outline. The usefulness always lives in the space they leave open, the part your hands cannot touch and your eyes slide right past.</p>
+<blockquote>The thirty spokes unite in the one nave; but it is on the empty space (for the axle), that the use of the wheel depends. Clay is fashioned into vessels; but it is on their empty hollowness, that their use depends.<br>
+— Tao Te Ching, Chapter 11, in James Legge's translation (1891)</blockquote>
+<h3>Full, and unusable</h3>
+<p>The chapter has a quiet rebuke hidden in it. We praise the craftsman for the clay and forget the hollow. We praise the speaker for the words and forget the pauses that let them land. We praise the full warehouse and forget that a warehouse is only a roof built around usable emptiness.</p>
+<p>Confusing the frame for the space is how lives and houses both end up full — and unusable. A calendar packed solid looks productive, but nothing new can enter it: no idea, no friend, no luck. A mind stuffed with noise cannot hear the one quiet thought that matters. Even music dies without the silence between the notes.</p>
+<h3>The page with almost nothing on it</h3>
+<p>Open the great web portals of the late 1990s and you opened a crowded street market. Yahoo!, the champion of the early web, filled its front page with everything it had — news, weather, sport, horoscopes, shopping, chat — hundreds of links competing for your eye, each one proof that the company was doing a great deal.</p>
+<p>Then came a page with almost nothing on it. Google's homepage held a name, a single empty box, and two buttons. Part of the emptiness was conviction; part, by the founders' own cheerful admission, was that neither of them was much of a web designer. But the emptiness turned out to be the product. The page loaded instantly. There was nothing to learn and nothing to ignore. You typed, you found, you left — and because the nothing worked so well, the whole world eventually came to the nothing.</p>
+<p>Google did not win because its box contained more. It won because everything that was not the box had been left out, and the space that remained was exactly the size of a question.</p>
+<h3>Defend the empty spaces</h3>
+<p>So defend your empty spaces like treasure. Leave a gap in the schedule. Leave a silence in the argument. Leave one room in your life with nothing in it at all. Start small: one drawer, one empty hour, one honest no.</p>
+<p>What looks like nothing is quietly doing the heaviest work you own — and the richest rooms you will ever sit in are the ones with space left in them to breathe.</p>
+<p><em>We work with being, but non-being is what we use.</em></p>
+  </article>
+
+  <div class="endblock">
+    <div class="kick">From the book</div>
+    <div class="bt"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+    <p>The whole classic, retold as stories in plain English — the lesson hiding inside the tale, never lectured. <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Get the book on Amazon ↗</a></p>
+    <p style="margin-top:12px"><a href="../#stories">← More stories</a> · <a href="../">Samdapau home</a></p>
+  </div>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span>Ancient classics, decoded as stories.</span>
+  </footer>
+
+</div>
+</body>
+</html>

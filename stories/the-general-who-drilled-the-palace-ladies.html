@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The General Who Drilled the Palace Ladies — Samdapau</title>
+<meta name="description" content="Sun Tzu won the strangest job interview in history — and his first lesson still decides who wins before anything begins">
+<link rel="icon" href="../assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F6F7; --ink:#1A1A1A; --soft:#6E6E73; --faint:#A1A1A6;
+    --line:#E3E3E6; --card:#FFFFFF;
+    --gold:#B8862B; --gold-deep:#9A6E1F;
+    --red:#A63A2E; --red-deep:#8C2F24; --chip-bg:#F7E3DE;
+    --pill-bg:#EFEFF1;
+    --shadow:0 1px 2px rgba(26,26,26,.05),0 12px 32px rgba(26,26,26,.10);
+    --shadow-lift:0 2px 3px rgba(26,26,26,.06),0 18px 44px rgba(26,26,26,.16);
+    --ring:inset 0 0 0 1px rgba(26,26,26,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--paper);color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--gold-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  /* header */
+  header{position:relative;z-index:30;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px rgba(26,26,26,.08),0 2px 6px rgba(26,26,26,.18)}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .brand:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  /* language dropdown (details/summary, zero JS) */
+  .langmenu{position:relative;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif}
+  .lang-btn{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);box-shadow:0 1px 2px rgba(26,26,26,.05);white-space:nowrap}
+  .lang-btn::-webkit-details-marker{display:none}
+  .lang-btn:hover{border-color:var(--faint)}
+  .lang-btn .caret{font-size:10px;color:var(--gold);transition:transform .2s}
+  .langmenu[open ] .lang-btn .caret{transform:rotate(180deg)}
+  .lang-panel{position:absolute;right:0;top:calc(100% + 9px);background:var(--card);border-radius:14px;box-shadow:var(--shadow-lift);border:1px solid rgba(26,26,26,.05);padding:6px;min-width:min(228px,86vw);max-width:86vw}
+  .lang-row{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);white-space:nowrap}
+  a.lang-row:hover{background:#F2F2F4;text-decoration:none}
+  .lang-cur{background:rgba(184,134,43,.13);font-weight:700;cursor:default}
+  .lang-cur .ck{color:var(--gold-deep);font-size:13px}
+  .lang-row .ck{width:13px;flex:none}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero .rule{width:52px;height:3px;border-radius:2px;background:var(--gold);margin-top:24px}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
+  .framed img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:42px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .sec-note{color:var(--soft);font-size:16.5px;margin:-6px 0 16px}
+  /* unified cards: one card, one shadow, image flush inside */
+  .card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  a.card{display:block;color:var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+  a.card:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .cb{padding:20px 22px 22px}
+  .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
+  .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
+  /* people row */
+  .people{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:560px){.people{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.people{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.people{grid-template-columns:repeat(5,1fr)}}
+  .person{padding:24px 22px 22px}
+  .portrait{width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:16px}
+  .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:42px;line-height:1}
+  .p-name{font-size:24px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:15.5px;margin-top:2px}
+  .p-hook{color:var(--soft);font-size:16.5px;line-height:1.55;margin:9px 0 14px}
+  /* stories wall: masonry via CSS columns, natural varied heights */
+  .wall{columns:1;column-gap:26px}
+  @media (min-width:700px){.wall{columns:2}}
+  @media (min-width:1200px){.wall{columns:3}}
+  @media (min-width:2000px){.wall{columns:4}}
+  .wall .card{margin:0 0 26px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .story img{width:100%}
+  .s-title{font-size:23px;line-height:1.3;margin:2px 0 6px}
+  a.card:hover .s-title{color:var(--gold-deep)}
+  .s-excerpt{color:var(--soft);font-size:16.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .s-meta{color:var(--faint);font-size:14px;margin-top:12px;letter-spacing:.02em}
+  /* quote cards */
+  .quote{padding:28px 26px 24px;color:#FFFFFF}
+  .q-gold{background:linear-gradient(160deg,#C1912F,#A87A24)}
+  .q-red{background:linear-gradient(160deg,#AE4436,#96402F)}
+  .q-ink{background:linear-gradient(160deg,#2B2B2E,#1A1A1A)}
+  .q-text{font-size:25px;line-height:1.45;font-style:italic}
+  .q-note{font-size:15.5px;opacity:.85;margin-top:14px;line-height:1.5}
+  .q-foot{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:18px;opacity:.92}
+  /* watch cards */
+  .posts{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%}
+  .post .t{font-size:22.5px;line-height:1.3}
+  a.card:hover .t{color:var(--gold-deep)}
+  .post .d{color:var(--soft);font-size:17px;margin-top:4px;line-height:1.55}
+  .post .m{color:var(--faint);font-size:13.5px;margin-top:10px;letter-spacing:.05em;font-family:Montserrat,sans-serif}
+  /* read: book shelf cards */
+  .shelf{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:16px;padding:18px;align-items:flex-start}
+  .book img{width:72px;flex:none;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .t{font-size:20px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--gold-deep)}
+  .book .d{color:var(--soft);font-size:16.5px;margin-top:3px;line-height:1.5}
+  .book .buy{margin-left:auto;flex:none;font-size:15.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:4px 0;font-size:19px}
+  .follow a{color:var(--soft)}
+  .follow a:hover{color:var(--gold-deep)}
+  .about{max-width:68ch}
+  .about p{color:#333336;margin-bottom:12px}
+  footer{margin-top:56px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* reader pages */
+  .backlink{display:inline-block;margin:30px 0 6px;font-size:16.5px}
+  .article{max-width:68ch;margin:0 auto;padding-bottom:10px}
+  .article h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.18;letter-spacing:-.01em;margin:12px 0 10px}
+  .article .sub{color:var(--soft);font-size:21px;line-height:1.5;font-style:italic}
+  .article .byline{color:var(--faint);font-size:15px;margin:16px 0 24px;letter-spacing:.02em}
+  .article .framed{margin-bottom:30px}
+  .article p{margin:0 0 20px;font-size:20.5px;line-height:1.75;color:#232326}
+  .article h3{font-size:26px;font-weight:600;line-height:1.3;margin:36px 0 12px}
+  .article blockquote{border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;color:#333336;font-style:italic;font-size:20.5px;line-height:1.7}
+  .article hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+  .endblock{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:26px 28px;max-width:68ch;margin:44px auto 0}
+  .endblock .kick{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+  .endblock .bt{font-size:24px;line-height:1.3}
+  .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="../">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="../#watch">Watch</a>
+        <a href="../#stories">Stories</a>
+        <a href="../#read">Read</a>
+        <a href="../#about">About</a>
+      </nav>
+      <details class="langmenu"><summary class="lang-btn">English<span class="caret">▾</span></summary><div class="lang-panel"><span class="lang-row lang-cur"><span class="ck">✓</span>English</span><a class="lang-row" href="../es/"><span class="ck"></span>Español</a><a class="lang-row" href="../fr/"><span class="ck"></span>Français</a><a class="lang-row" href="../pt/"><span class="ck"></span>Português</a><a class="lang-row" href="../de/"><span class="ck"></span>Deutsch</a><a class="lang-row" href="../ja/"><span class="ck"></span>日本語</a><a class="lang-row" href="../ko/"><span class="ck"></span>한국어</a><a class="lang-row" href="../zh-hans/"><span class="ck"></span>简体中文</a><a class="lang-row" href="../zh-hant/"><span class="ck"></span>繁體中文</a></div></details>
+    </div>
+  </header>
+
+  <a class="backlink" href="../#stories">← All stories</a>
+
+  <article class="article">
+    <div><span class="pill">Story</span></div>
+    <h1>The General Who Drilled the Palace Ladies</h1>
+    <p class="sub">Sun Tzu won the strangest job interview in history — and his first lesson still decides who wins before anything begins</p>
+    <div class="byline">Samdapau · 7 min read</div>
+    <div class="framed"><img src="../assets/story-general.webp" alt="Sun Tzu drilling the palace ladies — ink painting"></div>
+<p>The King of Wu had a problem most kings would envy. A quiet scholar named Sun Tzu had written thirteen chapters on war, and everyone at court was talking about them. The king wanted to know whether the man was a genius or a fraud. So he designed a test with a trap inside it.</p>
+<p>He did not hand Sun Tzu an army. He handed him one hundred and eighty palace concubines — silk robes, hairpins, not a callus among them — and said: "Train them like soldiers."</p>
+<p>It was a joke, and everyone in the courtyard knew it. Everyone except Sun Tzu.</p>
+<p>He treated the joke as a war. He divided the women into two companies. He put the king's two favorite concubines in command of them, one company each. Then he gave the simplest order a commander can give, plain enough that a child could follow it: when the drum sounds and I say turn right, turn right.</p>
+<p>The ladies giggled. Nobody turned.</p>
+<p>Now watch what Sun Tzu does, because this is the whole man in one move. He does not rage. He does not repeat himself louder. He says, calmly, that if an order is not understood, the fault belongs to the commander. Then he explains the order a second time — slowly, carefully, until no one in that courtyard could honestly claim to be confused.</p>
+<p>The drum sounded again. Turn right.</p>
+<p>The ladies giggled again.</p>
+<p>Sun Tzu's voice changed. If the orders are clear, he said, and they are still disobeyed, then the fault belongs to the officers. And he ordered the two officers — the king's own two favorites — executed on the spot.</p>
+<h3>The laughter stops</h3>
+<p>Historians have argued for two thousand years about whether this really happened, and honestly, it does not matter. What matters is what the story understands about people. The next command was obeyed in perfect silence. Every movement exact. One hundred and eighty women who had never held a spear moved like a single body — not because they had suddenly learned how to march, but because they had suddenly learned that the rules were real.</p>
+<p>The king, who had come to watch a theorist embarrass himself, sobered up fast. He had asked for a demonstration of drilling. What he got was a demonstration of command. He made Sun Tzu his general.</p>
+<p>Notice the order in which Sun Tzu assigns blame. First, himself: unclear orders are the leader's fault. Only after he has removed every excuse does the blame move down the chain — and when it moves, it does not waver. That sequence is not cruelty for its own sake. It is a system: responsibility placed exactly where it belongs, in the right order, without exception for favorites. Especially without exception for favorites.</p>
+<h3>Why the first chapter is arithmetic, not swords</h3>
+<p>Here is the strange thing about <em>The Art of War</em>. Its first chapter contains no battle at all. It opens with a warning — war is the gravest matter of a state, the ground of life and death, and it must never be entered carelessly — and then it does something deeply unglamorous. It counts.</p>
+<p>Before a single soldier marches, Sun Tzu says, five things must be measured honestly.</p>
+<p>Do your people actually believe in the cause, or are they just present? Is the timing right — the season, the moment — or are you moving because you are impatient? Do you understand the ground you will act on: its distances, its dangers, its one narrow opening? Is the person in command wise, honest, brave, and strict — all four, not two out of four? And are the unglamorous systems in place: the supplies, the roads, the money, the discipline that keeps an effort alive after the first excitement fades?</p>
+<p>Measure those five, compare them against your opponent without flinching, and Sun Tzu claims something almost offensive in its calmness: you already know who wins. The battle, when it finally comes, mostly announces a result that the calculation reached weeks earlier.</p>
+<p>And here is the part people skip. If your five answers come back weak, Sun Tzu's advice is not to strain harder, shout louder, or believe more fiercely. It is to not fight yet — or not on that ground, or not in that way, or, on the honest count, not at all. Walking away from a badly measured contest is not a failure of nerve in his system. It is the system working. The courtyard taught the same lesson from the other end: the women did not fail because they lacked talent. The drill failed, at first, because nobody had yet made the rules real — and making things real, before anything moves, is precisely the commander's job.</p>
+<p>That is also why the most quoted sentence of the chapter lands where it does. "All warfare is based on deception," he writes — because if outcomes rest on what the other side believes and expects, then shaping what they see is part of the contest. But read it beside the five measurements and it stops sounding like a trickster's motto. Your opponent gets the fog. Your own side gets the arithmetic — clear-eyed, exact, and done early.</p>
+<h3>The same winter, in Oakland</h3>
+<p>In 2002, the Oakland Athletics tried to win a baseball season before it began. Their payroll was about $41 million; the New York Yankees spent roughly $125 million. Oakland's general manager, Billy Beane, stopped asking whether a player looked like a star and asked a colder question instead: what does the record say actually produces runs? The answer was unfashionable — getting on base, the skill that mattered most, was cheap precisely because nobody admired it. Oakland bought what the numbers valued, won 103 games, and set a league record with twenty straight victories.</p>
+<p>People usually tell that story, from Michael Lewis's <em>Moneyball</em>, as data defeating gut feeling. Sun Tzu would have called it something older and simpler. He would have called it the temple calculation — the contest settled in winter, on paper, by people willing to count what everyone else was content to feel.</p>
+<p>Most of us do the opposite. We start in the middle: the argument, the launch, the confrontation — and go looking for the foundations afterward, usually while standing in the wreckage. Sun Tzu's first lesson is that the order cannot be reversed. Restraint is not the opposite of strategy. It is strategy, applied early enough to matter.</p>
+<p>This is why the little book rewards re-reading. In calm times, its chapters read like common sense — nod, turn the page. But read them on the eve of a decision that actually costs something, and the same sentences turn into a checklist with teeth. Do the people with me believe in this, or are they being polite? Is this the season, or just my impatience dressed up as urgency? Do I know the ground, or the version of the ground I would prefer? Sun Tzu is not interested in making you feel brave. He is interested in making you see clearly — because he watched, two and a half millennia ago, what he still watches now: people losing contests that were lost long before the armies met, by generals who never did the calculation.</p>
+<p>Most defeats are decided before the first blow — by people who never did the arithmetic.</p>
+  </article>
+
+  <div class="endblock">
+    <div class="kick">From the book</div>
+    <div class="bt"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+    <p>The whole classic, retold as stories in plain English — the lesson hiding inside the tale, never lectured. <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Get the book on Amazon ↗</a></p>
+    <p style="margin-top:12px"><a href="../#stories">← More stories</a> · <a href="../">Samdapau home</a></p>
+  </div>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span>Ancient classics, decoded as stories.</span>
+  </footer>
+
+</div>
+</body>
+</html>
