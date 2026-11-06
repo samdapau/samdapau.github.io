@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Palace Drill — A Samdapau Story Game</title>
+<meta name="description" content="Wu, 512 BC. One scholar, one king, and 180 palace women who think it is a joke. A branching story game from Samdapau: play Sun Tzu — or play the captain whose life hangs on the drum.">
+<style>
+:root{
+  --ground:#F6F6F7; --card:#FFFFFF; --ink:#1A1A1A; --soft:#6E6E73;
+  --faint:#A1A1A6; --line:#E3E3E6; --pill:#EFEFF1;
+  --gold:#B8862B; --gold-deep:#96690F; --red:#A63A2E; --red-deep:#8C2F24;
+  --red-pale:#F7E3DE;
+  --serif:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
+  --shadow:0 10px 30px rgba(26,26,26,.10),0 2px 6px rgba(26,26,26,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ground);color:var(--ink);font-family:var(--serif);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:18px 14px 40px}
+.wrap{width:100%;max-width:560px}
+.brand{text-align:center;margin:6px 0 14px}
+.brand .mark{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--soft)}
+.brand .rule{width:54px;height:2px;background:var(--gold);margin:8px auto 0;border-radius:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow);overflow:hidden}
+.screen{display:none}
+.screen.active{display:block}
+.art{display:block;width:100%;height:auto;background:#DDD}
+.pad{padding:22px 22px 26px}
+.kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);
+  font-weight:700;margin-bottom:10px}
+h1.title{font-size:42px;line-height:1.05;font-weight:600;letter-spacing:.01em;margin-bottom:10px}
+h2.scene{font-size:27px;line-height:1.15;font-weight:600;margin-bottom:12px}
+.hook{font-size:19px;line-height:1.55;color:#333336}
+.credit{margin-top:18px;font-size:14.5px;color:var(--soft);font-style:italic;line-height:1.5}
+.btn{display:block;width:100%;min-height:54px;border-radius:14px;border:1px solid var(--line);
+  background:#fff;color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.35;
+  padding:13px 16px;text-align:left;cursor:pointer;transition:border-color .15s,transform .1s,background .15s}
+.btn:active{transform:scale(.99)}
+.btn:hover{border-color:var(--gold)}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:#fff;text-align:center;
+  font-size:20px;font-weight:600;letter-spacing:.04em}
+.btn.primary:hover{background:var(--gold-deep)}
+.btn.earned{border-left:5px solid var(--gold)}
+.btn .tag{display:inline-block;font-size:10.5px;letter-spacing:.18em;color:var(--gold-deep);
+  border:1px solid var(--gold);border-radius:999px;padding:1px 7px;margin-right:8px;vertical-align:2px}
+.choices{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.stats{padding:14px 22px 4px;border-bottom:1px solid var(--line)}
+.stat{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.stat .lab{flex:0 0 108px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.stat .track{flex:1;height:7px;background:var(--pill);border-radius:99px;overflow:hidden}
+.stat .fill{height:100%;background:linear-gradient(90deg,var(--gold),#D3A94F);border-radius:99px;
+  transition:width .5s ease}
+.stat .val{flex:0 0 26px;text-align:right;font-size:14px;color:var(--soft)}
+.story p{font-size:19.5px;line-height:1.62;margin-bottom:13px;color:#232326}
+.story p:last-child{margin-bottom:0}
+.rolegrid{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+.rolecard{border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;gap:15px;
+  align-items:flex-start;cursor:pointer;background:#fff;text-align:left;width:100%;
+  font-family:var(--serif);transition:border-color .15s}
+.rolecard:hover{border-color:var(--gold)}
+.rolecard img{width:74px;height:74px;border-radius:50%;object-fit:cover;flex:0 0 74px;
+  border:2px solid var(--gold)}
+.medallion{width:74px;height:74px;border-radius:50%;flex:0 0 74px;border:2px solid var(--gold);
+  background:var(--red-pale);color:var(--red-deep);display:flex;align-items:center;justify-content:center;
+  font-size:34px;font-weight:600}
+.rolecard h3{font-size:23px;font-weight:600;margin-bottom:3px}
+.rolecard .path{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.rolecard p{font-size:16.5px;line-height:1.45;color:#333336}
+.ribbon{display:inline-block;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;margin-bottom:12px;font-weight:700}
+.ribbon.canonical{background:#F3E8CF;color:var(--gold-deep)}
+.ribbon.bent{background:var(--red-pale);color:var(--red-deep)}
+.ribbon.bad{background:#2A2A2C;color:#EDEEF0}
+.srcline{font-style:italic;font-size:15.5px;line-height:1.5;color:var(--soft);margin:0 0 4px}
+.finalstats{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.finalstats .chip{background:var(--pill);border-radius:999px;padding:6px 13px;font-size:14.5px;color:#333336}
+.finalstats .chip b{color:var(--gold-deep)}
+.sharebox{margin-top:16px;background:var(--ground);border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.sharebox .lab{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:7px}
+.sharebox textarea{width:100%;border:none;background:transparent;resize:none;font-family:var(--serif);
+  font-size:16.5px;line-height:1.45;color:var(--ink)}
+.sharebox textarea:focus{outline:none}
+.btn.small{min-height:44px;font-size:16px;text-align:center;margin-top:9px}
+.loop{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+.loop .lab{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:10px;text-align:center}
+.loop a.btn{text-decoration:none;text-align:center;margin-bottom:9px}
+.loop a.btn.book{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.loop a.btn.book:hover{background:var(--red-deep)}
+.againrow{display:flex;gap:9px;margin-top:12px}
+.againrow .btn{text-align:center;font-size:16.5px}
+.foot{text-align:center;color:var(--faint);font-size:13.5px;margin-top:16px;line-height:1.6}
+.foot a{color:var(--soft)}
+@media (min-width:640px){ h1.title{font-size:48px} .pad{padding:28px 30px 32px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><div class="mark">Samdapau</div><div class="rule"></div></div>
+
+  <!-- TITLE -->
+  <section id="screen-title" class="card screen active">
+    <img class="art" src="img/hero-drill.webp" alt="Sun Tzu drilling the palace women of Wu">
+    <div class="pad">
+      <div class="kicker">A branching story game</div>
+      <h1 class="title">The Palace Drill</h1>
+      <p class="hook">Wu, 512 BC. One scholar with a book on war. One king who wants to watch him fail. And one hundred and eighty palace women who think the whole thing is a joke.</p>
+      <p class="hook" style="margin-top:10px">How does command begin? Play it — and find out what your choices cost.</p>
+      <div class="choices">
+        <button class="btn primary" id="btn-play">Play</button>
+      </div>
+      <p class="credit">From the story of Sun Tzu and the concubines of Wu, as told in <i>Sun Tzu's The Art of War, Decoded</i> by Samdapau — ancient classics, decoded as stories.</p>
+    </div>
+  </section>
+
+  <!-- ROLE SELECT -->
+  <section id="screen-role" class="card screen">
+    <div class="pad">
+      <div class="kicker">Choose who you are</div>
+      <h2 class="scene">Two people walk into the courtyard. Only the story is the same.</h2>
+      <div class="rolegrid">
+        <button class="rolecard" id="role-sun">
+          <img src="img/sunzi-face.webp" alt="Sun Tzu">
+          <span>
+            <span class="path" style="display:block">The command path</span>
+            <h3>Sun Tzu, the General</h3>
+            <p>You wrote the book. Now a king hands you silk and laughter and calls it an army. Make the law real — or watch it dissolve.</p>
+          </span>
+        </button>
+        <button class="rolecard" id="role-captain">
+          <span class="medallion">C</span>
+          <span>
+            <span class="path" style="display:block">The survival path</span>
+            <h3>The Captain</h3>
+            <p>Yesterday you chose the king's wine. Today there is a captain's sash in your hands and a scholar reading the law aloud. Live through the drum — if you can.</p>
+          </span>
+        </button>
+      </div>
+      <p class="credit">Same courtyard, same drum — a different life depending on where you stand. About 3–5 minutes a run.</p>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="screen-game" class="card screen">
+    <img class="art" id="g-art" src="img/hero-drill.webp" alt="">
+    <div class="stats" id="g-stats"></div>
+    <div class="pad">
+      <div class="kicker" id="g-kicker"></div>
+      <h2 class="scene" id="g-title" style="display:none"></h2>
+      <div class="story" id="g-text"></div>
+      <div id="g-ending"></div>
+      <div class="choices" id="g-choices"></div>
+    </div>
+  </section>
+
+  <p class="foot">A Samdapau story game · Free to play · <a href="https://samdapau.github.io">samdapau.github.io</a></p>
+</div>
+
+<script>
+"use strict";
+/*STORY-BEGIN*/
+const STORY = {
+  "sun": {
+    "label": "Sun Tzu, the General",
+    "stats": [
+      {"id": "authority", "label": "Authority", "start": 50},
+      {"id": "discipline", "label": "Discipline", "start": 50},
+      {"id": "favor", "label": "King's Favor", "start": 60}
+    ],
+    "start": "st_start",
+    "nodes": {
+      "st_start": {
+        "img": "scholar.webp", "kicker": "The test",
+        "text": [
+          "Wu, in the last years of the Spring and Autumn age. King Helü has read your thirteen chapters on war — twice. Half his court calls you a genius. The other half has come to watch a book-man trip over his own theories.",
+          "This morning he sends for you, wearing the smile of a man setting a trap. “They say you can drill anyone, scholar. Drill them.”",
+          "Down in the courtyard stand one hundred and eighty palace women. Silk robes. Hairpins. Not a callus among them. The king takes his seat on the terrace, ready to enjoy the show."
+        ],
+        "choices": [
+          {"text": "Take a slow breath. Ask for drums, banners and halberds — as if this were a real army.", "to": "st_form", "fx": {"stats": {"authority": 6, "discipline": 4}}},
+          {"text": "Ask the king one question first: “Shall they be judged by a soldier's law?”", "to": "st_form", "fx": {"stats": {"discipline": 6, "favor": -4}}}
+        ]
+      },
+      "st_form": {
+        "img": "hero-drill.webp", "kicker": "The companies",
+        "text": [
+          "You treat the joke as a war. The women are divided into two companies of ninety. Now comes the appointment every courtier is watching for: the captains.",
+          "The king's two favorite concubines stand at the front in silk, already smiling. Everyone expects you to pass them over for someone safer."
+        ],
+        "choices": [
+          {"text": "Give each favorite a company. If the law bends for them, it bends for everyone.", "to": "st_orders", "fx": {"stats": {"authority": 8}}},
+          {"text": "Give each favorite a company — and say why, so all can hear: “A captain is a captain. There are no favorites on a drill ground.”", "to": "st_orders", "fx": {"stats": {"authority": 5, "discipline": 5}}}
+        ]
+      },
+      "st_orders": {
+        "img": "drill-close.webp", "kicker": "The orders",
+        "text": [
+          "You show them the whole of it, and it is not much: face front. At the drum — turn right. At the drum — turn left. Advance. Halt. A child could learn it.",
+          "You go through it once. Twice. Three times, until the slowest woman in the yard could repeat it in her sleep. Then you ask the question that will matter.",
+          "“Do you understand?” — “Yes,” they sing. “We understand.”"
+        ],
+        "choices": [
+          {"text": "Demonstrate the turns yourself, spear in hand, before you give the drum.", "to": "st_drum1", "fx": {"stats": {"discipline": 6, "authority": 3}}},
+          {"text": "Have the two captains repeat the orders back to you, word for word.", "to": "st_drum1", "fx": {"stats": {"discipline": 3}, "flags": {"captainsTested": true}}}
+        ]
+      },
+      "st_drum1": {
+        "img": "hero-drill.webp", "kicker": "The first drum",
+        "text": [
+          "The drum sounds. “Right — turn!”",
+          "One hundred and eighty women burst out laughing. Sleeves over mouths. Hairpins shaking. Not one pair of feet moves.",
+          "On the terrace, the king leans forward, delighted. The whole court waits to see the famous theorist lose his temper."
+        ],
+        "choices": [
+          {"text": "“If the orders were not clear, the fault is mine.” Say it so the whole yard hears — then explain everything again.", "to": "st_explain2", "fx": {"stats": {"authority": 4}}},
+          {"text": "Enough. Arrest the two captains. Laughter at a drum is mutiny.", "to": "st_rush"}
+        ]
+      },
+      "st_rush": {
+        "ending": true, "kind": "bad", "img": "scholar.webp",
+        "title": "The Butcher of the Courtyard",
+        "text": [
+          "The guards hesitate — and that hesitation is the whole story. The king rises, his smile gone, but not in the way you wanted.",
+          "“I asked for a drill, scholar, not a slaughterhouse. A law nobody was taught is not a law. It is a temper.”",
+          "You are thanked for your chapters and shown the gate. The book will be famous for two thousand years. Its author goes home a cautionary tale: the commander who reached for the sword before he had finished teaching."
+        ],
+        "share": "I played Sun Tzu in The Palace Drill and reached for the sword before I had finished teaching. The King of Wu sent me home."
+      },
+      "st_explain2": {
+        "img": "drill-close.webp", "kicker": "The second telling",
+        "text": [
+          "You explain it all again. Slower. You walk the turns yourself. You ask each captain, by name, what the drum will mean. There is no confusion left anywhere in that courtyard — you have seen to it.",
+          "And this time, before the drum, you speak the other half of the law out loud, looking at the two captains:",
+          "“Orders unclear: the general's fault. Orders clear, and disobeyed: the officers' fault.” The favorites' smiles fade a little."
+        ],
+        "choices": [
+          {"text": "Beat the drum — and watch the captains, not the ranks.", "to": "st_drum2", "fx": {"stats": {"authority": 5}}},
+          {"text": "Beat the drum — and watch the ranks, not the captains.", "to": "st_drum2", "fx": {"stats": {"discipline": 5}}}
+        ]
+      },
+      "st_drum2": {
+        "img": "hero-drill.webp", "kicker": "The second drum",
+        "text": [
+          "The drum sounds. “Right — turn!”",
+          "They laugh again. Louder. Some of them are doubled over. Two hundred courtiers are watching a book about war become a joke about its author.",
+          "But this time the arithmetic is finished. The orders were clear — three tellings clear. Every excuse in the courtyard has been used up. By you. On purpose."
+        ],
+        "choices": [
+          {"text": "“The orders were clear. The fault is the officers'.” Order the two captains executed.", "to": "st_sentence"},
+          {"text": "Once more. A third explanation — patience is also a weapon.", "to": "st_third", "fx": {"stats": {"authority": -8, "favor": 3}}}
+        ]
+      },
+      "st_third": {
+        "img": "drill-close.webp", "kicker": "The third telling",
+        "text": [
+          "You explain a third time. Your voice stays level. Your authority does not.",
+          "The drum sounds — and the laughter is worse than before, because now there is contempt in it. The two captains are weeping with mirth at the head of their companies. A general explained once is a teacher. Explained three times, he is entertainment."
+        ],
+        "choices": [
+          {"text": "End it now. Execute the captains — late, but end it.", "to": "st_sentence", "fx": {"stats": {"authority": -6}}},
+          {"text": "Dismiss the drill, and bow to the king.", "to": "st_laugh_end"}
+        ]
+      },
+      "st_sentence": {
+        "img": "drill-close.webp", "kicker": "The sentence",
+        "text": [
+          "The sentence is spoken. For one held breath, nobody in the courtyard believes it.",
+          "Then, from the terrace — a royal messenger, running, with the king's plea: the two women are his favorites, his joy, his company at wine. Surely the drill can go on without this? Spare them.",
+          "Every eye in the yard goes from the king's messenger to you. This is the real test. It was always the real test."
+        ],
+        "choices": [
+          {"text": "“A general in the field is not bound by the orders of his sovereign.” Refuse — and let it be done.", "to": "st_execution", "fx": {"stats": {"authority": 10, "favor": -12}}},
+          {"text": "Accept the king's pardon. Favorites are favorites; a court is a court.", "to": "st_pardon"}
+        ]
+      },
+      "st_pardon": {
+        "ending": true, "kind": "bent", "img": "night.webp",
+        "title": "The King's Entertainer",
+        "text": [
+          "The captains weep with relief. The women — watching the law melt at the first royal frown — understand everything, and the next drill is worse than the first. Now they know.",
+          "The king keeps you at court for a season. You are brought out at banquets: the famous author, the man who nearly executed the favorites. An ornament. A story told wrong.",
+          "Wu's armies will march without you. Somewhere in your own thirteen chapters sits the sentence that explains your life here: a rule that bends once was never a rule."
+        ],
+        "share": "I played Sun Tzu in The Palace Drill and accepted the King's pardon. The law melted — and so did my command."
+      },
+      "st_execution": {
+        "img": "hero-drill.webp", "kicker": "The third drum",
+        "text": [
+          "It is done quickly, beyond a screen, and the courtyard is very quiet.",
+          "You appoint two new captains from the ranks — ordinary women, with no one on the terrace to save them. Then you lift the drumsticks a third time.",
+          "“Right — turn.” One hundred and eighty women turn as one body. Left. Advance. Halt. Silk and spear-points moving like water finding its level. No sound in the yard but the drum — and the feet."
+        ],
+        "choices": [
+          {"text": "Send word up to the terrace: “The troops are ready for the king's review.”", "to": "st_report"}
+        ]
+      },
+      "st_report": {
+        "img": "army.webp", "kicker": "The review",
+        "text": [
+          "The messenger goes up. The messenger comes down — alone. The king will not come. He sits on his terrace with his grief and his shock, looking at what his little test has made.",
+          "“Tell him,” the messenger says at last, “tell him the king is… not ready.”",
+          "Your army — one hundred and eighty palace women — stands in perfect silence below, waiting for a king who cannot bear to look at it."
+        ],
+        "choices": [
+          {"text": "“The king loves the words of my book. He cannot bear the thing itself.”", "to": "st_end_general", "requires": {"stat": "authority", "min": 60}, "fx": {"stats": {"favor": -6}}},
+          {"text": "Bow toward the terrace. Say nothing at all.", "to": "st_end_quiet"}
+        ]
+      },
+      "st_end_general": {
+        "ending": true, "kind": "canonical", "img": "army.webp",
+        "title": "The General Wu Could Not Refuse",
+        "text": [
+          "The words go up to the terrace like a spear thrown politely. The king is silent for a long time.",
+          "Then he does the hardest thing a proud man can do: he admits the test worked. “I asked for a demonstration of drilling,” he says. “I have my general.”",
+          "History's footnote: with Sun Tzu in command, the armies of Wu broke the mighty state of Chu and marched into its capital. It began here — in a courtyard, with a drum, and a law that did not bend for favorites."
+        ],
+        "share": "I played Sun Tzu in The Palace Drill. The law did not bend — and the King of Wu made me his general."
+      },
+      "st_end_quiet": {
+        "ending": true, "kind": "bent", "img": "night.webp",
+        "title": "The Quiet Appointment",
+        "text": [
+          "You bow, and let the silence do the arguing. It takes three days.",
+          "On the third day the appointment arrives anyway — a sealed order, no audience, no warmth. You are Wu's general. The king will use your arithmetic. He will never quite forgive being taught it.",
+          "It is a colder road than the history books tell. But the army is real. And so are you."
+        ],
+        "share": "I played Sun Tzu in The Palace Drill and let silence argue for me. Wu got its general — coldly."
+      },
+      "st_laugh_end": {
+        "ending": true, "kind": "bad", "img": "scholar.webp",
+        "title": "The Laughing Stock of Wu",
+        "text": [
+          "You bow. The king is gracious — the winner of a joke can afford to be. “Another day, perhaps, scholar.”",
+          "The women file back into the palace, still giggling, and the story follows you out of Wu like a smell: the man who wrote that armies run on discipline, and could not make one courtyard obey him.",
+          "Your book survives you. You, not quite."
+        ],
+        "share": "I played Sun Tzu in The Palace Drill and explained until nobody feared me. The courtyard laughed me out of Wu."
+      }
+    }
+  },
+  "captain": {
+    "label": "The Captain",
+    "stats": [
+      {"id": "standing", "label": "Standing", "start": 40},
+      {"id": "nerve", "label": "Nerve", "start": 50},
+      {"id": "favor", "label": "King's Favor", "start": 70}
+    ],
+    "start": "cap_start",
+    "nodes": {
+      "cap_start": {
+        "img": "drill-close.webp", "kicker": "The sash",
+        "text": [
+          "An hour ago you were choosing the king's wine and losing at dice with the other favorites. Now there is a captain's sash in your hands, and ninety palace women are looking at you to see what you will do with it.",
+          "The scholar from the country — Sun Tzu, the one whose book the whole court whispers about — has divided the palace women into two companies. Mei, the king's other favorite, commands the second. The king watches from the terrace.",
+          "It is, everyone agrees, a wonderful joke."
+        ],
+        "choices": [
+          {"text": "Tie the sash tight. Count your ninety women, and learn their faces.", "to": "cap_orders", "fx": {"stats": {"standing": 8, "nerve": 4}}},
+          {"text": "Laugh with the others. It is a game — play it like one.", "to": "cap_orders", "fx": {"stats": {"favor": 4}, "flags": {"playful": true}}}
+        ]
+      },
+      "cap_orders": {
+        "img": "hero-drill.webp", "kicker": "The orders",
+        "text": [
+          "Sun Tzu explains the drill the way careful men pour water — slowly, and watching the cup. Face front. At the drum: turn right. At the drum: turn left. He does it once. Twice. Three times.",
+          "“Do you understand?” he asks. Around you, a hundred and eighty voices sing: “Yes!”"
+        ],
+        "choices": [
+          {"text": "Say yes — and mean it. Run the turns over in your mind until they are yours.", "to": "cap_drum1", "fx": {"stats": {"nerve": 5}, "flags": {"learned": true}}},
+          {"text": "Say yes. Everyone says yes. The word costs nothing.", "to": "cap_drum1"},
+          {"text": "Say yes — then whisper down your front rank: “When it comes, we move together. Pass it on.”", "to": "cap_drum1", "fx": {"stats": {"standing": 6, "nerve": 2}, "flags": {"squadReady": true}}}
+        ]
+      },
+      "cap_drum1": {
+        "img": "hero-drill.webp", "kicker": "The first drum",
+        "text": [
+          "The drum cracks across the courtyard — and the whole yard dissolves. Laughter everywhere, sleeves over mouths, Mei doubled over at the head of her company. The king is delighted. It is the funniest thing at court all year.",
+          "And you are standing at the front of ninety women with a sash in your hands — while the scholar watches the captains. Not the ranks. The captains."
+        ],
+        "choices": [
+          {"text": "Turn. Sharp, alone, on the instant — and shout your company to follow.", "to": "cap_after1", "fx": {"stats": {"standing": 4, "nerve": 3}, "flags": {"turned1": true}}},
+          {"text": "Laugh with them. How can you not — look at them.", "to": "cap_after1", "fx": {"stats": {"favor": 3}, "flags": {"laughed1": true}}},
+          {"text": "Freeze. Neither laugh nor turn. Become a statue in silk.", "to": "cap_after1", "fx": {"stats": {"nerve": -4}, "flags": {"froze1": true}}}
+        ]
+      },
+      "cap_after1": {
+        "img": "drill-close.webp", "kicker": "The pause",
+        "text": [
+          "Sun Tzu does not raise his voice. “If the orders were not clear,” he says, “the fault is the commander's.” He takes the blame the way a man picks up a cup — without drama. He will explain everything again.",
+          "In the pause, Mei catches your eye. Her meaning is plain: relax. He is a book-man. He would not dare."
+        ],
+        "choices": [
+          {"text": "“He dared to read the law aloud in front of the king,” you tell her. “When he drums again — I move.”", "to": "cap_explain2", "fx": {"stats": {"nerve": 5}, "flags": {"warnedMei": true}}},
+          {"text": "Use the pause well: walk your ranks, whispering the turn woman to woman, until ninety pairs of eyes are steady.", "to": "cap_explain2", "fx": {"stats": {"standing": 7}, "flags": {"squadReady": true}}},
+          {"text": "Say nothing to anyone. Silk is safer than speech.", "to": "cap_explain2", "fx": {"stats": {"favor": 3}}}
+        ]
+      },
+      "cap_explain2": {
+        "img": "hero-drill.webp", "kicker": "The law, spoken",
+        "text": [
+          "He explains it all again — and this time he adds the other half of the law, looking straight at you and at Mei as he says it: “Orders unclear: the general's fault. Orders clear, and disobeyed: the officers' fault.”",
+          "Officers. That is you. The courtyard is very warm suddenly, and the sash feels heavier than silk should."
+        ],
+        "choices": [
+          {"text": "Meet his eyes. Nod, once, like a soldier.", "to": "cap_drum2", "fx": {"stats": {"nerve": 4}}},
+          {"text": "Listen to the law the way you once listened for footsteps in a corridor — until you could recite it in your sleep.", "to": "cap_drum2", "fx": {"stats": {"nerve": 2}, "flags": {"learned": true}}},
+          {"text": "Look up at the terrace. The king loves you. Kings stop games that go too far.", "to": "cap_drum2", "fx": {"stats": {"favor": 2}, "flags": {"trustsKing": true}}}
+        ]
+      },
+      "cap_drum2": {
+        "img": "hero-drill.webp", "kicker": "The second drum",
+        "text": [
+          "The drum sounds a second time. “Right — turn!”",
+          "Mei's company explodes into laughter again — she is leading it. Around you, your own ninety women are wavering, watching you, waiting to see what a captain is for."
+        ],
+        "choices": [
+          {"text": "Turn — and your whole company snaps round with you, clean as a fan closing.", "to": "cap_spared", "requires": {"flags": ["learned", "squadReady"]}},
+          {"text": "Turn — alone if you must, but turn.", "to": "cap_mixed", "requires": {"flags": ["learned"]}, "fx": {"stats": {"nerve": 3}}},
+          {"text": "The laughter takes you too. It is, after all, only a game.", "to": "cap_sentence", "fx": {"flags": {"laughed2": true}}},
+          {"text": "Stand frozen, as if the drum were weather.", "to": "cap_sentence", "fx": {"stats": {"nerve": -3}, "flags": {"froze2": true}}}
+        ]
+      },
+      "cap_spared": {
+        "img": "hero-drill.webp", "kicker": "The comparison",
+        "text": [
+          "Ninety women turn as one. The sound of it — silk, feet, spear-butts — rolls across the courtyard, and the laughter in Mei's company dies mid-breath, because now there is a comparison standing in the yard, and it is not kind.",
+          "Sun Tzu looks at you for a long moment. Then he says the law again, and this time it falls on one company only: “Orders clear, and disobeyed: the officers' fault.” Mei's smile goes out like a lamp.",
+          "What is done to Mei is done beyond a screen, quickly. When it is over, the scholar points at you with his chin."
+        ],
+        "choices": [
+          {"text": "“Two companies need captains,” he says. “Take hers.” Take the sash — and drill them all.", "to": "cap_end_bent"},
+          {"text": "Drop to your knees instead: “Spare her — take my sash, take my place.”", "to": "cap_mercy", "fx": {"stats": {"favor": -10, "standing": -5}}}
+        ]
+      },
+      "cap_mercy": {
+        "img": "night.webp", "kicker": "The refusal",
+        "text": [
+          "You beg — sash in both hands, offering your rank for her life. The scholar looks at you the way a scale looks at a weight.",
+          "“If the law bends for tears, it is not a law. It is a ribbon.” He will not take the trade. What is done is done. But something in his face files you away under a different heading than before."
+        ],
+        "choices": [
+          {"text": "Rise. Take command of both companies.", "to": "cap_end_bent"}
+        ]
+      },
+      "cap_mixed": {
+        "img": "drill-close.webp", "kicker": "Alone",
+        "text": [
+          "You turn — alone. Behind you, a ragged wave of giggles: some of your women half-turn; most do not. A captain is not a woman who obeys. A captain is the obedience of her company. And yours is laughing.",
+          "Sun Tzu's eyes rest on you a moment longer than on Mei. It is not mercy. It is arithmetic, finishing itself."
+        ],
+        "choices": [
+          {"text": "Stand straight in the wreckage of your company.", "to": "cap_sentence"}
+        ]
+      },
+      "cap_sentence": {
+        "img": "drill-close.webp", "kicker": "The sentence",
+        "text": [
+          "He says it without raising his voice, the way he has said everything: the orders were clear; the officers have failed them. The sentence is execution. The guards step toward Mei — and toward you.",
+          "The courtyard has gone so quiet you can hear the banners stirring. On the terrace, the king has half-risen from his seat."
+        ],
+        "choices": [
+          {"text": "Cry out to the terrace: “Majesty! Majesty — your favorite—”", "to": "cap_plea"},
+          {"text": "Speak — not to the king. To the scholar. Recite his own law back to him.", "to": "cap_argue", "requires": {"stat": "nerve", "min": 58}, "fx": {"stats": {"nerve": 3}}},
+          {"text": "Run. The gate, the corridor, anywhere — silk tearing, hairpins flying.", "to": "cap_end_flight"},
+          {"text": "Be still. If this is the price of the joke, pay it standing.", "to": "cap_end_canonical"}
+        ]
+      },
+      "cap_plea": {
+        "img": "night.webp", "kicker": "The plea",
+        "text": [
+          "Your voice carries. A messenger is already hurrying down from the terrace with the king's own words: spare them. They are his favorites. Surely the drill can go on without this?",
+          "Sun Tzu bows to the messenger — and refuses a king in front of two hundred witnesses: “A general in the field is not bound by the orders of his sovereign.” Then the guards take your arms."
+        ],
+        "choices": [
+          {"text": "Then let them see a captain die like one. Head up. Eyes front.", "to": "cap_end_canonical"},
+          {"text": "Look at your company — ninety women who will drill perfectly now — and nod to them: stand straight.", "to": "cap_end_canonical", "fx": {"stats": {"standing": 5}}}
+        ]
+      },
+      "cap_argue": {
+        "img": "drill-close.webp", "kicker": "The argument",
+        "text": [
+          "“Wait.” Your voice surprises everyone in the yard, including you. “Recite it with me, General. Orders unclear — the general's fault. Orders clear, and disobeyed — the officers' fault. I have it.”",
+          "“My company disobeyed. That is mine, and I will carry it. But I turned. At both drums. Your own eyes saw me turn. Your arithmetic has a column for that too — unless the law only counts what condemns.”",
+          "The silence lasts a long time. The scholar studies you like a map he has misread. “…The law counts everything,” he says at last. “That is its whole use.”"
+        ],
+        "choices": [
+          {"text": "Wait, standing, for the sentence to change.", "to": "cap_end_argued"}
+        ]
+      },
+      "cap_end_bent": {
+        "ending": true, "kind": "bent", "img": "army.webp",
+        "title": "The Captain Who Kept Her Head",
+        "text": [
+          "The final drill is perfect. One hundred and eighty women — yours now, all of them — move in a silence you can hear. The king does not come down from the terrace.",
+          "You live. That is the bent shape of it: the histories say the favorites died, and instead one of them is standing in the courtyard dust with two sashes and a company that obeys her.",
+          "The king never quite looks at you the same way again. You are no longer his favorite. You are something rarer at a court: a person the law looked at — and passed by, because she had done her duty."
+        ],
+        "share": "I survived The Palace Drill as the King's favorite — my company turned as one, and the law passed me by."
+      },
+      "cap_end_argued": {
+        "ending": true, "kind": "bent", "img": "night.webp",
+        "title": "The One Who Argued with the Law",
+        "text": [
+          "The sentence changes. Not pardoned — the law does not pardon. Weighed. Your sash is taken, your rank is taken, your place by the king's couch is taken. Your life is left to you, itemized, like a remainder in a sum.",
+          "That afternoon you drill as a common soldier in the ranks you commanded, and the women who laughed march perfectly around you. The king's favor never returns. But the new captains stand a little straighter when you pass — and they do, for years.",
+          "History says both favorites died. On this road, one of them died only in rank — which, at a court, is a kind of death people survive."
+        ],
+        "share": "I argued Sun Tzu's own law back at him in The Palace Drill — and lived, at the price of everything else."
+      },
+      "cap_end_canonical": {
+        "ending": true, "kind": "canonical", "img": "army.webp",
+        "title": "The King's Favorite",
+        "text": [
+          "It is done beyond a screen, the way the histories tell it: quickly — and then a courtyard so silent that when the drum comes again, it sounds like weather.",
+          "The new captains are ordinary women. At the third drum the companies turn as one body — left, advance, halt — perfect as print. Your ninety are in there, standing straight. Whatever else it cost, it taught that.",
+          "The king does not come down to review them, and the scholar's verdict climbs the terrace after him: a king who loves the words but cannot bear the deed. Days later, the appointment arrives. Wu has its general. The histories keep your story inside his — two favorites, one drum, and the moment the rules became real."
+        ],
+        "share": "I played the King's favorite in The Palace Drill, and my story ended the way history tells it — the drill was perfect afterward."
+      },
+      "cap_end_flight": {
+        "ending": true, "kind": "bad", "img": "scholar.webp",
+        "title": "The Flight Across the Courtyard",
+        "text": [
+          "You get eleven steps. Silk was not made for running, and neither, it turns out, were you. The guards have you before you reach the gate, and the courtyard watches a favorite become a fugitive in the space of a breath.",
+          "What follows follows quickly. In the palace rolls your name is not mourned; it is struck out. The drill that afternoon is perfect — and nobody ever tells your story at banquets, because the court prefers its morals without running in them."
+        ],
+        "share": "I ran in The Palace Drill. Eleven steps. Some endings you choose; mine had guards in it."
+      }
+    }
+  }
+};
+/*STORY-END*/
+
+const LINKS = {
+  read: "https://samdapau.github.io/stories/the-general-who-drilled-the-palace-ladies.html",
+  watch: "https://www.youtube.com/watch?v=LgMS1-mR2vU",
+  book: "https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"
+};
+const KIND_LABEL = {canonical: "As history tells it", bent: "History bent", bad: "A darker road"};
+
+let S = null; // {role, stats:{}, flags:{}, node}
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(el => el.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top: 0});
+}
+function clamp(v){ return Math.max(0, Math.min(100, v)); }
+
+function startRole(role){
+  const R = STORY[role];
+  S = {role: role, stats: {}, flags: {}, node: R.start};
+  R.stats.forEach(st => { S.stats[st.id] = st.start; });
+  show("screen-game");
+  render();
+}
+function met(req){
+  if(!req) return true;
+  if(req.flags){ for(const f of req.flags){ if(!S.flags[f]) return false; } }
+  if(req.stat){ if((S.stats[req.stat] || 0) < (req.min || 0)) return false; }
+  return true;
+}
+function applyFx(fx){
+  if(!fx) return;
+  if(fx.stats){ for(const k in fx.stats){ S.stats[k] = clamp((S.stats[k] || 0) + fx.stats[k]); } }
+  if(fx.flags){ for(const k in fx.flags){ if(fx.flags[k]) S.flags[k] = true; } }
+}
+function renderStats(final){
+  const R = STORY[S.role];
+  const box = document.getElementById("g-stats");
+  box.innerHTML = "";
+  R.stats.forEach(st => {
+    const row = document.createElement("div"); row.className = "stat";
+    row.innerHTML = '<span class="lab"></span><span class="track"><span class="fill"></span></span><span class="val"></span>';
+    row.querySelector(".lab").textContent = st.label;
+    row.querySelector(".fill").style.width = S.stats[st.id] + "%";
+    row.querySelector(".val").textContent = S.stats[st.id];
+    box.appendChild(row);
+  });
+  box.style.display = final ? "none" : "block";
+}
+function render(){
+  const R = STORY[S.role];
+  const node = R.nodes[S.node];
+  document.getElementById("g-art").src = "img/" + node.img;
+  document.getElementById("g-kicker").textContent = node.kicker || R.label;
+  const titleEl = document.getElementById("g-title");
+  const textEl = document.getElementById("g-text");
+  textEl.innerHTML = "";
+  node.text.forEach(p => {
+    const el = document.createElement("p"); el.textContent = p; textEl.appendChild(el);
+  });
+  const endBox = document.getElementById("g-ending");
+  endBox.innerHTML = "";
+  const chBox = document.getElementById("g-choices");
+  chBox.innerHTML = "";
+
+  if(node.ending){
+    renderStats(true);
+    titleEl.style.display = "block";
+    titleEl.textContent = node.title;
+    const rib = document.createElement("span");
+    rib.className = "ribbon " + node.kind;
+    rib.textContent = KIND_LABEL[node.kind] || "";
+    endBox.appendChild(rib);
+
+    const src = document.createElement("p");
+    src.className = "srcline";
+    if(S.role === "captain"){
+      src.textContent = "This scene is Chapter 1 of The Art of War, Decoded — told from inside the ranks.";
+    } else if(node.kind === "canonical"){
+      src.textContent = "This scene is Chapter 1 of The Art of War, Decoded — the book tells it exactly this way.";
+    } else {
+      src.textContent = "This scene is Chapter 1 of The Art of War, Decoded — the book tells it exactly this way — up to the choice where you bent it.";
+    }
+    endBox.appendChild(src);
+
+    const fs = document.createElement("div"); fs.className = "finalstats";
+    R.stats.forEach(st => {
+      const chip = document.createElement("span"); chip.className = "chip";
+      chip.innerHTML = "";
+      chip.textContent = st.label + ": ";
+      const b = document.createElement("b"); b.textContent = S.stats[st.id];
+      chip.appendChild(b); fs.appendChild(chip);
+    });
+    endBox.appendChild(fs);
+
+    const sb = document.createElement("div"); sb.className = "sharebox";
+    const lab = document.createElement("div"); lab.className = "lab"; lab.textContent = "Your story — copy & share";
+    const ta = document.createElement("textarea"); ta.rows = 3; ta.readOnly = true; ta.value = node.share;
+    const cp = document.createElement("button"); cp.className = "btn small"; cp.textContent = "Copy my result";
+    cp.addEventListener("click", () => {
+      const done = () => { cp.textContent = "Copied ✓"; setTimeout(() => cp.textContent = "Copy my result", 1800); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(ta.value).then(done).catch(() => { ta.select(); document.execCommand("copy"); done(); });
+      } else { ta.select(); document.execCommand("copy"); done(); }
+    });
+    sb.appendChild(lab); sb.appendChild(ta); sb.appendChild(cp);
+    endBox.appendChild(sb);
+
+    const loop = document.createElement("div"); loop.className = "loop";
+    const ll = document.createElement("div"); ll.className = "lab"; ll.textContent = "The story behind the game";
+    loop.appendChild(ll);
+    const mk = (href, text, cls) => {
+      const a = document.createElement("a");
+      a.className = "btn" + (cls ? " " + cls : ""); a.href = href;
+      a.target = "_blank"; a.rel = "noopener"; a.textContent = text;
+      loop.appendChild(a);
+    };
+    mk(LINKS.read, "📖 Read the full story");
+    mk(LINKS.watch, "▶ Watch Sun Tzu, explained");
+    mk(LINKS.book, "Get the book — The Art of War, Decoded", "book");
+    endBox.appendChild(loop);
+
+    const again = document.createElement("div"); again.className = "againrow";
+    const other = S.role === "sun" ? "captain" : "sun";
+    const bOther = document.createElement("button"); bOther.className = "btn"; bOther.textContent = "Play the other role";
+    bOther.addEventListener("click", () => startRole(other));
+    const bSame = document.createElement("button"); bSame.className = "btn"; bSame.textContent = "Play again";
+    bSame.addEventListener("click", () => startRole(S.role));
+    again.appendChild(bOther); again.appendChild(bSame);
+    endBox.appendChild(again);
+    return;
+  }
+
+  renderStats(false);
+  titleEl.style.display = "none";
+  (node.choices || []).forEach(ch => {
+    if(!met(ch.requires)) return;
+    const b = document.createElement("button");
+    b.className = "btn" + (ch.requires ? " earned" : "");
+    if(ch.requires){
+      const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = "Earned";
+      b.appendChild(tag);
+    }
+    b.appendChild(document.createTextNode(ch.text));
+    b.addEventListener("click", () => { applyFx(ch.fx); S.node = ch.to; render(); window.scrollTo({top: 0}); });
+    chBox.appendChild(b);
+  });
+}
+
+document.getElementById("btn-play").addEventListener("click", () => show("screen-role"));
+document.getElementById("role-sun").addEventListener("click", () => startRole("sun"));
+document.getElementById("role-captain").addEventListener("click", () => startRole("captain"));
+</script>
+</body>
+</html>
