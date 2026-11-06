@@ -75,6 +75,10 @@
   .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
   .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
   .framed img{width:100%}
+  /* homepage hero slot: locked 16:9 landscape at EVERY width
+     (owner 2026-11-06: never portrait — a tall image would swallow
+     the screen on phone and desktop alike) */
+  .hero-img .framed img{display:block;aspect-ratio:16/9;object-fit:cover}
   figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
   @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
   /* sections */
@@ -88,26 +92,60 @@
   .card .cb{padding:20px 22px 22px}
   .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
   .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
-  /* people row */
-  .people{display:grid;grid-template-columns:1fr;gap:24px}
-  @media (min-width:720px){.people{grid-template-columns:repeat(2,1fr)}}
-  @media (min-width:1080px){.people{grid-template-columns:repeat(4,1fr)}}
-  @media (min-width:1500px){.people{grid-template-columns:repeat(5,1fr)}}
-  @media (min-width:2050px){.people{grid-template-columns:repeat(6,1fr)}}
-  .person{padding:18px 18px 16px}
-  .portrait{width:68px;height:68px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:12px}
+  /* people wall: big photo cards (owner 2026-11-06, reference-site
+     redesign — replaces the 68px round-avatar name-card wall). The
+     portrait fills the card top full-bleed like a magazine cover;
+     name / role / hook / chip sit below on white. Layout is a
+     MASONRY wall (CSS columns, same technique as the stories wall):
+     every card hugs its own content — short hooks make short cards,
+     long hooks make tall ones, edges staggered (owner 2026-11-06:
+     错落有致； the old grid stretched every card in a row to one
+     height and left blank white bottoms on short-text cards).
+     Column count ADAPTS TO SCREEN WIDTH (owner: "要适应屏幕的
+     宽度"): 2 -> 8 as the viewport widens, and from 2400px up the
+     section breaks out of the 2200px .wrap cap so the 8-across
+     wall genuinely stretches with the screen. Gaps stay 24px.
+     Photo framing (owner 2026-11-06): a proper portrait PHOTO —
+     whole head, neck, and chest/shoulders, never a tight big-head
+     crop. The shape is NOT uniform (owner, same day): each card
+     carries a per-person ar key in PEOPLE, chosen from its master —
+     landscape 4/3 for wide busts (object-position Y picks the band
+     that keeps head-top through chest), square 1/1 where the bust
+     fills the master, portrait 3/4 or the 4/5 default where a
+     narrower window centres the face at full height. The varied
+     photo heights feed the masonry stagger above. people_cards()
+     adds the per-person overrides (the ar / pos / tf keys in
+     PEOPLE) to centre faces that sit off-centre in their master,
+     and to bring small or distant busts closer without losing the
+     head-to-chest framing. Luther's master is an extreme
+     close-up — no neck or chest exists in the source; he is the
+     one named exception. */
+  .people{columns:2;column-gap:24px}
+  @media (min-width:640px){.people{columns:3}}
+  @media (min-width:920px){.people{columns:4}}
+  @media (min-width:1240px){.people{columns:5}}
+  @media (min-width:1560px){.people{columns:6}}
+  @media (min-width:1980px){.people{columns:7}}
+  @media (min-width:2400px){
+    .people{columns:8}
+    #people{width:min(94vw,2960px);margin-left:calc((100% - min(94vw,2960px))/2)}
+  }
+  .person{padding:0;margin:0 0 24px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%}
+  .p-body{padding:18px 20px 20px}
   .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:33px;line-height:1}
-  .p-name{font-size:20px;line-height:1.25}
-  .p-role{color:var(--soft);font-size:13px;margin-top:2px}
-  .p-hook{color:var(--soft);font-size:15px;line-height:1.55;margin:8px 0 12px}
+  .p-name{font-size:21px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:13.5px;margin-top:3px}
+  .p-hook{color:var(--soft);font-size:15px;line-height:1.55;margin:9px 0 13px}
   .person .chip{font-size:12px;padding:4px 9px}
   /* people shelves: group nav + shelf titles inside the people section */
-  .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+  .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
   .people-nav a{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05)}
   .people-nav a:hover{text-decoration:none;border-color:var(--faint)}
   .people-nav button{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);cursor:pointer}
   .people-nav button:hover{border-color:var(--faint)}
   .people-nav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .people-fhead{margin-bottom:24px}
   .shelf-t{font-size:27px;font-weight:400;line-height:1.25;margin:38px 0 2px}
   .shelf-line{color:var(--soft);font-size:16px;margin:0 0 18px}
   /* stories wall: masonry via CSS columns, natural varied heights;
