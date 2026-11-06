@@ -14,35 +14,60 @@
   body{background:#fff;color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
   a{color:var(--link);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:680px;margin:0 auto;padding:0 22px}
-  header{display:flex;justify-content:space-between;align-items:baseline;padding:26px 0 18px;border-bottom:1px solid var(--line)}
-  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink);letter-spacing:.01em}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
   .mark:hover{text-decoration:none}
   nav{display:flex;gap:20px;font-size:16.5px}
   nav a{color:var(--soft)}
-  .hero{padding:52px 0 8px}
-  .hero h1{font-size:44px;font-weight:400;line-height:1.2;letter-spacing:-.01em}
-  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:560px}
-  section{padding:30px 0 4px}
-  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
-  .row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
-  .row .t{font-size:20.5px}
-  .row .t a{color:var(--ink)}
-  .row .t a:hover{color:var(--link)}
-  .row .d{color:var(--soft);font-size:17px;margin-top:2px;max-width:480px}
-  .row .m{color:var(--faint);font-size:16.5px;white-space:nowrap}
-  .row .m a{white-space:nowrap}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:520px}
+  figure.hero-img img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:38px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  /* watch: card grid that reflows */
+  .posts{display:grid;grid-template-columns:1fr;gap:30px 28px}
+  @media (min-width:640px){.posts{grid-template-columns:1fr 1fr}}
+  @media (min-width:1024px){.posts{grid-template-columns:1fr 1fr 1fr}}
+  .post img{width:100%;margin-bottom:13px}
+  .post .t{font-size:22.5px;line-height:1.3}
+  .post .t a{color:var(--ink)}
+  .post .t a:hover{color:var(--link)}
+  .post .d{color:var(--soft);font-size:17.5px;margin-top:4px}
+  .post .m{color:var(--faint);font-size:14.5px;margin-top:6px;letter-spacing:.03em}
+  /* read: two-column shelf on wide screens */
+  .shelf{display:grid;grid-template-columns:1fr;gap:0 44px}
+  @media (min-width:900px){.shelf{grid-template-columns:1fr 1fr}}
+  .book{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .book img{width:76px;flex:none;box-shadow:0 1px 5px rgba(0,0,0,.18)}
+  .book .t{font-size:20.5px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--link)}
+  .book .d{color:var(--soft);font-size:17px;margin-top:2px}
+  .book .buy{margin-left:auto;flex:none;font-size:16.5px;padding-top:4px;white-space:nowrap}
   .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:10px 0 4px;font-size:19px}
-  .about p{color:#333;max-width:620px;margin-bottom:12px}
+  .about{max-width:720px}
+  .about p{color:#333;margin-bottom:12px}
   footer{margin-top:52px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  @media (max-width:560px){.hero h1{font-size:34px}.row{flex-direction:column;gap:2px}.row .m{white-space:normal}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <a class="mark" href="/">Samdapau</a>
+    <a class="brand" href="/">
+      <img src="assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
     <nav>
       <a href="#watch">Watch</a>
       <a href="#read">Read</a>
@@ -51,24 +76,75 @@
   </header>
 
   <div class="hero">
-    <h1>Ancient classics,<br>decoded as stories.</h1>
-    <p>The strategy, wisdom &amp; stories of the old world — Sun Tzu, Laozi, the Thirty-Six Stratagems and more — retold in plain English. No jargon, no lectures.</p>
+    <div class="hero-grid">
+      <div>
+        <h1>Ancient classics,<br>decoded as stories.</h1>
+        <p>The strategy, wisdom &amp; stories of the old world — Sun Tzu, Laozi, the Thirty-Six Stratagems and more — retold in plain English. No jargon, no lectures.</p>
+      </div>
+      <figure class="hero-img">
+        <img src="assets/hero.jpg" alt="An ink-wash gorge with a river running through it" fetchpriority="high">
+        <figcaption>The gorge — from the Tao Te Ching series.</figcaption>
+      </figure>
+    </div>
   </div>
 
   <section id="watch">
     <h2>Watch</h2>
-    <div class="row"><div><div class="t"><a href="https://www.youtube.com/@Samdapau">The Art of War</a></div><div class="d">Sun Tzu's complete system, story by story — the generals, the traps, and the battles that proved the book.</div></div><div class="m">13 shorts + long film</div></div>
-    <div class="row"><div><div class="t"><a href="https://www.youtube.com/@Samdapau">Thirty-Six Stratagems</a></div><div class="d">All thirty-six stratagems, one tale each — deception, patience and timing, decoded from real history.</div></div><div class="m">36 shorts + 6 long sets</div></div>
-    <div class="row"><div><div class="t"><a href="https://www.youtube.com/@Samdapau">Tao Te Ching</a></div><div class="d">Laozi's quiet book told as stories — the sage, the river, and the art of doing less, better.</div></div><div class="m">20 shorts + 4 long sets</div></div>
+    <div class="posts">
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="assets/watch-sunzi.jpg" alt="The Art of War — The Complete System" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">The Art of War</a></div>
+        <div class="d">Sun Tzu's complete system, story by story — the generals, the traps, and the battles that proved the book.</div>
+        <div class="m">13 SHORTS + THE COMPLETE SYSTEM FILM</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="assets/watch-36.jpg" alt="Thirty-Six Stratagems — Set 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Thirty-Six Stratagems</a></div>
+        <div class="d">All thirty-six stratagems, one tale each — deception, patience and timing, decoded from real history.</div>
+        <div class="m">36 SHORTS + 6 LONG SETS</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="assets/watch-tao.jpg" alt="Tao Te Ching — Set 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Tao Te Ching</a></div>
+        <div class="d">Laozi's quiet book told as stories — the sage, the river, and the art of doing less, better.</div>
+        <div class="m">20 SHORTS + 4 LONG SETS</div>
+      </div>
+    </div>
   </section>
 
   <section id="read">
     <h2>Read — Chinese Classics, Decoded</h2>
-    <div class="row"><div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div><div class="d">Every stratagem as a story you will remember — and recognise the next time someone uses one on you.</div></div><div class="m"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div></div>
-    <div class="row"><div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div><div class="d">Sun Tzu in plain English, with the complete 1910 Giles translation included.</div></div><div class="m"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div></div>
-    <div class="row"><div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div><div class="d">The lost companion classic — the maimed strategist who out-thought everyone.</div></div><div class="m"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div></div>
-    <div class="row"><div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div><div class="d">Laozi retold as stories, with the complete 1891 Legge translation included.</div></div><div class="m"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div></div>
-    <div class="row"><div><div class="t"><a href="https://www.amazon.com/author/samdapau">All books</a></div><div class="d">The full shelf on the Samdapau author page — more titles on the way.</div></div><div class="m"><a href="https://www.amazon.com/author/samdapau">Author page ↗</a></div></div>
+    <div class="shelf">
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="assets/book-36.jpg" alt="The Thirty-Six Stratagems, Decoded — book cover" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
+        <div class="d">Every stratagem as a story you will remember — and recognise the next time someone uses one on you.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="assets/book-sunzi.jpg" alt="The Art of War, Decoded — book cover" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+        <div class="d">Sun Tzu in plain English, with the complete 1910 Giles translation included.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="assets/book-sunbin.jpg" alt="Sun Bin's Art of War, Decoded — book cover" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
+        <div class="d">The lost companion classic — the maimed strategist who out-thought everyone.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="assets/book-tao.jpg" alt="Tao Te Ching, Decoded — book cover" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+        <div class="d">Laozi retold as stories, with the complete 1891 Legge translation included.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <div><div class="t"><a href="https://www.amazon.com/author/samdapau">All books</a></div>
+        <div class="d">The full shelf on the Samdapau author page — more titles on the way.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/author/samdapau">Author page ↗</a></div>
+      </div>
+    </div>
   </section>
 
   <section id="follow">
