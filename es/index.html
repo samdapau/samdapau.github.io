@@ -93,27 +93,43 @@
   /* people wall: big photo cards (owner 2026-11-06, reference-site
      redesign — replaces the 68px round-avatar name-card wall). The
      portrait fills the card top full-bleed like a magazine cover;
-     name / role / hook / chip sit below on white. Portraits are
-     440x440 face-centred busts; a 4/3 frame at object-position
-     50% 18% keeps the whole head + shoulders and crops only the
-     faded torso at the bottom. The grid ADAPTS TO SCREEN WIDTH
-     (owner: "要适应屏幕的宽度"): columns climb 2 -> 8 as the
-     viewport widens, and from 2400px up the section breaks out of
-     the 2200px .wrap cap so the 8-across wall genuinely stretches
-     with the screen — modest side margins on a 21:9 ultrawide,
-     no stranded empty space. Gap stays 24px throughout. */
-  .people{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-  @media (min-width:640px){.people{grid-template-columns:repeat(3,1fr)}}
-  @media (min-width:920px){.people{grid-template-columns:repeat(4,1fr)}}
-  @media (min-width:1240px){.people{grid-template-columns:repeat(5,1fr)}}
-  @media (min-width:1560px){.people{grid-template-columns:repeat(6,1fr)}}
-  @media (min-width:1980px){.people{grid-template-columns:repeat(7,1fr)}}
+     name / role / hook / chip sit below on white. Layout is a
+     MASONRY wall (CSS columns, same technique as the stories wall):
+     every card hugs its own content — short hooks make short cards,
+     long hooks make tall ones, edges staggered (owner 2026-11-06:
+     错落有致； the old grid stretched every card in a row to one
+     height and left blank white bottoms on short-text cards).
+     Column count ADAPTS TO SCREEN WIDTH (owner: "要适应屏幕的
+     宽度"): 2 -> 8 as the viewport widens, and from 2400px up the
+     section breaks out of the 2200px .wrap cap so the 8-across
+     wall genuinely stretches with the screen. Gaps stay 24px.
+     Photo framing (owner 2026-11-06): a proper portrait PHOTO —
+     whole head, neck, and chest/shoulders, never a tight big-head
+     crop. The shape is NOT uniform (owner, same day): each card
+     carries a per-person ar key in PEOPLE, chosen from its master —
+     landscape 4/3 for wide busts (object-position Y picks the band
+     that keeps head-top through chest), square 1/1 where the bust
+     fills the master, portrait 3/4 or the 4/5 default where a
+     narrower window centres the face at full height. The varied
+     photo heights feed the masonry stagger above. people_cards()
+     adds the per-person overrides (the ar / pos / tf keys in
+     PEOPLE) to centre faces that sit off-centre in their master,
+     and to bring small or distant busts closer without losing the
+     head-to-chest framing. Luther's master is an extreme
+     close-up — no neck or chest exists in the source; he is the
+     one named exception. */
+  .people{columns:2;column-gap:24px}
+  @media (min-width:640px){.people{columns:3}}
+  @media (min-width:920px){.people{columns:4}}
+  @media (min-width:1240px){.people{columns:5}}
+  @media (min-width:1560px){.people{columns:6}}
+  @media (min-width:1980px){.people{columns:7}}
   @media (min-width:2400px){
-    .people{grid-template-columns:repeat(8,1fr)}
+    .people{columns:8}
     #people{width:min(94vw,2960px);margin-left:calc((100% - min(94vw,2960px))/2)}
   }
-  .person{padding:0}
-  .portrait{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 18%}
+  .person{padding:0;margin:0 0 24px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%}
   .p-body{padding:18px 20px 20px}
   .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:33px;line-height:1}
   .p-name{font-size:21px;line-height:1.25}
@@ -260,8 +276,8 @@
         <p>La estrategia, la sabiduría y las historias del mundo antiguo — Sun Tzu, Laozi, las Treinta y Seis Estratagemas y más — contadas en un inglés sencillo. Sin tecnicismos y sin sermones.</p>
       </div>
       <figure class="hero-img">
-        <div class="framed"><img src="../assets/hero-cleopatra.webp" alt="Cleopatra — ink portrait" fetchpriority="high"></div>
-        <figcaption>Cleopatra — the queen who spoke nine languages. From the biography series.</figcaption>
+        <div class="framed"><img src="../assets/hero-lincoln.webp" alt="Abraham Lincoln — ink portrait" fetchpriority="high"></div>
+        <figcaption>Abraham Lincoln — the lawyer with one year of school. From the biography series.</figcaption>
       </figure>
     </div>
   </div>
@@ -299,7 +315,7 @@
     </div>
     <div class="people" id="people-grid">
       <a class="card person" data-group="queens" href="../stories/the-queen-who-spoke-nine-languages.html">
-        <img class="portrait" src="../assets/person-cleopatra.webp" alt="Cleopatra" loading="lazy">
+        <img class="portrait" src="../assets/person-cleopatra.webp" alt="Cleopatra" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Cleopatra</div>
           <div class="p-role">The Queen Who Spoke Nine Languages · 69–30 BC</div>
@@ -308,7 +324,7 @@
         </div>
       </a>
       <a class="card person" data-group="queens" href="../stories/the-teenager-who-inherited-the-world.html">
-        <img class="portrait" src="../assets/person-victoria.webp" alt="Queen Victoria" loading="lazy">
+        <img class="portrait" src="../assets/person-victoria.webp" alt="Queen Victoria" loading="lazy" style="aspect-ratio:3/4;object-position:28% 50%">
         <div class="p-body">
           <div class="p-name">Queen Victoria</div>
           <div class="p-role">The Teenager Who Inherited the World · 1819–1901</div>
@@ -317,7 +333,7 @@
         </div>
       </a>
       <a class="card person" data-group="queens" href="../stories/the-princess-who-was-written-off.html">
-        <img class="portrait" src="../assets/person-elizabeth-i.webp" alt="Elizabeth I" loading="lazy">
+        <img class="portrait" src="../assets/person-elizabeth-i.webp" alt="Elizabeth I" loading="lazy" style="aspect-ratio:4/3;object-position:50% 4%">
         <div class="p-body">
           <div class="p-name">Elizabeth I</div>
           <div class="p-role">The Princess Who Was Written Off · 1533–1603</div>
@@ -326,7 +342,7 @@
         </div>
       </a>
       <a class="card person" data-group="queens" href="../stories/the-foreign-bride-who-took-an-empire.html">
-        <img class="portrait" src="../assets/person-catherine-the-great.webp" alt="Catherine the Great" loading="lazy">
+        <img class="portrait" src="../assets/person-catherine-the-great.webp" alt="Catherine the Great" loading="lazy" style="object-position:65% 50%;transform:scale(1.1)">
         <div class="p-body">
           <div class="p-name">Catherine the Great</div>
           <div class="p-role">The Foreign Bride Who Took an Empire · 1729–1796</div>
@@ -335,7 +351,7 @@
         </div>
       </a>
       <a class="card person" data-group="queens" href="../stories/the-queen-crowned-at-six-days-old.html">
-        <img class="portrait" src="../assets/person-mary.webp" alt="Mary, Queen of Scots" loading="lazy">
+        <img class="portrait" src="../assets/person-mary.webp" alt="Mary, Queen of Scots" loading="lazy" style="aspect-ratio:3/4;object-position:82% 50%">
         <div class="p-body">
           <div class="p-name">Mary, Queen of Scots</div>
           <div class="p-role">The Queen Crowned at Six Days Old · 1542–1587</div>
@@ -344,7 +360,7 @@
         </div>
       </a>
       <a class="card person" data-group="sages" href="../stories/the-librarian-who-disappeared.html">
-        <img class="portrait" src="../assets/person-laozi.webp" alt="Laozi" loading="lazy">
+        <img class="portrait" src="../assets/person-laozi.webp" alt="Laozi" loading="lazy" style="object-position:0% 50%;transform:scale(1.5) translate(12%, 0%)">
         <div class="p-body">
           <div class="p-name">Laozi</div>
           <div class="p-role">El bibliotecario que desapareció · siglo VI a. C.</div>
@@ -353,7 +369,7 @@
         </div>
       </a>
       <a class="card person" data-group="sages" href="../stories/the-prince-who-quit.html">
-        <img class="portrait" src="../assets/person-buddha.webp" alt="The Buddha" loading="lazy">
+        <img class="portrait" src="../assets/person-buddha.webp" alt="The Buddha" loading="lazy" style="aspect-ratio:4/3;object-position:50% 10%">
         <div class="p-body">
           <div class="p-name">The Buddha</div>
           <div class="p-role">The Prince Who Quit · c. 563–483 BC</div>
@@ -362,7 +378,7 @@
         </div>
       </a>
       <a class="card person" data-group="sages" href="../stories/the-swordsman-who-painted.html">
-        <img class="portrait" src="../assets/person-musashi.webp" alt="Miyamoto Musashi" loading="lazy">
+        <img class="portrait" src="../assets/person-musashi.webp" alt="Miyamoto Musashi" loading="lazy" style="object-position:50% 50%;transform:scale(1.35) translate(0%, -10%)">
         <div class="p-body">
           <div class="p-name">Miyamoto Musashi</div>
           <div class="p-role">El espadachín que pintaba · 1584–1645</div>
@@ -371,7 +387,7 @@
         </div>
       </a>
       <a class="card person" data-group="sages" href="../stories/the-teacher-nobody-would-hire.html">
-        <img class="portrait" src="../assets/person-confucius.webp" alt="Confucio" loading="lazy">
+        <img class="portrait" src="../assets/person-confucius.webp" alt="Confucio" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Confucio</div>
           <div class="p-role">El maestro que nadie quiso contratar · 551–479 a. C.</div>
@@ -380,7 +396,7 @@
         </div>
       </a>
       <a class="card person" data-group="sages" href="../stories/the-consultant-who-wrote-one-book.html">
-        <img class="portrait" src="../assets/person-sunzi.webp" alt="Sun Tzu" loading="lazy">
+        <img class="portrait" src="../assets/person-sunzi.webp" alt="Sun Tzu" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Sun Tzu</div>
           <div class="p-role">Un libro fue su solicitud de empleo · h. 544–496 a. C.</div>
@@ -389,7 +405,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-surveyor-who-gave-back-an-army.html">
-        <img class="portrait" src="../assets/person-washington.webp" alt="George Washington" loading="lazy">
+        <img class="portrait" src="../assets/person-washington.webp" alt="George Washington" loading="lazy" style="aspect-ratio:3/4;object-position:22% 50%">
         <div class="p-body">
           <div class="p-name">George Washington</div>
           <div class="p-role">The Surveyor Who Gave Back an Army · 1732–1799</div>
@@ -398,7 +414,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-lawyer-with-one-year-of-school.html">
-        <img class="portrait" src="../assets/person-lincoln.webp" alt="Abraham Lincoln" loading="lazy">
+        <img class="portrait" src="../assets/person-lincoln.webp" alt="Abraham Lincoln" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Abraham Lincoln</div>
           <div class="p-role">The Lawyer with One Year of School · 1809–1865</div>
@@ -407,7 +423,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-little-corporal.html">
-        <img class="portrait" src="../assets/person-napoleon.webp" alt="Napoleon Bonaparte" loading="lazy">
+        <img class="portrait" src="../assets/person-napoleon.webp" alt="Napoleon Bonaparte" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Napoleon Bonaparte</div>
           <div class="p-role">The Little Corporal · 1769–1821</div>
@@ -416,7 +432,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-boy-who-inherited-an-army.html">
-        <img class="portrait" src="../assets/person-alexander.webp" alt="Alexander the Great" loading="lazy">
+        <img class="portrait" src="../assets/person-alexander.webp" alt="Alexander the Great" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Alexander the Great</div>
           <div class="p-role">The Boy Who Inherited an Army · 356–323 BC</div>
@@ -425,7 +441,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-orphan-in-the-wooden-collar.html">
-        <img class="portrait" src="../assets/person-genghis-khan.webp" alt="Gengis Kan" loading="lazy">
+        <img class="portrait" src="../assets/person-genghis-khan.webp" alt="Gengis Kan" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Gengis Kan</div>
           <div class="p-role">El huérfano del collar de madera · 1162–1227</div>
@@ -434,7 +450,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-hostage-who-raised-his-own-ransom.html">
-        <img class="portrait" src="../assets/person-caesar.webp" alt="Julius Caesar" loading="lazy">
+        <img class="portrait" src="../assets/person-caesar.webp" alt="Julius Caesar" loading="lazy" style="aspect-ratio:3/4;object-position:0% 50%">
         <div class="p-body">
           <div class="p-name">Julius Caesar</div>
           <div class="p-role">The Hostage Who Raised His Own Ransom · 100–44 BC</div>
@@ -443,7 +459,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-enemy-everyone-respected.html">
-        <img class="portrait" src="../assets/person-saladin.webp" alt="Saladin" loading="lazy">
+        <img class="portrait" src="../assets/person-saladin.webp" alt="Saladin" loading="lazy" style="aspect-ratio:4/3;object-position:50% 14%">
         <div class="p-body">
           <div class="p-name">Saladin</div>
           <div class="p-role">The Enemy Everyone Respected · 1137–1193</div>
@@ -452,7 +468,7 @@
         </div>
       </a>
       <a class="card person" data-group="commanders" href="../stories/the-barbarian-in-the-wooden-palace.html">
-        <img class="portrait" src="../assets/person-attila.webp" alt="Attila" loading="lazy">
+        <img class="portrait" src="../assets/person-attila.webp" alt="Attila" loading="lazy" style="aspect-ratio:4/3;object-position:50% 10%">
         <div class="p-body">
           <div class="p-name">Attila</div>
           <div class="p-role">The Barbarian in the Wooden Palace · c. 406–453</div>
@@ -461,7 +477,7 @@
         </div>
       </a>
       <a class="card person" data-group="kings" href="../stories/the-king-who-would-not-take-no.html">
-        <img class="portrait" src="../assets/person-henry-viii.webp" alt="Henry VIII" loading="lazy">
+        <img class="portrait" src="../assets/person-henry-viii.webp" alt="Henry VIII" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Henry VIII</div>
           <div class="p-role">The King Who Would Not Take No · 1491–1547</div>
@@ -470,7 +486,7 @@
         </div>
       </a>
       <a class="card person" data-group="kings" href="../stories/the-emperor-who-wrote-himself-notes.html">
-        <img class="portrait" src="../assets/person-marcus-aurelius.webp" alt="Marcus Aurelius" loading="lazy">
+        <img class="portrait" src="../assets/person-marcus-aurelius.webp" alt="Marcus Aurelius" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Marcus Aurelius</div>
           <div class="p-role">The Emperor Who Wrote Himself Notes · AD 121–180</div>
@@ -479,7 +495,7 @@
         </div>
       </a>
       <a class="card person" data-group="kings" href="../stories/the-king-who-became-the-brand.html">
-        <img class="portrait" src="../assets/person-louis-xiv.webp" alt="Louis XIV" loading="lazy">
+        <img class="portrait" src="../assets/person-louis-xiv.webp" alt="Louis XIV" loading="lazy" style="aspect-ratio:4/3;object-position:50% 10%">
         <div class="p-body">
           <div class="p-name">Louis XIV</div>
           <div class="p-role">The King Who Became the Brand · 1638–1715</div>
@@ -488,7 +504,7 @@
         </div>
       </a>
       <a class="card person" data-group="kings" href="../stories/the-king-who-could-not-write.html">
-        <img class="portrait" src="../assets/person-charlemagne.webp" alt="Charlemagne" loading="lazy">
+        <img class="portrait" src="../assets/person-charlemagne.webp" alt="Charlemagne" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Charlemagne</div>
           <div class="p-role">The King Who Could Not Write · c. 747–814</div>
@@ -497,7 +513,7 @@
         </div>
       </a>
       <a class="card person" data-group="kings" href="../stories/the-boy-king-nobody-remembered.html">
-        <img class="portrait" src="../assets/person-tutankhamun.webp" alt="Tutankhamun" loading="lazy">
+        <img class="portrait" src="../assets/person-tutankhamun.webp" alt="Tutankhamun" loading="lazy" style="aspect-ratio:4/3;object-position:50% 8%">
         <div class="p-body">
           <div class="p-name">Tutankhamun</div>
           <div class="p-role">The Boy King Nobody Remembered · c. 1341–1323 BC</div>
@@ -506,7 +522,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-clerk-who-rewrote-the-universe.html">
-        <img class="portrait" src="../assets/person-einstein.webp" alt="Albert Einstein" loading="lazy">
+        <img class="portrait" src="../assets/person-einstein.webp" alt="Albert Einstein" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Albert Einstein</div>
           <div class="p-role">The Clerk Who Rewrote the Universe · 1879–1955</div>
@@ -515,7 +531,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-actor-who-owned-the-theatre.html">
-        <img class="portrait" src="../assets/person-shakespeare.webp" alt="William Shakespeare" loading="lazy">
+        <img class="portrait" src="../assets/person-shakespeare.webp" alt="William Shakespeare" loading="lazy" style="aspect-ratio:3/4;object-position:82% 50%">
         <div class="p-body">
           <div class="p-name">William Shakespeare</div>
           <div class="p-role">The Actor Who Owned the Theatre · 1564–1616</div>
@@ -524,7 +540,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-professor-who-hunted-counterfeiters.html">
-        <img class="portrait" src="../assets/person-newton.webp" alt="Isaac Newton" loading="lazy">
+        <img class="portrait" src="../assets/person-newton.webp" alt="Isaac Newton" loading="lazy" style="aspect-ratio:3/4;object-position:28% 50%">
         <div class="p-body">
           <div class="p-name">Isaac Newton</div>
           <div class="p-role">The Professor Who Hunted Counterfeiters · 1643–1727</div>
@@ -533,7 +549,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-freelancer-who-wrote-too-fast.html">
-        <img class="portrait" src="../assets/person-mozart.webp" alt="Mozart" loading="lazy">
+        <img class="portrait" src="../assets/person-mozart.webp" alt="Mozart" loading="lazy" style="aspect-ratio:3/4;object-position:90% 50%">
         <div class="p-body">
           <div class="p-name">Mozart</div>
           <div class="p-role">The Freelancer Who Wrote Too Fast · 1756–1791</div>
@@ -542,7 +558,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-singer-who-may-never-have-existed.html">
-        <img class="portrait" src="../assets/person-homer.webp" alt="Homer" loading="lazy">
+        <img class="portrait" src="../assets/person-homer.webp" alt="Homer" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Homer</div>
           <div class="p-role">The Singer Who May Never Have Existed · 8th century BC</div>
@@ -551,7 +567,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-teacher-who-filed-the-world.html">
-        <img class="portrait" src="../assets/person-aristotle.webp" alt="Aristotle" loading="lazy">
+        <img class="portrait" src="../assets/person-aristotle.webp" alt="Aristotle" loading="lazy" style="aspect-ratio:4/3;object-position:50% 14%">
         <div class="p-body">
           <div class="p-name">Aristotle</div>
           <div class="p-role">The Teacher Who Filed the World · 384–322 BC</div>
@@ -560,7 +576,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-composer-who-could-not-hear.html">
-        <img class="portrait" src="../assets/person-beethoven.webp" alt="Beethoven" loading="lazy">
+        <img class="portrait" src="../assets/person-beethoven.webp" alt="Beethoven" loading="lazy" style="aspect-ratio:4/3;object-position:50% 10%">
         <div class="p-body">
           <div class="p-name">Beethoven</div>
           <div class="p-role">The Composer Who Could Not Hear · 1770–1827</div>
@@ -569,7 +585,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-philosopher-who-never-wrote-a-word.html">
-        <img class="portrait" src="../assets/person-socrates.webp" alt="Socrates" loading="lazy">
+        <img class="portrait" src="../assets/person-socrates.webp" alt="Socrates" loading="lazy" style="aspect-ratio:4/3;object-position:50% 10%">
         <div class="p-body">
           <div class="p-name">Socrates</div>
           <div class="p-role">The Philosopher Who Never Wrote a Word · c. 470–399 BC</div>
@@ -578,7 +594,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-student-who-built-a-school.html">
-        <img class="portrait" src="../assets/person-plato.webp" alt="Plato" loading="lazy">
+        <img class="portrait" src="../assets/person-plato.webp" alt="Plato" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Plato</div>
           <div class="p-role">The Student Who Built a School · c. 428–348 BC</div>
@@ -587,7 +603,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-naturalist-who-sat-on-his-idea.html">
-        <img class="portrait" src="../assets/person-darwin.webp" alt="Charles Darwin" loading="lazy">
+        <img class="portrait" src="../assets/person-darwin.webp" alt="Charles Darwin" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Charles Darwin</div>
           <div class="p-role">The Naturalist Who Sat on His Idea · 1809–1882</div>
@@ -596,7 +612,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-sculptor-who-was-ordered-to-paint.html">
-        <img class="portrait" src="../assets/person-michelangelo.webp" alt="Michelangelo" loading="lazy">
+        <img class="portrait" src="../assets/person-michelangelo.webp" alt="Michelangelo" loading="lazy" style="aspect-ratio:3/4;object-position:74% 50%">
         <div class="p-body">
           <div class="p-name">Michelangelo</div>
           <div class="p-role">The Sculptor Who Was Ordered to Paint · 1475–1564</div>
@@ -605,7 +621,7 @@
         </div>
       </a>
       <a class="card person" data-group="minds" href="../stories/the-astronomer-under-house-arrest.html">
-        <img class="portrait" src="../assets/person-galileo.webp" alt="Galileo Galilei" loading="lazy">
+        <img class="portrait" src="../assets/person-galileo.webp" alt="Galileo Galilei" loading="lazy" style="aspect-ratio:3/4;object-position:70% 50%">
         <div class="p-body">
           <div class="p-name">Galileo Galilei</div>
           <div class="p-role">The Astronomer Under House Arrest · 1564–1642</div>
@@ -614,7 +630,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-lawyer-who-could-not-plead.html">
-        <img class="portrait" src="../assets/person-gandhi.webp" alt="Gandhi" loading="lazy">
+        <img class="portrait" src="../assets/person-gandhi.webp" alt="Gandhi" loading="lazy" style="object-position:0% 50%;transform:scale(1.15) translate(6%, 0%)">
         <div class="p-body">
           <div class="p-name">Gandhi</div>
           <div class="p-role">The Lawyer Who Could Not Plead · 1869–1948</div>
@@ -623,7 +639,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-pitch-that-missed-asia.html">
-        <img class="portrait" src="../assets/person-columbus.webp" alt="Christopher Columbus" loading="lazy">
+        <img class="portrait" src="../assets/person-columbus.webp" alt="Christopher Columbus" loading="lazy" style="aspect-ratio:4/3;object-position:50% 12%">
         <div class="p-body">
           <div class="p-name">Christopher Columbus</div>
           <div class="p-role">The Pitch That Missed Asia · 1451–1506</div>
@@ -632,7 +648,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-engineer-who-won-the-argument.html">
-        <img class="portrait" src="../assets/person-tesla.webp" alt="Nikola Tesla" loading="lazy">
+        <img class="portrait" src="../assets/person-tesla.webp" alt="Nikola Tesla" loading="lazy" style="aspect-ratio:4/3;object-position:50% 14%">
         <div class="p-body">
           <div class="p-name">Nikola Tesla</div>
           <div class="p-role">The Engineer Who Won the Argument and Lost the Money · 1856–1943</div>
@@ -650,7 +666,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-girl-who-auditioned-for-an-army.html">
-        <img class="portrait" src="../assets/person-joan-of-arc.webp" alt="Joan of Arc" loading="lazy">
+        <img class="portrait" src="../assets/person-joan-of-arc.webp" alt="Joan of Arc" loading="lazy" style="object-position:65% 50%">
         <div class="p-body">
           <div class="p-name">Joan of Arc</div>
           <div class="p-role">The Girl Who Auditioned for an Army · c. 1412–1431</div>
@@ -659,7 +675,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-wizard-who-built-the-lab.html">
-        <img class="portrait" src="../assets/person-edison.webp" alt="Thomas Edison" loading="lazy">
+        <img class="portrait" src="../assets/person-edison.webp" alt="Thomas Edison" loading="lazy" style="aspect-ratio:3/4;object-position:28% 50%">
         <div class="p-body">
           <div class="p-name">Thomas Edison</div>
           <div class="p-role">The Wizard Who Built the Lab · 1847–1931</div>
@@ -668,7 +684,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-monk-who-posted-a-notice.html">
-        <img class="portrait" src="../assets/person-luther.webp" alt="Martin Luther" loading="lazy">
+        <img class="portrait" src="../assets/person-luther.webp" alt="Martin Luther" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Martin Luther</div>
           <div class="p-role">The Monk Who Posted a Notice · 1483–1546</div>
@@ -677,7 +693,7 @@
         </div>
       </a>
       <a class="card person" data-group="pioneers" href="../stories/the-merchant-who-dictated-a-bestseller.html">
-        <img class="portrait" src="../assets/person-marco-polo.webp" alt="Marco Polo" loading="lazy">
+        <img class="portrait" src="../assets/person-marco-polo.webp" alt="Marco Polo" loading="lazy" style="object-position:50% 50%;transform:scale(1.3)">
         <div class="p-body">
           <div class="p-name">Marco Polo</div>
           <div class="p-role">The Merchant Who Dictated a Bestseller · 1254–1324</div>
@@ -686,7 +702,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-painter-who-applied-as-an-engineer.html">
-        <img class="portrait" src="../assets/person-leonardo.webp" alt="Leonardo da Vinci" loading="lazy">
+        <img class="portrait" src="../assets/person-leonardo.webp" alt="Leonardo da Vinci" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Leonardo da Vinci</div>
           <div class="p-role">The Painter Who Applied as an Engineer · 1452–1519</div>
@@ -695,7 +711,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-artist-nobody-bought.html">
-        <img class="portrait" src="../assets/person-vangogh.webp" alt="Vincent van Gogh" loading="lazy">
+        <img class="portrait" src="../assets/person-vangogh.webp" alt="Vincent van Gogh" loading="lazy" style="aspect-ratio:3/4;object-position:100% 50%">
         <div class="p-body">
           <div class="p-name">Vincent van Gogh</div>
           <div class="p-role">The Artist Nobody Bought · 1853–1890</div>
@@ -704,7 +720,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-prince-they-turned-into-a-vampire.html">
-        <img class="portrait" src="../assets/person-vlad.webp" alt="Vlad the Impaler" loading="lazy">
+        <img class="portrait" src="../assets/person-vlad.webp" alt="Vlad the Impaler" loading="lazy" style="aspect-ratio:3/4;object-position:15% 50%">
         <div class="p-body">
           <div class="p-name">Vlad the Impaler</div>
           <div class="p-role">The Prince They Turned Into a Vampire · c. 1431–1476</div>
@@ -713,7 +729,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-boy-who-never-took-the-crown.html">
-        <img class="portrait" src="../assets/person-augustus.webp" alt="Augustus" loading="lazy">
+        <img class="portrait" src="../assets/person-augustus.webp" alt="Augustus" loading="lazy" style="object-position:60% 50%;transform:scale(1.25)">
         <div class="p-body">
           <div class="p-name">Augustus</div>
           <div class="p-role">The Boy Who Never Took the Crown · 63 BC–AD 14</div>
@@ -722,7 +738,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-healer-who-never-held-office.html">
-        <img class="portrait" src="../assets/person-rasputin.webp" alt="Grigori Rasputin" loading="lazy">
+        <img class="portrait" src="../assets/person-rasputin.webp" alt="Grigori Rasputin" loading="lazy" style="aspect-ratio:1/1">
         <div class="p-body">
           <div class="p-name">Grigori Rasputin</div>
           <div class="p-role">The Healer Who Never Held Office · 1869–1916</div>
@@ -731,7 +747,7 @@
         </div>
       </a>
       <a class="card person" data-group="wildcards" href="../stories/the-slave-who-beat-the-legions.html">
-        <img class="portrait" src="../assets/person-spartacus.webp" alt="Spartacus" loading="lazy">
+        <img class="portrait" src="../assets/person-spartacus.webp" alt="Spartacus" loading="lazy" style="aspect-ratio:4/3;object-position:50% 18%">
         <div class="p-body">
           <div class="p-name">Spartacus</div>
           <div class="p-role">The Slave Who Beat the Legions · c. 103–71 BC</div>
