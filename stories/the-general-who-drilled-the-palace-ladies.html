@@ -152,6 +152,26 @@
   .endblock .bt{font-size:24px;line-height:1.3}
   .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
 
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+
 </style>
 </head>
 <body>
@@ -180,7 +200,14 @@
     <h1>The General Who Drilled the Palace Ladies</h1>
     <p class="sub">Sun Tzu won the strangest job interview in history — and his first lesson still decides who wins before anything begins</p>
     <div class="byline">Samdapau · 7 min read</div>
+    <input class="fs-in" type="radio" name="fs" id="fs-s" checked>
+    <input class="fs-in" type="radio" name="fs" id="fs-b">
+    <div class="fs-bar">
+      <span class="fs-cap">Text size</span>
+      <span class="fs-opts"><label class="opt-s" for="fs-s">A</label><label class="opt-b" for="fs-b">A</label></span>
+    </div>
     <div class="framed"><img src="../assets/story-general.webp" alt="Sun Tzu drilling the palace ladies — ink painting"></div>
+    <div class="article-body">
 <p>The King of Wu had a problem most kings would envy. A quiet scholar named Sun Tzu had written thirteen chapters on war, and everyone at court was talking about them. The king wanted to know whether the man was a genius or a fraud. So he designed a test with a trap inside it.</p>
 <p>He did not hand Sun Tzu an army. He handed him one hundred and eighty palace concubines — silk robes, hairpins, not a callus among them — and said: "Train them like soldiers."</p>
 <p>It was a joke, and everyone in the courtyard knew it. Everyone except Sun Tzu.</p>
@@ -207,6 +234,7 @@
 <p>Most of us do the opposite. We start in the middle: the argument, the launch, the confrontation — and go looking for the foundations afterward, usually while standing in the wreckage. Sun Tzu's first lesson is that the order cannot be reversed. Restraint is not the opposite of strategy. It is strategy, applied early enough to matter.</p>
 <p>This is why the little book rewards re-reading. In calm times, its chapters read like common sense — nod, turn the page. But read them on the eve of a decision that actually costs something, and the same sentences turn into a checklist with teeth. Do the people with me believe in this, or are they being polite? Is this the season, or just my impatience dressed up as urgency? Do I know the ground, or the version of the ground I would prefer? Sun Tzu is not interested in making you feel brave. He is interested in making you see clearly — because he watched, two and a half millennia ago, what he still watches now: people losing contests that were lost long before the armies met, by generals who never did the calculation.</p>
 <p>Most defeats are decided before the first blow — by people who never did the arithmetic.</p>
+    </div>
   </article>
 
   <div class="endblock">

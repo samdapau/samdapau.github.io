@@ -152,6 +152,26 @@
   .endblock .bt{font-size:24px;line-height:1.3}
   .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
 
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+
 </style>
 </head>
 <body>
@@ -180,7 +200,14 @@
     <h1>The River That Wears Down Stone</h1>
     <p class="sub">Laozi watched water the way generals watched battlefields</p>
     <div class="byline">Samdapau · 6 min read</div>
+    <input class="fs-in" type="radio" name="fs" id="fs-s" checked>
+    <input class="fs-in" type="radio" name="fs" id="fs-b">
+    <div class="fs-bar">
+      <span class="fs-cap">Text size</span>
+      <span class="fs-opts"><label class="opt-s" for="fs-s">A</label><label class="opt-b" for="fs-b">A</label></span>
+    </div>
     <div class="framed"><img src="../assets/story-river.webp" alt="A river gorge cut through rock — ink painting"></div>
+    <div class="article-body">
 <p>Stand on the bank of the Yellow River, in the mountains of northern China, and look down. The water below you is not impressive. It is slow, muddy, the colour of weak tea, sliding past farm fields the way it has for thousands of years. Then look at the walls of the gorge around it — hundreds of feet of solid rock, sliced clean open, as if some giant had taken a knife to the mountain.</p>
 <p>No giant did that. No flood did it either, and no army, and no hammer ever forged. Soft water did it, showing up every single day and refusing to stop.</p>
 <p>Nothing on earth is softer than water. You can punch it, and it lets your fist pass. You can dam it, and it waits. But give water enough time, and it will cut a canyon through solid granite — and the rock will never even understand what happened.</p>
@@ -207,6 +234,7 @@
 <p>So do not meet hardness with hardness. Go low — take the position nobody else wants, the one with no pride in it. Stay patient when the room demands a reaction. Keep moving, a little, every day, in the direction you chose. The world will call it weakness — right up until the day your quiet persistence has carved straight through everything that once stood in your way.</p>
 <p>In your own contest, are you spending your strength on pushing — or on flowing?</p>
 <p><em>The softest thing in the world overcomes the hardest.</em></p>
+    </div>
   </article>
 
   <div class="endblock">

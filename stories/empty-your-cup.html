@@ -152,6 +152,26 @@
   .endblock .bt{font-size:24px;line-height:1.3}
   .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
 
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+
 </style>
 </head>
 <body>
@@ -180,7 +200,14 @@
     <h1>Empty Your Cup</h1>
     <p class="sub">Laozi and the usefulness of nothing</p>
     <div class="byline">Samdapau · 4 min read</div>
+    <input class="fs-in" type="radio" name="fs" id="fs-s" checked>
+    <input class="fs-in" type="radio" name="fs" id="fs-b">
+    <div class="fs-bar">
+      <span class="fs-cap">Text size</span>
+      <span class="fs-opts"><label class="opt-s" for="fs-s">A</label><label class="opt-b" for="fs-b">A</label></span>
+    </div>
     <div class="framed"><img src="../assets/story-cup.webp" alt="A potter shaping a vessel on the wheel — ink painting"></div>
+    <div class="article-body">
 <p>Here is a riddle that is twenty-five centuries old. What is the most useful part of a cup?</p>
 <p>Not the clay. Not the glaze. The emptiness inside it — the part that is not there at all.</p>
 <p>Watch a potter at the wheel and you will see the riddle being made. His hands shape the walls of the vessel with enormous care, coaxing the clay up, thinning it, smoothing it. But he is not really making the walls. He is making the hollow the walls surround. Nobody has ever drunk from the clay. You drink from the space the clay protects.</p>
@@ -202,6 +229,7 @@
 <p>So defend your empty spaces like treasure. Leave a gap in the schedule. Leave a silence in the argument. Leave one room in your life with nothing in it at all. Start small: one drawer, one empty hour, one honest no.</p>
 <p>What looks like nothing is quietly doing the heaviest work you own — and the richest rooms you will ever sit in are the ones with space left in them to breathe.</p>
 <p><em>We work with being, but non-being is what we use.</em></p>
+    </div>
   </article>
 
   <div class="endblock">
