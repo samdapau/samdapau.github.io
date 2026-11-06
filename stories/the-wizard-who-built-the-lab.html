@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wizard Who Built the Lab — Samdapau</title>
+<meta name="description" content="How a telegraph operator stopped inventing alone and built the first factory whose product was inventions">
+<link rel="alternate" hreflang="en" href="https://samdapau.netlify.app/stories/the-wizard-who-built-the-lab.html">
+<link rel="alternate" hreflang="x-default" href="https://samdapau.netlify.app/stories/the-wizard-who-built-the-lab.html">
+<link rel="icon" href="../assets/avatar.jpg">
+<style>
+  :root{
+    --paper:#F6F6F7; --ink:#1A1A1A; --soft:#6E6E73; --faint:#A1A1A6;
+    --line:#E3E3E6; --card:#FFFFFF;
+    --gold:#B8862B; --gold-deep:#9A6E1F;
+    --red:#A63A2E; --red-deep:#8C2F24; --chip-bg:#F7E3DE;
+    --pill-bg:#EFEFF1;
+    --shadow:0 1px 2px rgba(26,26,26,.05),0 12px 32px rgba(26,26,26,.10);
+    --shadow-lift:0 2px 3px rgba(26,26,26,.06),0 18px 44px rgba(26,26,26,.16);
+    --ring:inset 0 0 0 1px rgba(26,26,26,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--paper);color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--gold-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  /* header */
+  header{position:relative;z-index:30;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px rgba(26,26,26,.08),0 2px 6px rgba(26,26,26,.18)}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .brand:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  /* language dropdown (details/summary; dismiss snippet at page foot) */
+  .langmenu{position:relative;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif}
+  .lang-btn{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);box-shadow:0 1px 2px rgba(26,26,26,.05);white-space:nowrap}
+  .lang-btn::-webkit-details-marker{display:none}
+  .lang-btn:hover{border-color:var(--faint)}
+  .lang-btn .caret{font-size:10px;color:var(--gold);transition:transform .2s}
+  .langmenu[open ] .lang-btn .caret{transform:rotate(180deg)}
+  .lang-panel{position:absolute;right:0;top:calc(100% + 9px);background:var(--card);border-radius:14px;box-shadow:var(--shadow-lift);border:1px solid rgba(26,26,26,.05);padding:6px;min-width:min(228px,86vw);max-width:86vw}
+  .lang-row{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);white-space:nowrap}
+  a.lang-row:hover{background:#F2F2F4;text-decoration:none}
+  .lang-cur{background:rgba(184,134,43,.13);font-weight:700;cursor:default}
+  .lang-cur .ck{color:var(--gold-deep);font-size:13px}
+  .lang-row .ck{width:13px;flex:none}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero .rule{width:52px;height:3px;border-radius:2px;background:var(--gold);margin-top:24px}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
+  .framed img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:42px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .sec-note{color:var(--soft);font-size:16.5px;margin:-6px 0 16px}
+  /* unified cards: one card, one shadow, image flush inside */
+  .card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  a.card{display:block;color:var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+  a.card:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .cb{padding:20px 22px 22px}
+  .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
+  .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
+  /* people row */
+  .people{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:720px){.people{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1080px){.people{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:1500px){.people{grid-template-columns:repeat(5,1fr)}}
+  @media (min-width:2050px){.people{grid-template-columns:repeat(6,1fr)}}
+  .person{padding:18px 18px 16px}
+  .portrait{width:68px;height:68px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:12px}
+  .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:33px;line-height:1}
+  .p-name{font-size:20px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:13px;margin-top:2px}
+  .p-hook{color:var(--soft);font-size:15px;line-height:1.55;margin:8px 0 12px}
+  .person .chip{font-size:12px;padding:4px 9px}
+  /* people shelves: group nav + shelf titles inside the people section */
+  .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+  .people-nav a{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05)}
+  .people-nav a:hover{text-decoration:none;border-color:var(--faint)}
+  .shelf-t{font-size:27px;font-weight:400;line-height:1.25;margin:38px 0 2px}
+  .shelf-line{color:var(--soft);font-size:16px;margin:0 0 18px}
+  /* stories wall: masonry via CSS columns, natural varied heights;
+     4 across from desktop up (owner 2026-11-06: denser, like the people
+     wall; quote cards are text-heavy, so it stays 4 even on very wide) */
+  .wall{columns:1;column-gap:26px}
+  @media (min-width:700px){.wall{columns:2}}
+  @media (min-width:1080px){.wall{columns:4}}
+  .wall .card{margin:0 0 26px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .story img{width:100%}
+  .s-title{font-size:23px;line-height:1.3;margin:2px 0 6px}
+  a.card:hover .s-title{color:var(--gold-deep)}
+  .s-excerpt{color:var(--soft);font-size:16.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .s-meta{color:var(--faint);font-size:14px;margin-top:12px;letter-spacing:.02em}
+  /* quote cards */
+  .quote{padding:28px 26px 24px;color:#FFFFFF}
+  .q-gold{background:linear-gradient(160deg,#C1912F,#A87A24)}
+  .q-red{background:linear-gradient(160deg,#AE4436,#96402F)}
+  .q-ink{background:linear-gradient(160deg,#2B2B2E,#1A1A1A)}
+  .q-text{font-size:25px;line-height:1.45;font-style:italic}
+  .q-note{font-size:15.5px;opacity:.85;margin-top:14px;line-height:1.5}
+  .q-foot{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:18px;opacity:.92}
+  /* watch cards */
+  .posts{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%}
+  .post .t{font-size:22.5px;line-height:1.3}
+  a.card:hover .t{color:var(--gold-deep)}
+  .post .d{color:var(--soft);font-size:17px;margin-top:4px;line-height:1.55}
+  .post .m{color:var(--faint);font-size:13.5px;margin-top:10px;letter-spacing:.05em;font-family:Montserrat,sans-serif}
+  /* read: book shelf cards */
+  .shelf{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:16px;padding:18px;align-items:flex-start}
+  .book img{width:72px;flex:none;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .t{font-size:20px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--gold-deep)}
+  .book .d{color:var(--soft);font-size:16.5px;margin-top:3px;line-height:1.5}
+  .book .buy{margin-left:auto;flex:none;font-size:15.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:4px 0;font-size:19px}
+  .follow a{color:var(--soft)}
+  .follow a:hover{color:var(--gold-deep)}
+  .about{max-width:68ch}
+  .about p{color:#333336;margin-bottom:12px}
+  footer{margin-top:56px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* reader pages */
+  .backlink{display:inline-block;margin:30px 0 6px;font-size:16.5px}
+  .article{max-width:68ch;margin:0 auto;padding-bottom:10px}
+  .article h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.18;letter-spacing:-.01em;margin:12px 0 10px}
+  .article .sub{color:var(--soft);font-size:21px;line-height:1.5;font-style:italic}
+  .article .byline{color:var(--faint);font-size:15px;margin:16px 0 24px;letter-spacing:.02em}
+  .article .framed{margin-bottom:30px}
+  .article p{margin:0 0 20px;font-size:20.5px;line-height:1.75;color:#232326}
+  .article h3{font-size:26px;font-weight:600;line-height:1.3;margin:36px 0 12px}
+  .article blockquote{border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;color:#333336;font-style:italic;font-size:20.5px;line-height:1.7}
+  .article hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+  .endblock{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:26px 28px;max-width:68ch;margin:44px auto 0}
+  .endblock .kick{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+  .endblock .bt{font-size:24px;line-height:1.3}
+  .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
+
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+  /* article source line (credits/legal pages reuse the reader shell) */
+  .srcline{max-width:900px;margin:28px auto 0;color:var(--faint);font-size:14.5px;line-height:1.55}
+
+  /* reader: listen button + read-aloud player bar */
+  .listen-btn{margin-right:auto;display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:9px 16px;min-height:40px;font-family:Montserrat,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);cursor:pointer}
+  .listen-btn svg{flex:none}
+  .listen-btn:hover{border-color:var(--gold)}
+  .listen-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  #tts-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(115%);transition:transform .3s ease;padding:0 clamp(10px,3vw,24px) calc(10px + env(safe-area-inset-bottom))}
+  #tts-bar.on{transform:none}
+  .tts-in{max-width:900px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);display:flex;align-items:center;gap:8px;padding:10px 12px;flex-wrap:wrap}
+  .tts-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-family:Montserrat,sans-serif}
+  .tts-btn:hover{border-color:var(--gold)}
+  .tts-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .tts-btn.off{opacity:.32;pointer-events:none}
+  .tts-main{background:var(--gold);border-color:var(--gold);color:#fff;width:46px;height:46px}
+  .tts-main:hover{border-color:var(--gold-deep)}
+  .tts-meta{flex:1 1 130px;min-width:110px}
+  #tts-title{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #tts-prog{font-size:14.5px;color:var(--soft);line-height:1.35}
+  .tts-rates{display:flex;background:var(--pill-bg);border-radius:999px;padding:3px;flex:none}
+  .tts-rates button{border:0;background:transparent;padding:7px 10px;min-height:34px;border-radius:999px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;color:var(--soft);cursor:pointer}
+  .tts-rates button.on{background:var(--gold);color:#fff}
+  .tts-rates button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  body.tts-on{padding-bottom:118px}
+  .tts-s{border-radius:3px}
+  .tts-cur{background:rgba(184,134,43,.26);box-shadow:0 0 0 2px rgba(184,134,43,.26)}
+
+
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-latin.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-latin.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-italic-latin.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:Montserrat;src:url("../assets/fonts/montserrat-700-latin.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="../">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="../#watch">Watch</a>
+        <a href="../#stories">Stories</a>
+        <a href="../#play">Play</a>
+        <a href="../#read">Read</a>
+        <a href="../#about">About</a>
+      </nav>
+      <details class="langmenu"><summary class="lang-btn">English<span class="caret">▾</span></summary><div class="lang-panel"><span class="lang-row lang-cur"><span class="ck">✓</span>English</span><a class="lang-row" href="../zh-hans/"><span class="ck"></span>简体中文</a><a class="lang-row" href="../zh-hant/"><span class="ck"></span>繁體中文</a></div></details>
+    </div>
+  </header>
+
+  <a class="backlink" href="../#stories">← All stories</a>
+
+  <article class="article" data-read-lang="en-US">
+    <div><span class="pill">Story</span></div>
+    <h1>The Wizard Who Built the Lab</h1>
+    <p class="sub">How a telegraph operator stopped inventing alone and built the first factory whose product was inventions</p>
+    <div class="byline">Samdapau · 8 min read</div>
+    <input class="fs-in" type="radio" name="fs" id="fs-s" checked>
+    <input class="fs-in" type="radio" name="fs" id="fs-b">
+    <div class="fs-bar">
+      <button class="listen-btn" id="listen-btn" type="button" aria-label="Listen to this story read aloud"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3.5 9.2v5.6h3.9L12.5 19V5L7.4 9.2H3.5z" fill="#B8862B"/><path d="M15.6 9.1a4.3 4.3 0 010 5.8M18.2 6.4a8.2 8.2 0 010 11.2" fill="none" stroke="#B8862B" stroke-width="1.9" stroke-linecap="round"/></svg><span>Listen</span></button>
+      <span class="fs-cap">Text size</span>
+      <span class="fs-opts"><label class="opt-s" for="fs-s">A</label><label class="opt-b" for="fs-b">A</label></span>
+    </div>
+    <div class="framed"><img src="../assets/person-edison.webp" alt="Thomas Edison — ink portrait"></div>
+    <div class="article-body">
+<p>In December 1877, in a wooden building in the New Jersey countryside, a thirty-year-old man leaned over a hand-cranked machine wrapped in tinfoil and recited a nursery rhyme into it. <em>Mary had a little lamb.</em> Then he turned the crank again — and the machine said it back.</p>
+<p>Thomas Edison was, by his own account, as startled as anyone. He had built stranger things, but nothing that talked. Within weeks the newspapers had a name for him — the Wizard of Menlo Park — and visitors were arriving by train to watch the tinfoil miracle. The legend was born, and it has been told ever since as the story of a lone genius and his magic.</p>
+<p>It wasn't. The wizard had a staff, a payroll, and a system. And the system, not the man, is the real invention — because nearly every research laboratory on earth now runs on the plan Edison drew up in that wooden building. He did not just invent things. He invented the factory that invents things.</p>
+<h3>The telegraph boy's education</h3>
+<p>Edison's schooling was a wire.</p>
+<p>He was a newsboy on the Detroit–Port Huron trains as a kid, printing his own little newspaper in a baggage car, and at sixteen he got his break in the way breaks actually happen. At Mount Clemens station he pulled the station agent's small son off the track in front of a rolling boxcar; the grateful father, who ran the telegraph office, taught the boy the key as payment. It is the story Edison himself told all his life, and whether every detail survived the telling, the shape of it is right: his university was not a university. It was the network.</p>
+<p>He became one of the wandering telegraph operators the industry called tramps — among the fastest ears in the business, able to take down messages at speeds that left other men behind. He was also half-deaf, probably since boyhood; he told more than one story about how it happened and seemed to regard the deafness as an asset. In the telegraph office, a man who could not hear the room could hear the wire.</p>
+<p>In Boston in 1868 he took out his first patent, for an electric vote-counting machine for legislatures. It worked. Nobody bought it. Legislatures, it turned out, had no wish to count votes any faster — delay was a feature of politics, not a bug. Edison drew the lesson that governed the rest of his career, and he stated it often and plainly in later years: never again waste time on an invention the public does not want. Everything he built afterwards started from a customer and worked backwards.</p>
+<h3>A factory whose product was products</h3>
+<p>In 1869 he arrived in New York nearly broke and slept in a battery room. Then the Gold &amp; Stock Telegraph Company's system broke down at a critical moment, the young tramp fixed it, and the work that followed — a greatly improved stock ticker, a bundle of telegraph patents — brought him a cheque for $40,000, a fortune for a twenty-three-year-old. Men of his generation used such a cheque to buy a business. Edison used it to build one: first workshops in Newark, then, in 1876, the move to a green hill at Menlo Park.</p>
+<p>What he built there had no real precedent. It was not a workshop attached to a factory. It was a free-standing invention shop — skilled machinists, chemists, glassblowers, mathematicians — whose entire business was producing new devices to order, including devices nobody had ordered yet. He set the place a quota the newspapers loved to repeat: a minor invention every ten days, a big thing every six months or so. The phonograph, the tinfoil voice from the nursery rhyme, was the lab's first blockbuster proof that the quota could be met — the moment the Wizard myth attached itself to what was actually a team with a foreman.</p>
+<p>Watch how that phonograph was actually born, because it is the whole system in miniature. Edison, following a hunch about how vibration might be recorded, made a rough sketch and handed it to John Kruesi, his master machinist, without saying what it was for. Kruesi built it — a brass cylinder, a crank, foil. Edison leaned over the finished thing, recited the rhyme, and the two of them listened to the boss's voice come out of a machine neither had quite believed in. The sketch was Edison's. The machine was Kruesi's hands. The staff — who called themselves "muckers," Edison first among them by his own insistence — understood perfectly well that this was how it worked now: nobody at Menlo Park invented alone, not even the man whose name was over the door.</p>
+<p>Hold the modern picture next to it and it is not hard to see. Menlo Park was a startup whose output was not a product but a portfolio — an R&amp;D department with nothing attached to it, selling futures in itself. Every corporate research lab, every skunk works, every venture-funded team racing a milestone is running Edison's play, in a building Edison designed.</p>
+<h3>He sold the system, not the bulb</h3>
+<p>The electric light shows the method best. Edison did not invent the light bulb, and honest accounts never said he did — inventors in several countries had bulbs that glowed. What none of them had was a system: generators, street mains, feeders, sockets, switches, meters to bill by, and lamps wired in parallel so that one dying bulb did not darken the whole street. Edison's famous boast was not about a filament. It was that he would make electric light so cheap that only the rich would burn candles.</p>
+<p>So the lab went hunting for a filament the way a factory hunts: thousands of candidate materials, tested by shifts of men, logged, discarded, logged again. The bamboo fibre that finally gave a lamp a life of over a thousand hours was found by men sent out to look — the search itself was industrialised. When the Pearl Street station in New York switched on in September 1882, lighting a square mile of the financial district, what went on sale was not a bulb. It was infrastructure, the second network Edison had wired into American life after the telegraph.</p>
+<p>The current that won that network, though, was not his. His former employee Tesla had bet on alternating current, and Tesla's side won the current war — one line is all that feud needs here, except this: the legend later handed Edison a personal victory in a darker scene, the 1903 electrocution of Topsy the elephant at Coney Island, retold today as Edison zapping an elephant to discredit AC. He did no such thing. By 1903 he had been out of the electrical business for a decade; a film crew from his movie company recorded an execution arranged by the park's owners and the local power utility, after the current war was long over. The wizard got blamed for the spell because the wizard's name was the one on the building.</p>
+<h3>The factory outlives the wizard</h3>
+<p>Menlo Park was only the prototype. In 1887 he built the West Orange laboratory in New Jersey — ten times the size, a lab complex with its own factory attached, invention as an industry at full scale. He filed 1,093 American patents across his life. He also poured ten years and a fortune into an iron-ore milling venture that failed completely, and earned it back with a storage battery, applying the quota method to his own rescue. And in 1892 his own Edison General Electric was merged away into a new company that dropped his name entirely: General Electric. The founder had become so large a brand that the brand no longer needed him on the door.</p>
+<p>He died in 1931, the most famous inventor alive, still working. But look at what he actually left. The phonograph has been replaced a dozen times; the bulb keeps being reinvented; the dynamo is a museum piece. The laboratory — a building full of specialists whose job is to make the new thing on schedule, funded like a bet and run like a factory — has never been replaced at all. It is simply how the world invents now.</p>
+<p>Edison started as a boy listening to a wire, alone with the messages. His one great insight was that genius could be organised: given benches, budgets, shifts, and a quota, invention stops being weather and becomes climate.</p>
+<p><em>The lone wizard was the story they sold. The lab was the invention that lasted.</em></p>
+<p>When an idea is credited to one famous name, how much of it belonged to the building full of people nobody named?</p>
+    </div>
+  </article>
+
+  <div class="endblock">
+
+    <p style="margin-top:12px"><a href="../#stories">← More stories</a> · <a href="../">Samdapau home</a></p>
+  </div>
+
+  <p class="srcline">Sources: Edison's telegraph years, the Mount Clemens rescue and the vote-recorder lesson follow his own accounts and the standard biographies; the Menlo Park and West Orange laboratories, the Pearl Street station and the patent record are documented history. The 1903 electrocution of the elephant Topsy is widely misattributed to Edison personally — by then he had left the electrical business, and his only connection was the film company that recorded it.</p>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span><a href="../credits.html">Credits & Sources</a> · <a href="../legal.html">Legal</a></span>
+    <span>Ancient classics, decoded as stories.</span>
+  </footer>
+
+</div>
+
+<div id="tts-bar" role="region" aria-label="Read-aloud player">
+  <div class="tts-in">
+    <button id="tts-prev" class="tts-btn" type="button" aria-label="Previous story"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M7 6h2.5v12H7zM19 6v12L10.5 12z"/></svg></button>
+    <button id="tts-play" class="tts-btn tts-main" type="button" aria-label="Play or pause"><svg id="tts-ico-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8.5 5.5v13l11-6.5z"/></svg><svg id="tts-ico-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" style="display:none"><path d="M7.5 5.5h3.4v13H7.5zM13.1 5.5h3.4v13h-3.4z"/></svg></button>
+    <button id="tts-next" class="tts-btn" type="button" aria-label="Next story"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M14.5 6H17v12h-2.5zM5 6v12l8.5-6z"/></svg></button>
+    <div class="tts-meta"><div id="tts-title">The Wizard Who Built the Lab</div><div id="tts-prog">Ready</div></div>
+    <div class="tts-rates" role="group" aria-label="Reading speed"><button type="button" data-rate="1" class="on">1×</button><button type="button" data-rate="1.25">1.25×</button><button type="button" data-rate="1.5">1.5×</button><button type="button" data-rate="2">2×</button></div>
+    <button id="tts-close" class="tts-btn" type="button" aria-label="Stop and close player"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<script>window.SAMDAPAU_TTS={"title": "The Wizard Who Built the Lab", "artist": "Thomas Edison", "artwork": "../assets/person-edison.webp", "lang": "en-US", "i18n": {"sentence": "Sentence {a} of {b}", "finished": "Finished", "tap": "Tap play to continue", "nextStory": "Next story…", "ready": "Ready", "errSpeech": "Speech couldn't start on this device or browser."}, "next": "the-naturalist-who-sat-on-his-idea.html", "prev": "the-enemy-everyone-respected.html"};</script>
+<script>
+
+/* =====================================================================
+   Samdapau read-aloud player — zero backend, zero recording, zero signup.
+   ---------------------------------------------------------------------
+   HOW IT WORKS
+   * Engine: the browser's built-in Web Speech API (speechSynthesis).
+     No audio files, no server, no account. The Listen pill starts it.
+   * Text: on first play, the article body (.article-body p / h3 /
+     blockquote) is split into sentences AT RUNTIME and each sentence is
+     wrapped in a span element (class tts-s), so the stored page HTML and the
+     article text itself are never modified on disk. Sentences are
+     spoken one utterance at a time.
+   * Highlight: the sentence being read gets .tts-cur (soft gold). Where
+     the browser fires utterance boundary events they refresh a progress
+     clock; where it does not, a watchdog timer estimates the sentence
+     duration from its character count (about 15 chars/sec at 1x for
+     Latin scripts, about 5.5 for CJK, scaled by the chosen rate) and
+     force-advances if an utterance's end event is ever lost, so
+     reading can never stall silently. Sentence splitting recognises
+     the CJK terminators 。！？ as well as . ! ?
+   * Controls (bar pinned to the bottom while active): play/pause,
+     previous/next story, speed 1x / 1.25x / 1.5x / 2x, progress
+     ("Sentence n of N"), and a close button that stops everything.
+     Changing speed mid-read restarts the current sentence at the new
+     rate. When a story ends, the next story in registry order opens
+     and keeps reading (?listen=1&rate=... in the URL); the last story
+     stops on a "Finished" state — no loop.
+   * Language: the article element carries data-read-lang (today
+     "en-US"); the voice picker prefers a natural/Google voice in that
+     language. Future translated articles only need a different
+     data-read-lang value — no code changes.
+   * Lock screen / media keys: the Media Session API publishes the
+     story title, the figure as artist, and the figure's portrait (or
+     the story art) as artwork, and wires play/pause/prev/next to the
+     same actions as the bar. A tiny looping silent audio element is
+     started alongside the speech so Android Chrome holds a media
+     session while TTS (which is not a media element) plays.
+   * Fallbacks & caveats: every Media Session / anchor step is guarded;
+     if anything is unavailable the in-page bar still works. iOS Safari
+     is the limited case: speech works in-page, but iOS gives web TTS
+     little to no lock-screen presence and pause() can be flaky — the
+     watchdog then restarts progress instead of hanging. Auto-start on
+     the next story is attempted, but a browser that demands a tap
+     leaves the bar open in a "Tap play to continue" state instead of
+     failing. Closing the page (pagehide) always cancels speech.
+   * Failure honesty: if speech cannot actually happen, the player
+     stops and says so in the bar — it never races silently through
+     the article and calls it Finished. Three guards: (1) no voices
+     at all after a capped wait at start; (2) an utterance error
+     (other than interrupted/canceled, or not-allowed which stays a
+     tap-to-continue pause) halts playback with a visible message;
+     (3) sentences that "end" implausibly fast (<350 ms for a
+     sentence over 10 characters) count as failures, and two in a
+     row halt the same way. One isolated fast end just advances.
+   ===================================================================== */
+(function () {
+  "use strict";
+  var cfg = window.SAMDAPAU_TTS || {};
+  /* Status strings come from the page config (cfg.i18n) so translated
+     article pages speak their own UI language; defaults are the
+     original English strings, so English pages behave as before. */
+  var S = cfg.i18n || {};
+  S.sentence = S.sentence || "Sentence {a} of {b}";
+  S.finished = S.finished || "Finished";
+  S.tap = S.tap || "Tap play to continue";
+  S.nextStory = S.nextStory || "Next story…";
+  S.ready = S.ready || "Ready";
+  S.errSpeech = S.errSpeech || "Speech couldn't start on this device or browser.";
+  var synth = window.speechSynthesis || null;
+  var listenBtn = document.getElementById("listen-btn");
+  var bar = document.getElementById("tts-bar");
+  var bodyEl = document.querySelector(".article-body");
+  var artEl = document.querySelector("article.article");
+  if (!synth || !listenBtn || !bar || !bodyEl) {
+    if (listenBtn) listenBtn.style.display = "none";
+    return;
+  }
+
+  var lang = (artEl && artEl.getAttribute("data-read-lang")) || cfg.lang || "en-US";
+  var RATES = [1, 1.25, 1.5, 2];
+  var rate = 1;
+  var sentences = [];        // {text, chars, spans:[...]}
+  var idx = -1;
+  var built = false, started = false, playing = false, finished = false;
+  var curUtter = null, watchdog = null, lastProgress = 0, speechBegan = false;
+  var pendingRateRestart = false, voiceName = null, anchor = null, tapMsg = false;
+  var errored = false, failStreak = 0;
+
+  var elProg = document.getElementById("tts-prog");
+  var btnPlay = document.getElementById("tts-play");
+  var btnPrev = document.getElementById("tts-prev");
+  var btnNext = document.getElementById("tts-next");
+  var btnClose = document.getElementById("tts-close");
+  var icoPlay = document.getElementById("tts-ico-play");
+  var icoPause = document.getElementById("tts-ico-pause");
+  var rateBtns = bar.querySelectorAll(".tts-rates button");
+
+  /* ------------------------------------------------ sentence splitting */
+  /* Terminators include the CJK full stop / exclamation / question
+     marks (。！？) alongside the Latin ones, so Chinese and Japanese
+     articles split into real sentences instead of whole paragraphs;
+     Latin texts never contain those characters, so their splits are
+     unchanged. */
+  var ABBR = { mr: 1, mrs: 1, ms: 1, dr: 1, st: 1, vs: 1, jr: 1, sr: 1, no: 1, "e.g": 1, "i.e": 1, "u.s": 1, "u.k": 1 };
+  function splitSentences(text) {
+    var ranges = [], n = text.length, start = 0, i = 0;
+    function flush(end) {
+      var a = start, b = end;
+      while (a < b && /\s/.test(text.charAt(a))) a++;
+      while (b > a && /\s/.test(text.charAt(b - 1))) b--;
+      if (b > a) ranges.push([a, b]);
+    }
+    while (i < n) {
+      var c = text.charAt(i);
+      if (c === "." || c === "!" || c === "?" || c === "…" || c === "。" || c === "！" || c === "？") {
+        var j = i + 1;
+        while (j < n && ".!?…。！？".indexOf(text.charAt(j)) >= 0) j++;
+        while (j < n && "\"'”’)]」』".indexOf(text.charAt(j)) >= 0) j++;
+        /* Latin sentences need whitespace (or end) after the terminator;
+           CJK sentences are not space-separated, so 。！？ split at once. */
+        if (j >= n || /\s/.test(text.charAt(j)) || c === "。" || c === "！" || c === "？") {
+          var word = text.slice(start, i).split(/\s+/).pop().toLowerCase();
+          if (c === "." && ABBR[word]) { i = j; continue; }
+          flush(j); start = j; i = j; continue;
+        }
+        i = j; continue;
+      }
+      i++;
+    }
+    flush(n);
+    return ranges;
+  }
+
+  function textNodesOf(block) {
+    var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null);
+    var nodes = [], node;
+    while ((node = walker.nextNode())) nodes.push(node);
+    return nodes;
+  }
+
+  function wrapRange(block, a, b, sentIdx) {
+    var nodes = textNodesOf(block), spans = [], pos = 0, k, nd, ns, ne;
+    var spansByNode = [];
+    for (k = 0; k < nodes.length; k++) {
+      nd = nodes[k]; ns = pos; ne = pos + nd.data.length; pos = ne;
+      if (ne <= a || ns >= b) continue;
+      spansByNode.push({ node: nd, s: Math.max(a, ns) - ns, e: Math.min(b, ne) - ns });
+    }
+    for (k = spansByNode.length - 1; k >= 0; k--) {
+      var part = spansByNode[k], target = part.node;
+      if (part.e < target.data.length) target.splitText(part.e);
+      if (part.s > 0) target = target.splitText(part.s);
+      var span = document.createElement("span");
+      span.className = "tts-s";
+      span.setAttribute("data-s", sentIdx);
+      target.parentNode.replaceChild(span, target);
+      span.appendChild(target);
+      spans.unshift(span);
+    }
+    return spans;
+  }
+
+  function buildSentences() {
+    if (built) return;
+    var blocks = bodyEl.querySelectorAll("p, h3, blockquote");
+    for (var bi = 0; bi < blocks.length; bi++) {
+      var block = blocks[bi], text = block.textContent;
+      var ranges = splitSentences(text), made = [];
+      for (var ri = 0; ri < ranges.length; ri++) {
+        made.push({
+          text: text.slice(ranges[ri][0], ranges[ri][1]),
+          chars: ranges[ri][1] - ranges[ri][0],
+          spans: null,
+          block: block, a: ranges[ri][0], b: ranges[ri][1]
+        });
+      }
+      for (var rj = made.length - 1; rj >= 0; rj--) {
+        var gi = sentences.length + rj;
+        made[rj].spans = wrapRange(block, made[rj].a, made[rj].b, gi);
+      }
+      sentences = sentences.concat(made);
+    }
+    built = true;
+  }
+
+  /* ------------------------------------------------------------- voice */
+  function pickVoice() {
+    var vs = [];
+    try { vs = synth.getVoices() || []; } catch (e) { }
+    if (!vs.length) return null;
+    var i, j;
+    if (voiceName) {
+      for (i = 0; i < vs.length; i++) if (vs[i].name === voiceName) return vs[i];
+    }
+    var base = lang.replace("_", "-").toLowerCase(), prim = base.split("-")[0];
+    function langOk(v) {
+      var l = (v.lang || "").replace("_", "-").toLowerCase();
+      return l === base || l.indexOf(prim) === 0;
+    }
+    var cand = [];
+    for (i = 0; i < vs.length; i++) if (langOk(vs[i])) cand.push(vs[i]);
+    if (!cand.length) cand = vs;
+    var prefs = ["google us english", "google", "natural", "neural", "aria", "jenny", "samantha", "zira", "karen"];
+    for (var p = 0; p < prefs.length; p++)
+      for (j = 0; j < cand.length; j++)
+        if (cand[j].name.toLowerCase().indexOf(prefs[p]) >= 0) { voiceName = cand[j].name; return cand[j]; }
+    for (j = 0; j < cand.length; j++)
+      if ((cand[j].lang || "").replace("_", "-").toLowerCase() === base) { voiceName = cand[j].name; return cand[j]; }
+    voiceName = cand[0].name;
+    return cand[0];
+  }
+  if (typeof synth.onvoiceschanged !== "undefined") {
+    synth.onvoiceschanged = function () { voiceName = null; };
+  }
+
+  /* ------------------------------------------------------- silent anchor */
+  function silentWavURL() {
+    var sr = 8000, len = sr / 2, buf = new ArrayBuffer(44 + len * 2), v = new DataView(buf);
+    function ws(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+    ws(0, "RIFF"); v.setUint32(4, 36 + len * 2, true); ws(8, "WAVEfmt ");
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true);
+    v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    ws(36, "data"); v.setUint32(40, len * 2, true);
+    return URL.createObjectURL(new Blob([buf], { type: "audio/wav" }));
+  }
+  function startAnchor() {
+    try {
+      if (!anchor) {
+        anchor = document.createElement("audio");
+        anchor.loop = true;
+        anchor.setAttribute("playsinline", "");
+        anchor.src = silentWavURL();
+        document.body.appendChild(anchor);
+      }
+      var p = anchor.play();
+      if (p && p.catch) p.catch(function () { });
+    } catch (e) { }
+  }
+  function pauseAnchor() { try { if (anchor) anchor.pause(); } catch (e) { } }
+
+  /* ------------------------------------------------------ media session */
+  function safeSetHandler(action, fn) {
+    try { navigator.mediaSession.setActionHandler(action, fn); } catch (e) { }
+  }
+  function mediaSetup() {
+    if (!("mediaSession" in navigator)) return;
+    try {
+      var art = cfg.artwork ? new URL(cfg.artwork, window.location.href).href : "";
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: cfg.title || document.title,
+        artist: cfg.artist || "Samdapau",
+        album: "Samdapau Stories",
+        artwork: art ? [{ src: art, type: "image/webp" }] : []
+      });
+    } catch (e) { return; }
+    safeSetHandler("play", function () { togglePlay(); });
+    safeSetHandler("pause", function () { if (playing) pauseTTS(); });
+    safeSetHandler("nexttrack", cfg.next ? function () { goArticle(cfg.next); } : null);
+    safeSetHandler("previoustrack", cfg.prev ? function () { goArticle(cfg.prev); } : null);
+  }
+  function mediaState(state) {
+    try { if ("mediaSession" in navigator) navigator.mediaSession.playbackState = state; } catch (e) { }
+  }
+
+  /* ------------------------------------------------------------ the bar */
+  function updateBar() {
+    icoPlay.style.display = playing ? "none" : "";
+    icoPause.style.display = playing ? "" : "none";
+    btnPrev.classList.toggle("off", !cfg.prev);
+    btnNext.classList.toggle("off", !cfg.next);
+    for (var i = 0; i < rateBtns.length; i++) {
+      rateBtns[i].classList.toggle("on", parseFloat(rateBtns[i].getAttribute("data-rate")) === rate);
+    }
+    if (errored) elProg.textContent = S.errSpeech;
+    else if (finished) elProg.textContent = S.finished;
+    else if (tapMsg) elProg.textContent = S.tap;
+    else if (started && idx >= 0) elProg.textContent = S.sentence.replace("{a}", idx + 1).replace("{b}", sentences.length);
+    else elProg.textContent = S.ready;
+  }
+  function showBar() {
+    bar.classList.add("on");
+    document.body.classList.add("tts-on");
+  }
+  function hideBar() {
+    bar.classList.remove("on");
+    document.body.classList.remove("tts-on");
+  }
+
+  function setCurrent(i) {
+    for (var k = 0; k < sentences.length; k++) {
+      var on = (k === i);
+      for (var s = 0; s < sentences[k].spans.length; s++) {
+        sentences[k].spans[s].classList.toggle("tts-cur", on);
+      }
+    }
+    if (i >= 0 && sentences[i].spans.length) {
+      var r = sentences[i].spans[0].getBoundingClientRect();
+      if (r.top < 90 || r.bottom > window.innerHeight - 150) {
+        sentences[i].spans[0].scrollIntoView({ block: "center", behavior: "smooth" });
+      }
+    }
+  }
+
+  /* ----------------------------------------------------------- playback */
+  /* Speech-rate estimate for the watchdog: ~15 chars/sec for Latin
+     scripts, ~5.5 for CJK (a Chinese/Japanese/Korean character carries
+     a syllable each, so voices read far fewer of them per second). */
+  var CPS = /^(zh|ja|ko)/.test(lang) ? 5.5 : 15;
+  function estMs(chars) { return Math.ceil(chars / (CPS * rate) * 1000); }
+  function clearWatchdog() { if (watchdog) { clearTimeout(watchdog); watchdog = null; } }
+  function armWatchdog(u) {
+    clearWatchdog();
+    var wait = estMs(sentences[idx].chars) * 1.7 + 2500;
+    watchdog = setTimeout(function () {
+      if (curUtter !== u || !playing) return;
+      if (Date.now() - lastProgress < estMs(sentences[idx].chars)) { armWatchdog(u); return; }
+      curUtter = null;
+      try { synth.cancel(); } catch (e) { }
+      advance();
+    }, wait);
+  }
+
+  /* Speech failure must never look like reading: stop, say so in the
+     bar, and wait for the user. Play (togglePlay) retries from the
+     current sentence. */
+  function failSpeech() {
+    errored = true;
+    failStreak = 0;
+    playing = false;
+    curUtter = null;
+    clearWatchdog();
+    try { synth.cancel(); } catch (e) { }
+    pauseAnchor();
+    setCurrent(-1);
+    updateBar();
+    mediaState("paused");
+  }
+
+  function speak(i) {
+    clearWatchdog();
+    idx = i;
+    errored = false;
+    setCurrent(i);
+    var u = new SpeechSynthesisUtterance(sentences[i].text);
+    u.lang = lang;
+    u.rate = rate;
+    var v = pickVoice();
+    if (v) u.voice = v;
+    speechBegan = false;
+    var tSpeak = Date.now(), tStart = 0;
+    u.onstart = function () { speechBegan = true; lastProgress = Date.now(); tStart = Date.now(); };
+    u.onboundary = function () { lastProgress = Date.now(); if (curUtter === u) armWatchdog(u); };
+    u.onend = function () {
+      if (curUtter !== u) return;
+      curUtter = null;
+      /* Implausible-speed guard: a real sentence (over 10 chars)
+         cannot be spoken in under 350 ms. One fast end advances;
+         two in a row mean the engine is failing silently — halt. */
+      if (u.text.length > 10 && Date.now() - (tStart || tSpeak) < 350) {
+        failStreak++;
+        if (failStreak >= 2) { failSpeech(); return; }
+      } else failStreak = 0;
+      advance();
+    };
+    u.onerror = function (ev) {
+      if (curUtter !== u) return;
+      curUtter = null;
+      if (ev.error === "not-allowed") { playing = false; tapMsg = true; updateBar(); mediaState("paused"); return; }
+      if (ev.error === "interrupted" || ev.error === "canceled") return;
+      failSpeech();
+    };
+    curUtter = u;
+    playing = true;
+    tapMsg = false;
+    lastProgress = Date.now();
+    updateBar();
+    mediaState("playing");
+    synth.speak(u);
+    armWatchdog(u);
+  }
+
+  function advance() {
+    clearWatchdog();
+    if (idx + 1 < sentences.length) { speak(idx + 1); return; }
+    playing = false;
+    pauseAnchor();
+    if (cfg.next) {
+      elProg.textContent = S.nextStory;
+      mediaState("paused");
+      setTimeout(function () { goArticle(cfg.next); }, 400);
+    } else {
+      finished = true;
+      setCurrent(-1);
+      updateBar();
+      mediaState("paused");
+    }
+  }
+
+  function restartSentence() {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    var i = idx;
+    setTimeout(function () { if (started && !finished) speak(i); }, 60);
+  }
+
+  /* No-voice preflight: resolve with the voice list as soon as it is
+     available, or after a capped 600 ms wait for voiceschanged —
+     whichever comes first. An already-loaded list calls back at
+     once, so the first speak() stays inside the click's gesture
+     chain whenever the browser allows it. */
+  function voicesReady(cb) {
+    var vs = [];
+    try { vs = synth.getVoices() || []; } catch (e) { }
+    if (vs.length) { cb(vs); return; }
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      var v2 = [];
+      try { v2 = synth.getVoices() || []; } catch (e) { }
+      cb(v2);
+    }
+    try { synth.addEventListener("voiceschanged", finish); } catch (e) { }
+    setTimeout(finish, 600);
+  }
+
+  function startFrom(i) {
+    buildSentences();
+    if (!sentences.length) return;
+    showBar();
+    mediaSetup();
+    started = true; finished = false; errored = false; failStreak = 0; pendingRateRestart = false;
+    startAnchor();
+    voicesReady(function (vs) {
+      if (!started) return;
+      if (!vs.length) { failSpeech(); return; }
+      restartSentence0(i);
+    });
+  }
+  function restartSentence0(i) {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    setTimeout(function () { speak(i); }, 30);
+  }
+
+  function pauseTTS() {
+    try { synth.pause(); } catch (e) { }
+    playing = false;
+    clearWatchdog();
+    pauseAnchor();
+    updateBar();
+    mediaState("paused");
+  }
+  function resumeTTS() {
+    startAnchor();
+    if (pendingRateRestart) { pendingRateRestart = false; restartSentence(); return; }
+    try { synth.resume(); } catch (e) { }
+    playing = true;
+    lastProgress = Date.now();
+    if (curUtter) armWatchdog(curUtter);
+    updateBar();
+    mediaState("playing");
+  }
+  function togglePlay() {
+    if (errored) {
+      errored = false;
+      if (started && idx >= 0) restartSentence();
+      else startFrom(0);
+      return;
+    }
+    if (!started || finished) { startFrom(0); return; }
+    if (tapMsg && idx >= 0) { tapMsg = false; restartSentence(); return; }
+    if (playing) pauseTTS(); else resumeTTS();
+  }
+  function stopAll() {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    playing = false; started = false; finished = false; pendingRateRestart = false;
+    errored = false; failStreak = 0;
+    clearWatchdog();
+    pauseAnchor();
+    setCurrent(-1);
+    idx = -1;
+    hideBar();
+    updateBar();
+    mediaState("none");
+  }
+
+  function goArticle(file) {
+    if (started) window.location.href = file + "?listen=1&rate=" + rate;
+    else window.location.href = file;
+  }
+
+  /* -------------------------------------------------------------- wiring */
+  listenBtn.addEventListener("click", function () {
+    if (!started) { startFrom(0); return; }
+    if (idx >= 0 && sentences[idx] && sentences[idx].spans.length) {
+      sentences[idx].spans[0].scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  });
+  btnPlay.addEventListener("click", togglePlay);
+  btnClose.addEventListener("click", stopAll);
+  btnPrev.addEventListener("click", function () { if (cfg.prev) goArticle(cfg.prev); });
+  btnNext.addEventListener("click", function () { if (cfg.next) goArticle(cfg.next); });
+  for (var rb = 0; rb < rateBtns.length; rb++) {
+    rateBtns[rb].addEventListener("click", function () {
+      var r = parseFloat(this.getAttribute("data-rate"));
+      if (RATES.indexOf(r) < 0 || r === rate) { if (r === rate) updateBar(); return; }
+      rate = r;
+      updateBar();
+      if (started && !finished && idx >= 0) {
+        if (playing) restartSentence();
+        else pendingRateRestart = true;
+      }
+    });
+  }
+  window.addEventListener("pagehide", function () {
+    try { synth.cancel(); } catch (e) { }
+  });
+  updateBar();
+
+  /* ------------------------------------------- auto-continue from ?listen */
+  try {
+    var q = new URLSearchParams(window.location.search);
+    if (q.get("listen") === "1") {
+      var qr = parseFloat(q.get("rate"));
+      if (RATES.indexOf(qr) >= 0) rate = qr;
+      updateBar();
+      startFrom(0);
+      setTimeout(function () {
+        if (started && playing && !speechBegan) {
+          playing = false;
+          clearWatchdog();
+          tapMsg = true;
+          updateBar();
+          mediaState("paused");
+        }
+      }, 1800);
+    }
+  } catch (e) { }
+})();
+
+</script>
+<script>
+// Language dropdown: a native <details> stays open until its summary is
+// clicked again, so this tiny hand-written snippet (no libraries) also
+// dismisses it on any click outside the menu and on the Escape key.
+document.addEventListener('click',function(e){
+  document.querySelectorAll('details.langmenu[open]').forEach(function(m){
+    if(!m.contains(e.target))m.removeAttribute('open');
+  });
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.querySelectorAll('details.langmenu[open]').forEach(function(m){m.removeAttribute('open');});
+  }
+});
+</script>
+</body>
+</html>
