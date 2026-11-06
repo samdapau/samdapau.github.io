@@ -169,6 +169,22 @@
   .p-role{margin-top:0}
   .p-hook{margin:6px 0 10px}
 
+  /* read shelf: big full-bleed covers in the left half of each card */
+  .shelf{grid-template-columns:1fr;gap:24px}
+  @media (min-width:760px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  .book{display:flex;align-items:stretch;gap:0;padding:0}
+  .book .cov{flex:0 0 50%;display:block}
+  .book .cov img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+  .book .collage{flex:0 0 50%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .book .collage img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+  .book .btxt{flex:1 1 auto;padding:20px 22px;display:flex;flex-direction:column;min-width:0}
+  .book .buy{margin-left:0;padding-top:12px;margin-top:auto;text-align:left}
+  @media (max-width:759px){
+    .book{flex-direction:column}
+    .book .cov{flex:none;height:320px}
+    .book .collage{flex:none;height:320px}
+  }
+
 
   body{font-family:"EB Garamond",Georgia,"Noto Serif CJK KR","Nanum Myeongjo","AppleMyungjo",serif}
   h2,.mark,.langs{font-family:Montserrat,"Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
@@ -268,9 +284,9 @@
 
   <section id="stories">
     <h2>이야기와 노트</h2>
-    <p class="sec-note">이야기는 당분간 영어로만 제공됩니다 — 번역이 준비 중입니다.</p>
+
     <div class="wall">
-      <a class="card story" href="../stories/the-general-who-drilled-the-palace-ladies.html">
+      <a class="card story" href="../ko/stories/the-general-who-drilled-the-palace-ladies.html">
         <img src="../assets/story-general.webp" alt="Sun Tzu drilling the palace ladies — ink painting" loading="lazy">
         <div class="cb"><span class="pill">이야기</span>
           <div class="s-title">The General Who Drilled the Palace Ladies</div>
@@ -283,7 +299,7 @@
         <p class="q-note">From Chapter 78 of the Tao Te Ching, in James Legge's translation (1891).</p>
         <div class="q-foot">Samdapau · Laozi</div>
       </div>
-      <a class="card story" href="../stories/the-river-that-wears-down-stone.html">
+      <a class="card story" href="../ko/stories/the-river-that-wears-down-stone.html">
         <img src="../assets/story-river.webp" alt="A river gorge cut through rock — ink painting" loading="lazy">
         <div class="cb"><span class="pill">이야기</span>
           <div class="s-title">The River That Wears Down Stone</div>
@@ -296,7 +312,7 @@
         <p class="q-note">From Chapter 1 of The Art of War, in Lionel Giles's translation (1910).</p>
         <div class="q-foot">Samdapau · Sun Tzu</div>
       </div>
-      <a class="card story" href="../stories/empty-your-cup.html">
+      <a class="card story" href="../ko/stories/empty-your-cup.html">
         <img src="../assets/story-cup.webp" alt="A potter shaping a vessel on the wheel — ink painting" loading="lazy">
         <div class="cb"><span class="pill">짧은 노트</span>
           <div class="s-title">Empty Your Cup</div>
@@ -341,33 +357,34 @@
     <h2>읽기 — Chinese Classics, Decoded</h2>
     <div class="shelf">
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="../assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — 책 표지" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
-        <div class="d">모든 계책을 잊히지 않는 이야기로 — 다음에 누군가 당신에게 그 계책을 쓸 때 바로 알아챌 수 있게.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="../assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — 책 표지" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
+        <div class="d">모든 계책을 잊히지 않는 이야기로 — 다음에 누군가 당신에게 그 계책을 쓸 때 바로 알아챌 수 있게.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="../assets/book-sunzi.webp" alt="The Art of War, Decoded — 책 표지" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
-        <div class="d">쉬운 영어로 읽는 손자. 1910년 Giles 완역본 수록.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="../assets/book-sunzi.webp" alt="The Art of War, Decoded — 책 표지" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+        <div class="d">쉬운 영어로 읽는 손자. 1910년 Giles 완역본 수록.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="../assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — 책 표지" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
-        <div class="d">잃어버린 짝 고전 — 몸을 다치고도 모두를 앞질러 생각한 전략가.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="../assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — 책 표지" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
+        <div class="d">잃어버린 짝 고전 — 몸을 다치고도 모두를 앞질러 생각한 전략가.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="../assets/book-tao.webp" alt="Tao Te Ching, Decoded — 책 표지" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
-        <div class="d">노자를 이야기로 다시 전하고, 1891년 Legge 완역본을 수록했습니다.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="../assets/book-tao.webp" alt="Tao Te Ching, Decoded — 책 표지" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+        <div class="d">노자를 이야기로 다시 전하고, 1891년 Legge 완역본을 수록했습니다.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <div><div class="t"><a href="https://www.amazon.com/author/samdapau">모든 책</a></div>
-        <div class="d">Samdapau 저자 페이지에서 전체 서가를 만나세요 — 새 책이 계속 나옵니다.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/author/samdapau">저자 페이지 ↗</a></div>
+        <a class="collage" href="https://www.amazon.com/author/samdapau" aria-hidden="true" tabindex="-1"><img src="../assets/book-36.webp" alt="" loading="lazy"><img src="../assets/book-sunzi.webp" alt="" loading="lazy"><img src="../assets/book-sunbin.webp" alt="" loading="lazy"><img src="../assets/book-tao.webp" alt="" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/author/samdapau">모든 책</a></div>
+        <div class="d">Samdapau 저자 페이지에서 전체 서가를 만나세요 — 새 책이 계속 나옵니다.</div>
+        <div class="buy"><a href="https://www.amazon.com/author/samdapau">저자 페이지 ↗</a></div></div>
       </div>
     </div>
   </section>
