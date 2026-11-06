@@ -169,20 +169,20 @@
   .p-role{margin-top:0}
   .p-hook{margin:6px 0 10px}
 
-  /* read shelf: big full-bleed covers in the left half of each card */
+  /* read shelf: padded cards, contained stamp-size covers */
   .shelf{grid-template-columns:1fr;gap:24px}
   @media (min-width:760px){.shelf{grid-template-columns:repeat(2,1fr)}}
-  .book{display:flex;align-items:stretch;gap:0;padding:0}
-  .book .cov{flex:0 0 50%;display:block}
-  .book .cov img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
-  .book .collage{flex:0 0 50%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
-  .book .collage img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
-  .book .btxt{flex:1 1 auto;padding:20px 22px;display:flex;flex-direction:column;min-width:0}
-  .book .buy{margin-left:0;padding-top:12px;margin-top:auto;text-align:left}
-  @media (max-width:759px){
-    .book{flex-direction:column}
-    .book .cov{flex:none;height:320px}
-    .book .collage{flex:none;height:320px}
+  .book{display:flex;align-items:flex-start;gap:18px;padding:20px}
+  .book .cov{flex:none;display:block}
+  .book .cov img{width:132px;height:auto;display:block;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .collage{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:3px;width:132px}
+  .book .collage img{width:100%;height:auto;display:block;border-radius:3px;box-shadow:none}
+  .book .btxt{flex:1 1 auto;min-width:0;padding:0}
+  .book .buy{margin:12px 0 0;padding-top:0;text-align:left;white-space:normal}
+  @media (max-width:639px){
+    .book{gap:14px;padding:16px}
+    .book .cov img{width:104px}
+    .book .collage{width:104px}
   }
 
   /* play section: lone game = full-width feature card */
