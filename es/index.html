@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samdapau — Clásicos antiguos, contados como historias</title>
+<meta name="description" content="Clásicos antiguos descifrados: la estrategia, la sabiduría y las historias del mundo antiguo, contadas en un inglés sencillo. Videos y libros de Samdapau.">
+<link rel="alternate" hreflang="en" href="https://samdapau.netlify.app/">
+<link rel="alternate" hreflang="es" href="https://samdapau.netlify.app/es/">
+<link rel="alternate" hreflang="fr" href="https://samdapau.netlify.app/fr/">
+<link rel="alternate" hreflang="pt" href="https://samdapau.netlify.app/pt/">
+<link rel="alternate" hreflang="ja" href="https://samdapau.netlify.app/ja/">
+<link rel="alternate" hreflang="de" href="https://samdapau.netlify.app/de/">
+<link rel="alternate" hreflang="ko" href="https://samdapau.netlify.app/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://samdapau.netlify.app/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://samdapau.netlify.app/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://samdapau.netlify.app/">
+<link rel="icon" href="../assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#111;--soft:#555;--faint:#8a8a8a;--line:#e7e7e2;--link:#2654a9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fff;color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  .langs{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif;font-size:12px;letter-spacing:.09em;color:var(--faint)}
+  .langs a{color:var(--faint)}
+  .langs a:hover{color:var(--ink);text-decoration:none}
+  .langs .cur{color:var(--ink);font-weight:700}
+  .langs .sep{opacity:.55}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  figure.hero-img img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:38px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  /* watch: card grid that reflows and gains columns as screens widen */
+  .posts{display:grid;grid-template-columns:1fr;gap:30px 28px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%;margin-bottom:13px}
+  .post .t{font-size:22.5px;line-height:1.3}
+  .post .t a{color:var(--ink)}
+  .post .t a:hover{color:var(--link)}
+  .post .d{color:var(--soft);font-size:17.5px;margin-top:4px}
+  .post .m{color:var(--faint);font-size:14.5px;margin-top:6px;letter-spacing:.03em}
+  /* read: book shelf that gains columns as screens widen */
+  .shelf{display:grid;grid-template-columns:1fr;gap:0 44px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .book img{width:76px;flex:none;box-shadow:0 1px 5px rgba(0,0,0,.18)}
+  .book .t{font-size:20.5px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--link)}
+  .book .d{color:var(--soft);font-size:17px;margin-top:2px}
+  .book .buy{margin-left:auto;flex:none;font-size:16.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:10px 0 4px;font-size:19px}
+  .about{max-width:68ch}
+  .about p{color:#333;margin-bottom:12px}
+  footer{margin-top:52px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="./">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="#watch">Ver</a>
+        <a href="#read">Leer</a>
+        <a href="#about">Acerca de</a>
+      </nav>
+      <div class="langs"><a href="../">EN</a><span class="sep">·</span><span class="cur">ES</span><span class="sep">·</span><a href="../fr/">FR</a><span class="sep">·</span><a href="../pt/">PT</a><span class="sep">·</span><a href="../ja/">JA</a><span class="sep">·</span><a href="../de/">DE</a><span class="sep">·</span><a href="../ko/">KO</a><span class="sep">·</span><a href="../zh-hans/">简体</a><span class="sep">·</span><a href="../zh-hant/">繁體</a></div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Clásicos antiguos,<br>contados como historias.</h1>
+        <p>La estrategia, la sabiduría y las historias del mundo antiguo — Sun Tzu, Laozi, las Treinta y Seis Estratagemas y más — contadas en un inglés sencillo. Sin tecnicismos y sin sermones.</p>
+      </div>
+      <figure class="hero-img">
+        <img src="../assets/hero.webp" alt="Un desfiladero pintado a tinta, con un río que lo recorre" fetchpriority="high">
+        <figcaption>El desfiladero — de la serie Tao Te Ching.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="watch">
+    <h2>Ver</h2>
+    <div class="posts">
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-sunzi.webp" alt="The Art of War — El sistema completo" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">The Art of War</a></div>
+        <div class="d">El sistema completo de Sun Tzu, historia a historia: los generales, las trampas y las batallas que dieron la razón al libro.</div>
+        <div class="m">13 CORTOS + LA PELÍCULA DEL SISTEMA COMPLETO</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-36.webp" alt="Thirty-Six Stratagems — Parte 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Thirty-Six Stratagems</a></div>
+        <div class="d">Las treinta y seis estratagemas, un relato para cada una: engaño, paciencia y sentido del momento, descifrados de la historia real.</div>
+        <div class="m">36 CORTOS + 6 SERIES LARGAS</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-tao.webp" alt="Tao Te Ching — Parte 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Tao Te Ching</a></div>
+        <div class="d">El libro sereno de Laozi contado como historias: el sabio, el río y el arte de hacer menos, pero mejor.</div>
+        <div class="m">20 CORTOS + 4 SERIES LARGAS</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="read">
+    <h2>Leer — Chinese Classics, Decoded</h2>
+    <div class="shelf">
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="../assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — portada del libro" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
+        <div class="d">Cada estratagema como una historia que recordarás — y reconocerás la próxima vez que alguien la use contigo.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="../assets/book-sunzi.webp" alt="The Art of War, Decoded — portada del libro" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+        <div class="d">Sun Tzu en inglés sencillo, con la traducción completa de Giles de 1910 incluida.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="../assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — portada del libro" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
+        <div class="d">El clásico compañero perdido: el estratega mutilado que fue más listo que todos.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="../assets/book-tao.webp" alt="Tao Te Ching, Decoded — portada del libro" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+        <div class="d">Laozi contado como historias, con la traducción completa de Legge de 1891 incluida.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <div><div class="t"><a href="https://www.amazon.com/author/samdapau">Todos los libros</a></div>
+        <div class="d">La estantería completa en la página de autor de Samdapau — y más títulos en camino.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/author/samdapau">Página del autor ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="follow">
+    <h2>Seguir y escuchar</h2>
+    <div class="follow">
+      <a href="https://www.youtube.com/@Samdapau">YouTube</a>
+      <a href="https://www.tiktok.com/@sam688053">TikTok</a>
+      <a href="https://www.instagram.com/samdapau">Instagram</a>
+      <a href="https://www.threads.net/@samdapau">Threads</a>
+      <a href="https://rumble.com/user/Samdapau">Rumble</a>
+      <a href="https://samdapau.gumroad.com">Gumroad Store</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>Acerca de</h2>
+    <p>Samdapau cuenta los clásicos antiguos tal como se aprendieron la primera vez: alrededor de mesas y en salas de reuniones, viendo cómo se jugaba una jugada mucho antes de encontrar su nombre en un libro. Una persona, una decisión difícil y la vieja sabiduría escondida dentro de ella.</p>
+    <p>De dónde viene el narrador es una historia para otro día.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span>Clásicos antiguos, contados como historias.</span>
+  </footer>
+
+</div>
+</body>
+</html>
