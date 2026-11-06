@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samdapau — 고전 명저를 이야기로 풀어 읽다</title>
+<meta name="description" content="고전 명저를 풀어 읽습니다 — 고대 세계의 전략과 지혜와 이야기를 쉬운 영어로 다시 전합니다. Samdapau의 영상과 책.">
+<link rel="alternate" hreflang="en" href="https://samdapau.netlify.app/">
+<link rel="alternate" hreflang="es" href="https://samdapau.netlify.app/es/">
+<link rel="alternate" hreflang="fr" href="https://samdapau.netlify.app/fr/">
+<link rel="alternate" hreflang="pt" href="https://samdapau.netlify.app/pt/">
+<link rel="alternate" hreflang="ja" href="https://samdapau.netlify.app/ja/">
+<link rel="alternate" hreflang="de" href="https://samdapau.netlify.app/de/">
+<link rel="alternate" hreflang="ko" href="https://samdapau.netlify.app/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://samdapau.netlify.app/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://samdapau.netlify.app/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://samdapau.netlify.app/">
+<link rel="icon" href="../assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#111;--soft:#555;--faint:#8a8a8a;--line:#e7e7e2;--link:#2654a9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fff;color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  .langs{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif;font-size:12px;letter-spacing:.09em;color:var(--faint)}
+  .langs a{color:var(--faint)}
+  .langs a:hover{color:var(--ink);text-decoration:none}
+  .langs .cur{color:var(--ink);font-weight:700}
+  .langs .sep{opacity:.55}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  figure.hero-img img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:38px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  /* watch: card grid that reflows and gains columns as screens widen */
+  .posts{display:grid;grid-template-columns:1fr;gap:30px 28px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%;margin-bottom:13px}
+  .post .t{font-size:22.5px;line-height:1.3}
+  .post .t a{color:var(--ink)}
+  .post .t a:hover{color:var(--link)}
+  .post .d{color:var(--soft);font-size:17.5px;margin-top:4px}
+  .post .m{color:var(--faint);font-size:14.5px;margin-top:6px;letter-spacing:.03em}
+  /* read: book shelf that gains columns as screens widen */
+  .shelf{display:grid;grid-template-columns:1fr;gap:0 44px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .book img{width:76px;flex:none;box-shadow:0 1px 5px rgba(0,0,0,.18)}
+  .book .t{font-size:20.5px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--link)}
+  .book .d{color:var(--soft);font-size:17px;margin-top:2px}
+  .book .buy{margin-left:auto;flex:none;font-size:16.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:10px 0 4px;font-size:19px}
+  .about{max-width:68ch}
+  .about p{color:#333;margin-bottom:12px}
+  footer{margin-top:52px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  body{font-family:"EB Garamond",Georgia,"Noto Serif CJK KR","Nanum Myeongjo","AppleMyungjo",serif}
+  h2,.mark,.langs{font-family:Montserrat,"Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  h2{letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="./">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="#watch">보기</a>
+        <a href="#read">읽기</a>
+        <a href="#about">소개</a>
+      </nav>
+      <div class="langs"><a href="../">EN</a><span class="sep">·</span><a href="../es/">ES</a><span class="sep">·</span><a href="../fr/">FR</a><span class="sep">·</span><a href="../pt/">PT</a><span class="sep">·</span><a href="../ja/">JA</a><span class="sep">·</span><a href="../de/">DE</a><span class="sep">·</span><span class="cur">KO</span><span class="sep">·</span><a href="../zh-hans/">简体</a><span class="sep">·</span><a href="../zh-hant/">繁體</a></div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>고전 명저를,<br>이야기로 풀어 읽다.</h1>
+        <p>고대 세계의 전략과 지혜와 이야기 — 손자, 노자, 삼십육계 등 — 를 쉬운 영어로 다시 전합니다. 어려운 용어도, 강의도 없습니다.</p>
+      </div>
+      <figure class="hero-img">
+        <img src="../assets/hero.webp" alt="강이 흐르는 수묵화 협곡" fetchpriority="high">
+        <figcaption>협곡 — Tao Te Ching 시리즈 중에서.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="watch">
+    <h2>보기</h2>
+    <div class="posts">
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-sunzi.webp" alt="The Art of War — 완전한 체계" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">The Art of War</a></div>
+        <div class="d">손자의 완전한 체계를 이야기마다 따라갑니다 — 장군들, 함정, 그리고 이 책을 증명한 전투들.</div>
+        <div class="m">쇼츠 13편 + 완전판 필름</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-36.webp" alt="Thirty-Six Stratagems — 세트 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Thirty-Six Stratagems</a></div>
+        <div class="d">서른여섯 가지 계책을 하나하나 이야기로 — 기만과 인내와 타이밍을 실제 역사에서 풀어냅니다.</div>
+        <div class="m">쇼츠 36편 + 장편 6세트</div>
+      </div>
+      <div class="post">
+        <a href="https://www.youtube.com/@Samdapau"><img src="../assets/watch-tao.webp" alt="Tao Te Ching — 세트 1" loading="lazy"></a>
+        <div class="t"><a href="https://www.youtube.com/@Samdapau">Tao Te Ching</a></div>
+        <div class="d">노자의 조용한 책을 이야기로 전합니다 — 현자와 강, 그리고 덜 하면서도 더 잘하는 법.</div>
+        <div class="m">쇼츠 20편 + 장편 4세트</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="read">
+    <h2>읽기 — Chinese Classics, Decoded</h2>
+    <div class="shelf">
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="../assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — 책 표지" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
+        <div class="d">모든 계책을 잊히지 않는 이야기로 — 다음에 누군가 당신에게 그 계책을 쓸 때 바로 알아챌 수 있게.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="../assets/book-sunzi.webp" alt="The Art of War, Decoded — 책 표지" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+        <div class="d">쉬운 영어로 읽는 손자. 1910년 Giles 완역본 수록.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="../assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — 책 표지" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
+        <div class="d">잃어버린 짝 고전 — 몸을 다치고도 모두를 앞질러 생각한 전략가.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="../assets/book-tao.webp" alt="Tao Te Ching, Decoded — 책 표지" loading="lazy"></a>
+        <div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+        <div class="d">노자를 이야기로 다시 전하고, 1891년 Legge 완역본을 수록했습니다.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div>
+      </div>
+      <div class="book">
+        <div><div class="t"><a href="https://www.amazon.com/author/samdapau">모든 책</a></div>
+        <div class="d">Samdapau 저자 페이지에서 전체 서가를 만나세요 — 새 책이 계속 나옵니다.</div></div>
+        <div class="buy"><a href="https://www.amazon.com/author/samdapau">저자 페이지 ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="follow">
+    <h2>팔로우와 듣기</h2>
+    <div class="follow">
+      <a href="https://www.youtube.com/@Samdapau">YouTube</a>
+      <a href="https://www.tiktok.com/@sam688053">TikTok</a>
+      <a href="https://www.instagram.com/samdapau">Instagram</a>
+      <a href="https://www.threads.net/@samdapau">Threads</a>
+      <a href="https://rumble.com/user/Samdapau">Rumble</a>
+      <a href="https://samdapau.gumroad.com">Gumroad Store</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>소개</h2>
+    <p>Samdapau는 고전을 처음 배웠던 그 방식 그대로 다시 전합니다 — 식탁과 회의실에서, 책에서 그 이름을 찾기 훨씬 전에 누군가의 한 수가 실제로 펼쳐지는 것을 보고 배웠던 방식. 한 사람, 하나의 어려운 선택, 그리고 그 안에 숨은 오래된 지혜.</p>
+    <p>이야기꾼이 어디서 왔는지는, 또 다른 날의 이야기입니다.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span>고전 명저를 이야기로 풀어 읽다.</span>
+  </footer>
+
+</div>
+</body>
+</html>
