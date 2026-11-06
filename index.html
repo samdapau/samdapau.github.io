@@ -169,6 +169,22 @@
   .p-role{margin-top:0}
   .p-hook{margin:6px 0 10px}
 
+  /* read shelf: big full-bleed covers in the left half of each card */
+  .shelf{grid-template-columns:1fr;gap:24px}
+  @media (min-width:760px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  .book{display:flex;align-items:stretch;gap:0;padding:0}
+  .book .cov{flex:0 0 50%;display:block}
+  .book .cov img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+  .book .collage{flex:0 0 50%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .book .collage img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+  .book .btxt{flex:1 1 auto;padding:20px 22px;display:flex;flex-direction:column;min-width:0}
+  .book .buy{margin-left:0;padding-top:12px;margin-top:auto;text-align:left}
+  @media (max-width:759px){
+    .book{flex-direction:column}
+    .book .cov{flex:none;height:320px}
+    .book .collage{flex:none;height:320px}
+  }
+
 
 </style>
 </head>
@@ -338,33 +354,34 @@
     <h2>Read — Chinese Classics, Decoded</h2>
     <div class="shelf">
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — book cover" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
-        <div class="d">Every stratagem as a story you will remember — and recognise the next time someone uses one on you.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20"><img src="assets/book-36.webp" alt="The Thirty-Six Stratagems, Decoded — book cover" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">The Thirty-Six Stratagems, Decoded</a></div>
+        <div class="d">Every stratagem as a story you will remember — and recognise the next time someone uses one on you.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPTRXVFT?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="assets/book-sunzi.webp" alt="The Art of War, Decoded — book cover" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
-        <div class="d">Sun Tzu in plain English, with the complete 1910 Giles translation included.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20"><img src="assets/book-sunzi.webp" alt="The Art of War, Decoded — book cover" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+        <div class="d">Sun Tzu in plain English, with the complete 1910 Giles translation included.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — book cover" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
-        <div class="d">The lost companion classic — the maimed strategist who out-thought everyone.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20"><img src="assets/book-sunbin.webp" alt="Sun Bin's Art of War, Decoded — book cover" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Sun Bin's Art of War, Decoded</a></div>
+        <div class="d">The lost companion classic — the maimed strategist who out-thought everyone.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0HPZ5P97P?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="assets/book-tao.webp" alt="Tao Te Ching, Decoded — book cover" loading="lazy"></a>
-        <div><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
-        <div class="d">Laozi retold as stories, with the complete 1891 Legge translation included.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div>
+        <a class="cov" href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20"><img src="assets/book-tao.webp" alt="Tao Te Ching, Decoded — book cover" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Tao Te Ching, Decoded</a></div>
+        <div class="d">Laozi retold as stories, with the complete 1891 Legge translation included.</div>
+        <div class="buy"><a href="https://www.amazon.com/dp/B0H24D1HXG?tag=samdapau-20">Amazon ↗</a></div></div>
       </div>
       <div class="card book">
-        <div><div class="t"><a href="https://www.amazon.com/author/samdapau">All books</a></div>
-        <div class="d">The full shelf on the Samdapau author page — more titles on the way.</div></div>
-        <div class="buy"><a href="https://www.amazon.com/author/samdapau">Author page ↗</a></div>
+        <a class="collage" href="https://www.amazon.com/author/samdapau" aria-hidden="true" tabindex="-1"><img src="assets/book-36.webp" alt="" loading="lazy"><img src="assets/book-sunzi.webp" alt="" loading="lazy"><img src="assets/book-sunbin.webp" alt="" loading="lazy"><img src="assets/book-tao.webp" alt="" loading="lazy"></a>
+        <div class="btxt"><div class="t"><a href="https://www.amazon.com/author/samdapau">All books</a></div>
+        <div class="d">The full shelf on the Samdapau author page — more titles on the way.</div>
+        <div class="buy"><a href="https://www.amazon.com/author/samdapau">Author page ↗</a></div></div>
       </div>
     </div>
   </section>
