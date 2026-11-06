@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rechtliches — Samdapau</title>
+<meta name="description" content="Haftungsausschluss, Urheberrecht und Meldeverfahren, Partnerhinweis, Datenschutz und Nutzungsbedingungen der Samdapau-Website.">
+<link rel="alternate" hreflang="en" href="https://samdapau.netlify.app/legal.html">
+<link rel="alternate" hreflang="es" href="https://samdapau.netlify.app/es/legal.html">
+<link rel="alternate" hreflang="fr" href="https://samdapau.netlify.app/fr/legal.html">
+<link rel="alternate" hreflang="pt" href="https://samdapau.netlify.app/pt/legal.html">
+<link rel="alternate" hreflang="ja" href="https://samdapau.netlify.app/ja/legal.html">
+<link rel="alternate" hreflang="de" href="https://samdapau.netlify.app/de/legal.html">
+<link rel="alternate" hreflang="ko" href="https://samdapau.netlify.app/ko/legal.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://samdapau.netlify.app/zh-hans/legal.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://samdapau.netlify.app/zh-hant/legal.html">
+<link rel="alternate" hreflang="x-default" href="https://samdapau.netlify.app/legal.html">
+<link rel="preload" href="../assets/fonts/eb-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/montserrat-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/avatar.jpg">
+<style>
+  :root{
+    --paper:#F6F6F7; --ink:#1A1A1A; --soft:#6E6E73; --faint:#A1A1A6;
+    --line:#E3E3E6; --card:#FFFFFF;
+    --gold:#B8862B; --gold-deep:#9A6E1F;
+    --red:#A63A2E; --red-deep:#8C2F24; --chip-bg:#F7E3DE;
+    --pill-bg:#EFEFF1;
+    --shadow:0 1px 2px rgba(26,26,26,.05),0 12px 32px rgba(26,26,26,.10);
+    --shadow-lift:0 2px 3px rgba(26,26,26,.06),0 18px 44px rgba(26,26,26,.16);
+    --ring:inset 0 0 0 1px rgba(26,26,26,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--paper);color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--gold-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  /* header */
+  header{position:relative;z-index:30;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px rgba(26,26,26,.08),0 2px 6px rgba(26,26,26,.18)}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .brand:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  /* language dropdown (details/summary, zero JS) */
+  .langmenu{position:relative;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif}
+  .lang-btn{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);box-shadow:0 1px 2px rgba(26,26,26,.05);white-space:nowrap}
+  .lang-btn::-webkit-details-marker{display:none}
+  .lang-btn:hover{border-color:var(--faint)}
+  .lang-btn .caret{font-size:10px;color:var(--gold);transition:transform .2s}
+  .langmenu[open ] .lang-btn .caret{transform:rotate(180deg)}
+  .lang-panel{position:absolute;right:0;top:calc(100% + 9px);background:var(--card);border-radius:14px;box-shadow:var(--shadow-lift);border:1px solid rgba(26,26,26,.05);padding:6px;min-width:min(228px,86vw);max-width:86vw}
+  .lang-row{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);white-space:nowrap}
+  a.lang-row:hover{background:#F2F2F4;text-decoration:none}
+  .lang-cur{background:rgba(184,134,43,.13);font-weight:700;cursor:default}
+  .lang-cur .ck{color:var(--gold-deep);font-size:13px}
+  .lang-row .ck{width:13px;flex:none}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero .rule{width:52px;height:3px;border-radius:2px;background:var(--gold);margin-top:24px}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
+  .framed img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:42px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .sec-note{color:var(--soft);font-size:16.5px;margin:-6px 0 16px}
+  /* unified cards: one card, one shadow, image flush inside */
+  .card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  a.card{display:block;color:var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+  a.card:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .cb{padding:20px 22px 22px}
+  .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
+  .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
+  /* people row */
+  .people{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:560px){.people{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.people{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.people{grid-template-columns:repeat(5,1fr)}}
+  .person{padding:24px 22px 22px}
+  .portrait{width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:16px}
+  .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:42px;line-height:1}
+  .p-name{font-size:24px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:15.5px;margin-top:2px}
+  .p-hook{color:var(--soft);font-size:16.5px;line-height:1.55;margin:9px 0 14px}
+  /* stories wall: masonry via CSS columns, natural varied heights */
+  .wall{columns:1;column-gap:26px}
+  @media (min-width:700px){.wall{columns:2}}
+  @media (min-width:1200px){.wall{columns:3}}
+  @media (min-width:2000px){.wall{columns:4}}
+  .wall .card{margin:0 0 26px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .story img{width:100%}
+  .s-title{font-size:23px;line-height:1.3;margin:2px 0 6px}
+  a.card:hover .s-title{color:var(--gold-deep)}
+  .s-excerpt{color:var(--soft);font-size:16.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .s-meta{color:var(--faint);font-size:14px;margin-top:12px;letter-spacing:.02em}
+  /* quote cards */
+  .quote{padding:28px 26px 24px;color:#FFFFFF}
+  .q-gold{background:linear-gradient(160deg,#C1912F,#A87A24)}
+  .q-red{background:linear-gradient(160deg,#AE4436,#96402F)}
+  .q-ink{background:linear-gradient(160deg,#2B2B2E,#1A1A1A)}
+  .q-text{font-size:25px;line-height:1.45;font-style:italic}
+  .q-note{font-size:15.5px;opacity:.85;margin-top:14px;line-height:1.5}
+  .q-foot{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:18px;opacity:.92}
+  /* watch cards */
+  .posts{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%}
+  .post .t{font-size:22.5px;line-height:1.3}
+  a.card:hover .t{color:var(--gold-deep)}
+  .post .d{color:var(--soft);font-size:17px;margin-top:4px;line-height:1.55}
+  .post .m{color:var(--faint);font-size:13.5px;margin-top:10px;letter-spacing:.05em;font-family:Montserrat,sans-serif}
+  /* read: book shelf cards */
+  .shelf{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:16px;padding:18px;align-items:flex-start}
+  .book img{width:72px;flex:none;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .t{font-size:20px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--gold-deep)}
+  .book .d{color:var(--soft);font-size:16.5px;margin-top:3px;line-height:1.5}
+  .book .buy{margin-left:auto;flex:none;font-size:15.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:4px 0;font-size:19px}
+  .follow a{color:var(--soft)}
+  .follow a:hover{color:var(--gold-deep)}
+  .about{max-width:68ch}
+  .about p{color:#333336;margin-bottom:12px}
+  footer{margin-top:56px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* reader pages */
+  .backlink{display:inline-block;margin:30px 0 6px;font-size:16.5px}
+  .article{max-width:68ch;margin:0 auto;padding-bottom:10px}
+  .article h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.18;letter-spacing:-.01em;margin:12px 0 10px}
+  .article .sub{color:var(--soft);font-size:21px;line-height:1.5;font-style:italic}
+  .article .byline{color:var(--faint);font-size:15px;margin:16px 0 24px;letter-spacing:.02em}
+  .article .framed{margin-bottom:30px}
+  .article p{margin:0 0 20px;font-size:20.5px;line-height:1.75;color:#232326}
+  .article h3{font-size:26px;font-weight:600;line-height:1.3;margin:36px 0 12px}
+  .article blockquote{border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;color:#333336;font-style:italic;font-size:20.5px;line-height:1.7}
+  .article hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+  .endblock{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:26px 28px;max-width:68ch;margin:44px auto 0}
+  .endblock .kick{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+  .endblock .bt{font-size:24px;line-height:1.3}
+  .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
+
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+  /* article source line (credits/legal pages reuse the reader shell) */
+  .srcline{max-width:900px;margin:28px auto 0;color:var(--faint);font-size:14.5px;line-height:1.55}
+
+
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-latin.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-latin.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:"EB Garamond";src:url("../assets/fonts/eb-garamond-italic-latin.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:Montserrat;src:url("../assets/fonts/montserrat-700-latin.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="./">
+      <img src="../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="./#watch">Ansehen</a>
+        <a href="./#stories">Geschichten</a>
+        <a href="./#play">Spielen</a>
+        <a href="./#read">Lesen</a>
+        <a href="./#about">Über</a>
+      </nav>
+      <details class="langmenu"><summary class="lang-btn">Deutsch<span class="caret">▾</span></summary><div class="lang-panel"><a class="lang-row" href="../legal.html"><span class="ck"></span>English</a><a class="lang-row" href="../es/legal.html"><span class="ck"></span>Español</a><a class="lang-row" href="../fr/legal.html"><span class="ck"></span>Français</a><a class="lang-row" href="../pt/legal.html"><span class="ck"></span>Português</a><span class="lang-row lang-cur"><span class="ck">✓</span>Deutsch</span><a class="lang-row" href="../ja/legal.html"><span class="ck"></span>日本語</a><a class="lang-row" href="../ko/legal.html"><span class="ck"></span>한국어</a><a class="lang-row" href="../zh-hans/legal.html"><span class="ck"></span>简体中文</a><a class="lang-row" href="../zh-hant/legal.html"><span class="ck"></span>繁體中文</a></div></details>
+    </div>
+  </header>
+
+  <a class="backlink" href="./">← Samdapau-Startseite</a>
+
+  <article class="article">
+    <h1>Rechtliches</h1>
+    <div class="article-body">
+<p>Die Kurzfassung: Dies ist eine kleine Geschichten-Website über alte Bücher. Unsere eigenen Texte und Bilder gehören Samdapau; die alten Texte und die alten Übersetzungen, die wir zitieren, gehören allen. Die Einzelheiten unten erklären, was das in der Praxis bedeutet.</p>
+<h3>Haftungsausschluss</h3>
+<p>Samdapau erzählt die antiken Klassiker als Geschichten nach — zur Bildung und zur Unterhaltung. Es sind Nacherzählungen, keine wissenschaftlichen Ausgaben: Die historischen Überlieferungen zu den darin vorkommenden Personen und Ereignissen weichen voneinander ab, die Quellen widersprechen sich, und unsere Deutungen sind die ehrliche Lesart eines Lesers, als solche vorgelegt. Nichts auf dieser Website ist eine professionelle Beratung irgendeiner Art — keine Rechts-, Finanz- oder Medizinberatung und kein strategischer Rat für irgendeine echte Entscheidung. Diese Website verlinkt auf andere Websites (YouTube, Amazon und unsere anderen Kanäle); diese Websites sind von uns unabhängig, und wir sind für ihre Inhalte und Richtlinien nicht verantwortlich.</p>
+<h3>Urheberrecht und Meldeverfahren</h3>
+<p>Die Originaltexte und -bilder dieser Website sind © Samdapau, alle Rechte vorbehalten. Die klassischen Texte selbst — das <em>Tao Te Ching</em>, <em>Die Kunst des Krieges</em>, die <em>Shiji</em> und die anderen Klassiker, die wir nacherzählen — sind gemeinfrei, ebenso die Übersetzungen, die wir zitieren (James Legge, 1891; Lionel Giles, 1910). Unser vollständiges Quellenverzeichnis steht auf der Seite <a href="credits.html">Credits und Quellen</a>.</p>
+<p>Wenn Sie Rechteinhaber sind und glauben, dass etwas auf dieser Website Ihre Rechte verletzt, schreiben Sie an samdapau@gmail.com mit vier Angaben: dem Werk, das Ihnen gehört und das Ihrer Ansicht nach verletzt wird; der Adresse (URL) der Seite, auf der das Material erscheint; Ihren Kontaktdaten; und einer Erklärung, dass Sie in gutem Glauben handeln. Wir prüfen jeden Hinweis umgehend, und wo ein Anspruch zutrifft, korrigieren oder entfernen wir das Material unverzüglich. Wenn Sie glauben, dass etwas von Ihnen irrtümlich entfernt wurde, schreiben Sie an dieselbe Adresse und erklären Sie warum — wir begrüßen eine Gegendarstellung und werden Material wieder einstellen, wenn die Entfernung ein Fehler war.</p>
+<h3>Partnerhinweis</h3>
+<p>Einige Links auf dieser Website — insbesondere die Buchlinks — sind Amazon-Partnerlinks. Wenn Sie über einen solchen Link kaufen, erhalten wir möglicherweise eine kleine Provision von Amazon. Der Preis, den Sie zahlen, ist genau derselbe wie ohne den Link; die Provision kommt aus Amazons Anteil, nicht aus Ihrer Tasche. Wir verlinken ausschließlich auf unsere eigenen Bücher.</p>
+<h3>Datenschutz</h3>
+<p>Diese Website hat keine Konten, keine Anmeldeformulare, keine Kommentare und setzt keine eigenen Cookies. Wir betreiben keine Analysewerkzeuge und keine Werbe-Tracker und erheben keine personenbezogenen Daten von Besuchern. Die Vorlesefunktion läuft vollständig in Ihrem eigenen Browser auf Ihrem eigenen Gerät — Ihre Lektüre läuft nie über unsere Server. Wie jede Website wird auch diese von Hosting-Anbietern ausgeliefert — GitHub Pages und Netlify —, deren Server standardmäßige technische Protokolle (etwa IP-Adressen und Abrufzeiten) gemäß ihren eigenen Datenschutzrichtlinien führen. Wenn Sie einem Link zu einer anderen Plattform folgen, gilt ab diesem Punkt deren Datenschutzrichtlinie.</p>
+<h3>Nutzungsbedingungen</h3>
+<p>Sie dürfen unsere Seiten gern teilen: Verlinken Sie sie frei und zitieren Sie kurze Stellen mit Quellenangabe und einem Link zurück. Bitte veröffentlichen Sie unsere Originaltexte und -bilder nicht ohne vorherige Anfrage ganz oder in wesentlichen Teilen erneut für geschäftliche Zwecke. Die hier zitierten klassischen Texte und gemeinfreien Übersetzungen darf selbstverständlich jeder frei verwenden. Diese Website wird ohne Gewährleistung bereitgestellt, so wie sie ist; wir arbeiten daran, sie richtig und verfügbar zu halten, können aber nicht versprechen, dass sie sich nie ändern oder nie ausfallen wird.</p>
+<h3>Mit KI erstellt</h3>
+<p>Die Geschichten und Bilder auf dieser Website werden mit Unterstützung von KI unter menschlicher Leitung erstellt — ein Mensch wählt die Themen, prüft die Quellen, bearbeitet den Text und entscheidet, was veröffentlicht wird. Dies ist derselbe Hinweis, den wir auf unserem YouTube-Kanal verwenden. Die antiken Texte im Herzen jeder Geschichte sind, versteht sich, ganz und gar menschlich — und das seit ein paar tausend Jahren.</p>
+    </div>
+  </article>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span><a href="credits.html">Credits und Quellen</a> · <a href="legal.html">Rechtliches</a></span>
+    <span>Antike Klassiker, als Geschichten entschlüsselt.</span>
+  </footer>
+
+</div>
+</body>
+</html>
