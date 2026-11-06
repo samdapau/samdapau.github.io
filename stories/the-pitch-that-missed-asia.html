@@ -90,9 +90,13 @@
   .p-hook{color:var(--soft);font-size:15px;line-height:1.55;margin:8px 0 12px}
   .person .chip{font-size:12px;padding:4px 9px}
   /* people shelves: group nav + shelf titles inside the people section */
-  .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+  .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
   .people-nav a{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05)}
   .people-nav a:hover{text-decoration:none;border-color:var(--faint)}
+  .people-nav button{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);cursor:pointer}
+  .people-nav button:hover{border-color:var(--faint)}
+  .people-nav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .people-fhead{margin-bottom:24px}
   .shelf-t{font-size:27px;font-weight:400;line-height:1.25;margin:38px 0 2px}
   .shelf-line{color:var(--soft);font-size:16px;margin:0 0 18px}
   /* stories wall: masonry via CSS columns, natural varied heights;
@@ -225,6 +229,7 @@
     </a>
     <div class="head-right">
       <nav>
+        <a href="../">Home</a>
         <a href="../#watch">Watch</a>
         <a href="../#stories">Stories</a>
         <a href="../#play">Play</a>
