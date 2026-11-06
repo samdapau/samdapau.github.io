@@ -294,7 +294,7 @@
     <button id="tts-close" class="tts-btn" type="button" aria-label="Arrêter et fermer le lecteur"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </div>
-<script>window.SAMDAPAU_TTS={"title": "Empty Your Cup", "artist": "Samdapau", "artwork": "../../assets/story-cup.webp", "lang": "fr-FR", "i18n": {"sentence": "Phrase {a} sur {b}", "finished": "Terminé", "tap": "Touchez lecture pour continuer", "nextStory": "Histoire suivante…", "ready": "Prêt"}, "next": null, "prev": "the-river-that-wears-down-stone.html"};</script>
+<script>window.SAMDAPAU_TTS={"title": "Empty Your Cup", "artist": "Samdapau", "artwork": "../../assets/story-cup.webp", "lang": "fr-FR", "i18n": {"sentence": "Phrase {a} sur {b}", "finished": "Terminé", "tap": "Touchez lecture pour continuer", "nextStory": "Histoire suivante…", "ready": "Prêt", "errSpeech": "La lecture à voix haute n'a pas pu démarrer sur cet appareil ou ce navigateur."}, "next": null, "prev": "the-river-that-wears-down-stone.html"};</script>
 <script>
 
 /* =====================================================================
@@ -341,6 +341,15 @@
      the next story is attempted, but a browser that demands a tap
      leaves the bar open in a "Tap play to continue" state instead of
      failing. Closing the page (pagehide) always cancels speech.
+   * Failure honesty: if speech cannot actually happen, the player
+     stops and says so in the bar — it never races silently through
+     the article and calls it Finished. Three guards: (1) no voices
+     at all after a capped wait at start; (2) an utterance error
+     (other than interrupted/canceled, or not-allowed which stays a
+     tap-to-continue pause) halts playback with a visible message;
+     (3) sentences that "end" implausibly fast (<350 ms for a
+     sentence over 10 characters) count as failures, and two in a
+     row halt the same way. One isolated fast end just advances.
    ===================================================================== */
 (function () {
   "use strict";
@@ -354,6 +363,7 @@
   S.tap = S.tap || "Tap play to continue";
   S.nextStory = S.nextStory || "Next story…";
   S.ready = S.ready || "Ready";
+  S.errSpeech = S.errSpeech || "Speech couldn't start on this device or browser.";
   var synth = window.speechSynthesis || null;
   var listenBtn = document.getElementById("listen-btn");
   var bar = document.getElementById("tts-bar");
@@ -372,6 +382,7 @@
   var built = false, started = false, playing = false, finished = false;
   var curUtter = null, watchdog = null, lastProgress = 0, speechBegan = false;
   var pendingRateRestart = false, voiceName = null, anchor = null, tapMsg = false;
+  var errored = false, failStreak = 0;
 
   var elProg = document.getElementById("tts-prog");
   var btnPlay = document.getElementById("tts-play");
@@ -559,7 +570,8 @@
     for (var i = 0; i < rateBtns.length; i++) {
       rateBtns[i].classList.toggle("on", parseFloat(rateBtns[i].getAttribute("data-rate")) === rate);
     }
-    if (finished) elProg.textContent = S.finished;
+    if (errored) elProg.textContent = S.errSpeech;
+    else if (finished) elProg.textContent = S.finished;
     else if (tapMsg) elProg.textContent = S.tap;
     else if (started && idx >= 0) elProg.textContent = S.sentence.replace("{a}", idx + 1).replace("{b}", sentences.length);
     else elProg.textContent = S.ready;
@@ -607,9 +619,26 @@
     }, wait);
   }
 
+  /* Speech failure must never look like reading: stop, say so in the
+     bar, and wait for the user. Play (togglePlay) retries from the
+     current sentence. */
+  function failSpeech() {
+    errored = true;
+    failStreak = 0;
+    playing = false;
+    curUtter = null;
+    clearWatchdog();
+    try { synth.cancel(); } catch (e) { }
+    pauseAnchor();
+    setCurrent(-1);
+    updateBar();
+    mediaState("paused");
+  }
+
   function speak(i) {
     clearWatchdog();
     idx = i;
+    errored = false;
     setCurrent(i);
     var u = new SpeechSynthesisUtterance(sentences[i].text);
     u.lang = lang;
@@ -617,15 +646,27 @@
     var v = pickVoice();
     if (v) u.voice = v;
     speechBegan = false;
-    u.onstart = function () { speechBegan = true; lastProgress = Date.now(); };
+    var tSpeak = Date.now(), tStart = 0;
+    u.onstart = function () { speechBegan = true; lastProgress = Date.now(); tStart = Date.now(); };
     u.onboundary = function () { lastProgress = Date.now(); if (curUtter === u) armWatchdog(u); };
-    u.onend = function () { if (curUtter === u) { curUtter = null; advance(); } };
+    u.onend = function () {
+      if (curUtter !== u) return;
+      curUtter = null;
+      /* Implausible-speed guard: a real sentence (over 10 chars)
+         cannot be spoken in under 350 ms. One fast end advances;
+         two in a row mean the engine is failing silently — halt. */
+      if (u.text.length > 10 && Date.now() - (tStart || tSpeak) < 350) {
+        failStreak++;
+        if (failStreak >= 2) { failSpeech(); return; }
+      } else failStreak = 0;
+      advance();
+    };
     u.onerror = function (ev) {
       if (curUtter !== u) return;
       curUtter = null;
       if (ev.error === "not-allowed") { playing = false; tapMsg = true; updateBar(); mediaState("paused"); return; }
       if (ev.error === "interrupted" || ev.error === "canceled") return;
-      advance();
+      failSpeech();
     };
     curUtter = u;
     playing = true;
@@ -661,14 +702,39 @@
     setTimeout(function () { if (started && !finished) speak(i); }, 60);
   }
 
+  /* No-voice preflight: resolve with the voice list as soon as it is
+     available, or after a capped 600 ms wait for voiceschanged —
+     whichever comes first. An already-loaded list calls back at
+     once, so the first speak() stays inside the click's gesture
+     chain whenever the browser allows it. */
+  function voicesReady(cb) {
+    var vs = [];
+    try { vs = synth.getVoices() || []; } catch (e) { }
+    if (vs.length) { cb(vs); return; }
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      var v2 = [];
+      try { v2 = synth.getVoices() || []; } catch (e) { }
+      cb(v2);
+    }
+    try { synth.addEventListener("voiceschanged", finish); } catch (e) { }
+    setTimeout(finish, 600);
+  }
+
   function startFrom(i) {
     buildSentences();
     if (!sentences.length) return;
     showBar();
     mediaSetup();
-    started = true; finished = false; pendingRateRestart = false;
+    started = true; finished = false; errored = false; failStreak = 0; pendingRateRestart = false;
     startAnchor();
-    restartSentence0(i);
+    voicesReady(function (vs) {
+      if (!started) return;
+      if (!vs.length) { failSpeech(); return; }
+      restartSentence0(i);
+    });
   }
   function restartSentence0(i) {
     curUtter = null;
@@ -695,6 +761,12 @@
     mediaState("playing");
   }
   function togglePlay() {
+    if (errored) {
+      errored = false;
+      if (started && idx >= 0) restartSentence();
+      else startFrom(0);
+      return;
+    }
     if (!started || finished) { startFrom(0); return; }
     if (tapMsg && idx >= 0) { tapMsg = false; restartSentence(); return; }
     if (playing) pauseTTS(); else resumeTTS();
@@ -703,6 +775,7 @@
     curUtter = null;
     try { synth.cancel(); } catch (e) { }
     playing = false; started = false; finished = false; pendingRateRestart = false;
+    errored = false; failStreak = 0;
     clearWatchdog();
     pauseAnchor();
     setCurrent(-1);
