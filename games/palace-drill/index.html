@@ -18,7 +18,7 @@
   --shadow:0 10px 30px rgba(26,26,26,.10),0 2px 6px rgba(26,26,26,.06);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--ground);color:var(--ink);font-family:var(--serif);
   min-height:100vh;display:flex;flex-direction:column;align-items:center;
   padding:18px 14px 40px}
@@ -30,7 +30,8 @@ body{background:var(--ground);color:var(--ink);font-family:var(--serif);
   box-shadow:var(--shadow);overflow:hidden}
 .screen{display:none}
 .screen.active{display:block}
-.art{display:block;width:100%;height:auto;background:#DDD}
+.art{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#DDD}
+#screen-title .art{aspect-ratio:16/9}
 .pad{padding:22px 22px 26px}
 .kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);
   font-weight:700;margin-bottom:10px}
@@ -96,6 +97,23 @@ h2.scene{font-size:27px;line-height:1.15;font-weight:600;margin-bottom:12px}
 .againrow .btn{text-align:center;font-size:16.5px}
 .foot{text-align:center;color:var(--faint);font-size:13.5px;margin-top:16px;line-height:1.6}
 .foot a{color:var(--soft)}
+/* fixed play stage: the frame is sized by the viewport only, so it never
+   grows or shrinks between nodes — long story text scrolls inside its
+   own area (.gscroll), stats stay on top, choices stay pinned below */
+#screen-game.active{display:flex;flex-direction:column;
+  height:clamp(620px,calc(100vh - 118px),920px);
+  height:clamp(620px,calc(100dvh - 118px),920px)}
+#screen-game .art{flex:0 0 auto}
+#screen-game .stats{flex:0 0 auto}
+#screen-game .pad{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+#screen-game .gscroll{flex:1 1 auto;min-height:0;overflow-y:auto;
+  scrollbar-gutter:stable;padding-right:6px}
+#screen-game .choices{flex:0 0 auto}
+#screen-game #g-choices:empty{display:none}
+@media (max-width:639px){
+  #screen-game.active{height:clamp(520px,calc(100vh - 104px),920px);
+    height:clamp(520px,calc(100dvh - 104px),920px)}
+}
 @media (min-width:640px){ h1.title{font-size:48px} .pad{padding:28px 30px 32px} }
 </style>
 </head>
@@ -150,10 +168,12 @@ h2.scene{font-size:27px;line-height:1.15;font-weight:600;margin-bottom:12px}
     <img class="art" id="g-art" src="img/hero-drill.webp" alt="">
     <div class="stats" id="g-stats"></div>
     <div class="pad">
-      <div class="kicker" id="g-kicker"></div>
-      <h2 class="scene" id="g-title" style="display:none"></h2>
-      <div class="story" id="g-text"></div>
-      <div id="g-ending"></div>
+      <div class="gscroll" id="g-scroll">
+        <div class="kicker" id="g-kicker"></div>
+        <h2 class="scene" id="g-title" style="display:none"></h2>
+        <div class="story" id="g-text"></div>
+        <div id="g-ending"></div>
+      </div>
       <div class="choices" id="g-choices"></div>
     </div>
   </section>
@@ -587,6 +607,7 @@ function renderStats(final){
 function render(){
   const R = STORY[S.role];
   const node = R.nodes[S.node];
+  document.getElementById("g-scroll").scrollTop = 0;
   document.getElementById("g-art").src = "img/" + node.img;
   document.getElementById("g-kicker").textContent = node.kicker || R.label;
   const titleEl = document.getElementById("g-title");
