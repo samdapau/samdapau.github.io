@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The General Who Drilled the Palace Ladies — Samdapau</title>
+<meta name="description" content="Sun Tzu won the strangest job interview in history — and his first lesson still decides who wins before anything begins">
+<link rel="alternate" hreflang="en" href="https://samdapau.netlify.app/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="es" href="https://samdapau.netlify.app/es/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="fr" href="https://samdapau.netlify.app/fr/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="pt" href="https://samdapau.netlify.app/pt/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="ja" href="https://samdapau.netlify.app/ja/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="de" href="https://samdapau.netlify.app/de/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="ko" href="https://samdapau.netlify.app/ko/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://samdapau.netlify.app/zh-hans/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://samdapau.netlify.app/zh-hant/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="alternate" hreflang="x-default" href="https://samdapau.netlify.app/stories/the-general-who-drilled-the-palace-ladies.html">
+<link rel="icon" href="../../assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F6F7; --ink:#1A1A1A; --soft:#6E6E73; --faint:#A1A1A6;
+    --line:#E3E3E6; --card:#FFFFFF;
+    --gold:#B8862B; --gold-deep:#9A6E1F;
+    --red:#A63A2E; --red-deep:#8C2F24; --chip-bg:#F7E3DE;
+    --pill-bg:#EFEFF1;
+    --shadow:0 1px 2px rgba(26,26,26,.05),0 12px 32px rgba(26,26,26,.10);
+    --shadow-lift:0 2px 3px rgba(26,26,26,.06),0 18px 44px rgba(26,26,26,.16);
+    --ring:inset 0 0 0 1px rgba(26,26,26,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--paper);color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.65}
+  a{color:var(--gold-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  @media (min-width:1400px){.wrap{max-width:1440px}}
+  @media (min-width:1800px){.wrap{max-width:1760px}}
+  @media (min-width:2400px){.wrap{max-width:2200px}}
+  @media (min-width:2000px){body{font-size:21.5px}}
+  /* header */
+  header{position:relative;z-index:30;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px rgba(26,26,26,.08),0 2px 6px rgba(26,26,26,.18)}
+  .mark{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;color:var(--ink)}
+  .mark:hover{text-decoration:none}
+  .brand:hover{text-decoration:none}
+  .head-right{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-left:auto}
+  nav{display:flex;gap:20px;font-size:16.5px}
+  nav a{color:var(--soft)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  /* language dropdown (details/summary, zero JS) */
+  .langmenu{position:relative;font-family:Montserrat,"Noto Sans CJK SC","Noto Sans CJK TC","PingFang SC","Microsoft YaHei",sans-serif}
+  .lang-btn{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);box-shadow:0 1px 2px rgba(26,26,26,.05);white-space:nowrap}
+  .lang-btn::-webkit-details-marker{display:none}
+  .lang-btn:hover{border-color:var(--faint)}
+  .lang-btn .caret{font-size:10px;color:var(--gold);transition:transform .2s}
+  .langmenu[open ] .lang-btn .caret{transform:rotate(180deg)}
+  .lang-panel{position:absolute;right:0;top:calc(100% + 9px);background:var(--card);border-radius:14px;box-shadow:var(--shadow-lift);border:1px solid rgba(26,26,26,.05);padding:6px;min-width:min(228px,86vw);max-width:86vw}
+  .lang-row{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);white-space:nowrap}
+  a.lang-row:hover{background:#F2F2F4;text-decoration:none}
+  .lang-cur{background:rgba(184,134,43,.13);font-weight:700;cursor:default}
+  .lang-cur .ck{color:var(--gold-deep);font-size:13px}
+  .lang-row .ck{width:13px;flex:none}
+  /* hero */
+  .hero{padding:clamp(34px,5vw,58px) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.01em}
+  .hero .rule{width:52px;height:3px;border-radius:2px;background:var(--gold);margin-top:24px}
+  .hero p{color:var(--soft);margin-top:16px;font-size:20px;max-width:56ch}
+  .framed{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .framed::after{content:"";position:absolute;inset:0;border-radius:18px;box-shadow:var(--ring);pointer-events:none}
+  .framed img{width:100%}
+  figcaption{color:var(--faint);font-size:15px;font-style:italic;margin-top:8px}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.15fr;gap:44px}}
+  /* sections */
+  section{padding:42px 0 4px}
+  h2{font-size:15px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .sec-note{color:var(--soft);font-size:16.5px;margin:-6px 0 16px}
+  /* unified cards: one card, one shadow, image flush inside */
+  .card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  a.card{display:block;color:var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+  a.card:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .cb{padding:20px 22px 22px}
+  .chip{display:inline-block;background:var(--chip-bg);color:var(--red-deep);font-family:Montserrat,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:5px 11px;border-radius:999px}
+  .pill{display:inline-block;background:var(--pill-bg);color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;margin:0 6px 8px 0}
+  /* people row */
+  .people{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:560px){.people{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.people{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.people{grid-template-columns:repeat(5,1fr)}}
+  .person{padding:24px 22px 22px}
+  .portrait{width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(26,26,26,.07),0 6px 16px rgba(26,26,26,.20);margin-bottom:16px}
+  .medallion{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#3A3A3C,#1A1A1A 72%);color:#D9B45B;font-family:"EB Garamond",Georgia,serif;font-size:42px;line-height:1}
+  .p-name{font-size:24px;line-height:1.25}
+  .p-role{color:var(--soft);font-size:15.5px;margin-top:2px}
+  .p-hook{color:var(--soft);font-size:16.5px;line-height:1.55;margin:9px 0 14px}
+  /* stories wall: masonry via CSS columns, natural varied heights */
+  .wall{columns:1;column-gap:26px}
+  @media (min-width:700px){.wall{columns:2}}
+  @media (min-width:1200px){.wall{columns:3}}
+  @media (min-width:2000px){.wall{columns:4}}
+  .wall .card{margin:0 0 26px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .story img{width:100%}
+  .s-title{font-size:23px;line-height:1.3;margin:2px 0 6px}
+  a.card:hover .s-title{color:var(--gold-deep)}
+  .s-excerpt{color:var(--soft);font-size:16.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .s-meta{color:var(--faint);font-size:14px;margin-top:12px;letter-spacing:.02em}
+  /* quote cards */
+  .quote{padding:28px 26px 24px;color:#FFFFFF}
+  .q-gold{background:linear-gradient(160deg,#C1912F,#A87A24)}
+  .q-red{background:linear-gradient(160deg,#AE4436,#96402F)}
+  .q-ink{background:linear-gradient(160deg,#2B2B2E,#1A1A1A)}
+  .q-text{font-size:25px;line-height:1.45;font-style:italic}
+  .q-note{font-size:15.5px;opacity:.85;margin-top:14px;line-height:1.5}
+  .q-foot{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:18px;opacity:.92}
+  /* watch cards */
+  .posts{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:640px){.posts{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.posts{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.posts{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.posts{grid-template-columns:repeat(5,1fr)}}
+  .post img{width:100%}
+  .post .t{font-size:22.5px;line-height:1.3}
+  a.card:hover .t{color:var(--gold-deep)}
+  .post .d{color:var(--soft);font-size:17px;margin-top:4px;line-height:1.55}
+  .post .m{color:var(--faint);font-size:13.5px;margin-top:10px;letter-spacing:.05em;font-family:Montserrat,sans-serif}
+  /* read: book shelf cards */
+  .shelf{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:640px){.shelf{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1200px){.shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1600px){.shelf{grid-template-columns:repeat(4,1fr)}}
+  @media (min-width:2200px){.shelf{grid-template-columns:repeat(6,1fr)}}
+  .book{display:flex;gap:16px;padding:18px;align-items:flex-start}
+  .book img{width:72px;flex:none;border-radius:8px;box-shadow:0 1px 2px rgba(26,26,26,.12),0 10px 22px rgba(26,26,26,.20),inset 0 0 0 1px rgba(26,26,26,.06)}
+  .book .t{font-size:20px;line-height:1.3}
+  .book .t a{color:var(--ink)}
+  .book .t a:hover{color:var(--gold-deep)}
+  .book .d{color:var(--soft);font-size:16.5px;margin-top:3px;line-height:1.5}
+  .book .buy{margin-left:auto;flex:none;font-size:15.5px;padding-top:4px;white-space:nowrap}
+  .follow{display:flex;flex-wrap:wrap;gap:8px 22px;padding:4px 0;font-size:19px}
+  .follow a{color:var(--soft)}
+  .follow a:hover{color:var(--gold-deep)}
+  .about{max-width:68ch}
+  .about p{color:#333336;margin-bottom:12px}
+  footer{margin-top:56px;padding:20px 0 42px;border-top:1px solid var(--line);color:var(--faint);font-size:15.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* reader pages */
+  .backlink{display:inline-block;margin:30px 0 6px;font-size:16.5px}
+  .article{max-width:68ch;margin:0 auto;padding-bottom:10px}
+  .article h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.18;letter-spacing:-.01em;margin:12px 0 10px}
+  .article .sub{color:var(--soft);font-size:21px;line-height:1.5;font-style:italic}
+  .article .byline{color:var(--faint);font-size:15px;margin:16px 0 24px;letter-spacing:.02em}
+  .article .framed{margin-bottom:30px}
+  .article p{margin:0 0 20px;font-size:20.5px;line-height:1.75;color:#232326}
+  .article h3{font-size:26px;font-weight:600;line-height:1.3;margin:36px 0 12px}
+  .article blockquote{border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;color:#333336;font-style:italic;font-size:20.5px;line-height:1.7}
+  .article hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+  .endblock{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:26px 28px;max-width:68ch;margin:44px auto 0}
+  .endblock .kick{font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+  .endblock .bt{font-size:24px;line-height:1.3}
+  .endblock p{color:var(--soft);font-size:17px;margin-top:6px;line-height:1.55}
+
+  /* reader: wider column */
+  .article{max-width:900px}
+  .endblock{max-width:900px}
+  .article-body p{font-size:21px}
+  .article-body blockquote{font-size:21px}
+  /* reader: text-size toggle (pure CSS, no script) */
+  .fs-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .fs-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:-6px 0 20px}
+  .fs-cap{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .fs-opts{display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:3px}
+  .fs-opts label{display:flex;align-items:center;justify-content:center;min-width:52px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;color:var(--soft);font-family:Montserrat,sans-serif;font-weight:700;line-height:1}
+  .fs-opts .opt-s{font-size:15px}
+  .fs-opts .opt-b{font-size:23px}
+  #fs-s:checked ~ .fs-bar .opt-s,
+  #fs-b:checked ~ .fs-bar .opt-b{background:var(--gold);color:#fff}
+  .fs-in:focus-visible ~ .fs-bar .fs-opts{outline:2px solid var(--gold);outline-offset:2px}
+  #fs-b:checked ~ .article-body p{font-size:25.5px;line-height:1.7}
+  #fs-b:checked ~ .article-body blockquote{font-size:25.5px;line-height:1.65}
+  #fs-b:checked ~ .article-body h3{font-size:31.5px}
+
+  /* reader: listen button + read-aloud player bar */
+  .listen-btn{margin-right:auto;display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);padding:9px 16px;min-height:40px;font-family:Montserrat,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--ink);cursor:pointer}
+  .listen-btn svg{flex:none}
+  .listen-btn:hover{border-color:var(--gold)}
+  .listen-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  #tts-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(115%);transition:transform .3s ease;padding:0 clamp(10px,3vw,24px) calc(10px + env(safe-area-inset-bottom))}
+  #tts-bar.on{transform:none}
+  .tts-in{max-width:900px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);display:flex;align-items:center;gap:8px;padding:10px 12px;flex-wrap:wrap}
+  .tts-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-family:Montserrat,sans-serif}
+  .tts-btn:hover{border-color:var(--gold)}
+  .tts-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .tts-btn.off{opacity:.32;pointer-events:none}
+  .tts-main{background:var(--gold);border-color:var(--gold);color:#fff;width:46px;height:46px}
+  .tts-main:hover{border-color:var(--gold-deep)}
+  .tts-meta{flex:1 1 130px;min-width:110px}
+  #tts-title{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #tts-prog{font-size:14.5px;color:var(--soft);line-height:1.35}
+  .tts-rates{display:flex;background:var(--pill-bg);border-radius:999px;padding:3px;flex:none}
+  .tts-rates button{border:0;background:transparent;padding:7px 10px;min-height:34px;border-radius:999px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;color:var(--soft);cursor:pointer}
+  .tts-rates button.on{background:var(--gold);color:#fff}
+  .tts-rates button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  body.tts-on{padding-bottom:118px}
+  .tts-s{border-radius:3px}
+  .tts-cur{background:rgba(184,134,43,.26);box-shadow:0 0 0 2px rgba(184,134,43,.26)}
+
+
+  body{font-family:"EB Garamond",Georgia,"Noto Serif CJK KR","Nanum Myeongjo","AppleMyungjo",serif}
+  h2,.mark,.langs{font-family:Montserrat,"Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  h2{letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="../">
+      <img src="../../assets/avatar.jpg" alt="Samdapau">
+      <span class="mark">Samdapau</span>
+    </a>
+    <div class="head-right">
+      <nav>
+        <a href="../#watch">보기</a>
+        <a href="../#stories">이야기</a>
+        <a href="../#play">플레이</a>
+        <a href="../#read">읽기</a>
+        <a href="../#about">소개</a>
+      </nav>
+      <details class="langmenu"><summary class="lang-btn">한국어<span class="caret">▾</span></summary><div class="lang-panel"><a class="lang-row" href="../../stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>English</a><a class="lang-row" href="../../es/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>Español</a><a class="lang-row" href="../../fr/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>Français</a><a class="lang-row" href="../../pt/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>Português</a><a class="lang-row" href="../../de/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>Deutsch</a><a class="lang-row" href="../../ja/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>日本語</a><span class="lang-row lang-cur"><span class="ck">✓</span>한국어</span><a class="lang-row" href="../../zh-hans/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>简体中文</a><a class="lang-row" href="../../zh-hant/stories/the-general-who-drilled-the-palace-ladies.html"><span class="ck"></span>繁體中文</a></div></details>
+    </div>
+  </header>
+
+  <a class="backlink" href="../#stories">← 모든 이야기</a>
+
+  <article class="article" data-read-lang="ko-KR">
+    <div><span class="pill">이야기</span></div>
+    <h1>The General Who Drilled the Palace Ladies</h1>
+    <p class="sub">Sun Tzu won the strangest job interview in history — and his first lesson still decides who wins before anything begins</p>
+    <div class="byline">Samdapau · 약 7분</div>
+    <input class="fs-in" type="radio" name="fs" id="fs-s" checked>
+    <input class="fs-in" type="radio" name="fs" id="fs-b">
+    <div class="fs-bar">
+      <button class="listen-btn" id="listen-btn" type="button" aria-label="이 이야기를 음성으로 듣기"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3.5 9.2v5.6h3.9L12.5 19V5L7.4 9.2H3.5z" fill="#B8862B"/><path d="M15.6 9.1a4.3 4.3 0 010 5.8M18.2 6.4a8.2 8.2 0 010 11.2" fill="none" stroke="#B8862B" stroke-width="1.9" stroke-linecap="round"/></svg><span>듣기</span></button>
+      <span class="fs-cap">글자 크기</span>
+      <span class="fs-opts"><label class="opt-s" for="fs-s">A</label><label class="opt-b" for="fs-b">A</label></span>
+    </div>
+    <div class="framed"><img src="../../assets/story-general.webp" alt="Sun Tzu drilling the palace ladies — ink painting"></div>
+    <div class="article-body">
+<p>오나라 왕 합려(吳王 闔閭)에게는 대부분의 왕이라면 부러워할 만한 고민이 하나 있었다. 조용한 학자 손자(孫子)가 전쟁에 관한 열세 장을 썼는데, 조정에서는 너나없이 그 이야기로 떠들썩했다. 왕은 그 사내가 천재인지 사기꾼인지 알고 싶었다. 그래서 속에 덫을 숨긴 시험을 하나 마련했다.</p>
+<p>왕은 손자에게 군대를 맡기지 않았다. 맡긴 것은 궁녀 백여든 명이었다 — 비단옷을 입고 비녀를 꽂은, 손에 굳은살 하나 없는 여인들이었다 — 그리고 이렇게 말했다. "이들을 병사처럼 훈련시켜 보시오."</p>
+<p>그것은 농담이었고, 뜰 안에 있던 모두가 아는 사실이었다. 손자만 빼고.</p>
+<p>그는 농담을 전쟁처럼 다뤘다. 여인들을 두 부대로 나누고, 왕이 가장 아끼던 궁녀 두 명을 각각 한 부대씩 맡겼다. 그러고는 지휘관이 내릴 수 있는 가장 간단한 명령을 내렸다. 어린아이도 따를 수 있을 만큼 분명했다. 북이 울리고 내가 우향우라고 하면, 오른쪽으로 돌아라.</p>
+<p>궁녀들은 깔깔 웃었다. 아무도 돌지 않았다.</p>
+<p>이제 손자가 어떻게 하는지 보라. 이 한 번의 행동에 그 사람 전부가 담겨 있다. 그는 소리를 지르지 않는다. 더 크게 되풀이하지도 않는다. 명령을 이해하지 못했다면 그 잘못은 지휘관에게 있다는 것을 차분히 말한다. 그러고는 명령을 두 번째로 설명한다 — 차근차근, 정성껏, 그 뜰 안의 누구도 솔직히 헷갈렸다고 할 수 없을 때까지.</p>
+<p>북이 다시 울렸다. 우향우.</p>
+<p>궁녀들은 다시 깔깔 웃었다.</p>
+<p>손자의 목소리가 달라졌다. 명령이 분명한데도 따르지 않는다면, 그 잘못은 장교들에게 있다고 했다. 그리고 두 장교 — 왕이 가장 아끼던 바로 그 두 궁녀 — 를 그 자리에서 처형하라고 명령했다.</p>
+<h3>웃음이 멈춘다</h3>
+<p>역사가들은 이 일이 정말로 있었는지를 두고 이천 년 동안 논쟁해 왔지만, 솔직히 말하면 그건 중요하지 않다. 중요한 것은 이 이야기가 사람에 대해 알고 있는 것이다. 다음 명령은 완벽한 침묵 속에 지켜졌다. 모든 동작이 정확했다. 창 한 번 쥐어 본 적 없는 백여든 명의 여인들이 마치 하나의 몸처럼 움직였다 — 갑자기 행진하는 법을 배워서가 아니라, 규칙이 진짜라는 것을 갑자기 깨달았기 때문이다.</p>
+<p>학자를 망신 주려던 왕은 순식간에 정신이 번쩍 들었다. 왕이 부탁한 것은 훈련 시연이었다. 그러나 얻은 것은 지휘의 시연이었다. 왕은 손자를 장군으로 삼았다.</p>
+<p>손자가 잘못을 나누는 순서를 보라. 첫째는 자기 자신이다. 불분명한 명령은 지도자의 잘못이다. 모든 핑계를 없앤 뒤에야 잘못은 아래로 내려간다 — 그리고 내려갈 때는 흔들림이 없다. 그 순서는 그 자체를 위한 잔인함이 아니다. 하나의 체계다. 책임을 마땅히 있어야 할 곳에, 올바른 순서로, 총애받는 자라고 해서 예외 없이 둔다. 특히 총애받는 자에게 예외가 없다.</p>
+<h3>첫 장이 검이 아니라 셈인 이유</h3>
+<p><em>『손자병법』</em>에 대해 이상한 점이 여기 있다. 첫 장에는 전투가 전혀 나오지 않는다. 경고로 시작한다 — 전쟁은 나라의 가장 중대한 일이며, 삶과 죽음의 터전이므로, 결코 경솔하게 들어가서는 안 된다는 경고 — 그러고는 아주 볼품없는 일을 한다. 셈을 하는 것이다.</p>
+<p>병사 한 명이 행군하기 전에, 다섯 가지를 정직하게 재야 한다고 손자는 말한다.</p>
+<p>백성은 정말로 대의를 믿는가, 아니면 그저 자리를 채우고만 있는가. 때는 맞는가 — 계절도, 순간도 — 아니면 조급해서 움직이는 것인가. 행동할 땅을 이해하는가. 그 거리와 위험, 그리고 하나의 좁은 틈을. 지휘관은 지혜롭고, 정직하고, 용감하고, 엄격한가 — 넷 중 둘이 아니라 넷 모두인가. 그리고 볼품없는 체계는 갖춰져 있는가. 보급과 도로와 돈, 그리고 첫 열정이 식은 뒤에도 노력을 살려 두는 규율이 있는가.</p>
+<p>이 다섯 가지를 재고, 움찔하지 말고 상대와 비교해 보라. 그러면 손자는 거의 모욕적일 만큼 차분한 주장을 한다. 누가 이기는지 이미 안다는 것이다. 마침내 전투가 벌어질 때, 그 전투는 대부분 몇 주 전에 셈으로 이미 도달한 결과를 알릴 뿐이다.</p>
+<p>사람들이 건너뛰는 대목이 여기 있다. 다섯 가지 대답이 약하게 돌아오면, 손자의 조언은 더 애쓰라거나, 더 크게 외치라거나, 더 맹렬히 믿으라는 것이 아니다. 아직 싸우지 말라는 것이다 — 아니면 그 땅에서 싸우지 말거나, 그런 방식으로 싸우지 말거나, 정직하게 셈했을 때 아예 싸우지 말라는 것이다. 제대로 재지 못한 싸움에서 물러나는 것은 그의 체계에서 용기가 없는 일이 아니다. 체계가 작동하고 있는 것이다. 뜰에서의 일도 반대편 끝에서 같은 교훈을 가르쳤다. 여인들이 재능이 없어서 실패한 것이 아니었다. 훈련은 처음에, 아직 아무도 규칙을 진짜로 만들지 않았기 때문에 실패했다 — 그리고 어떤 것이 움직이기 전에 그것을 진짜로 만드는 일이 바로 지휘관의 일이다.</p>
+<p>그 장에서 가장 많이 인용되는 문장이 바로 그 자리에 있는 이유도 그 때문이다. "모든 전쟁은 속임수에 바탕을 둔다"고 그는 쓴다 — 결과가 상대가 무엇을 믿고 기대하는가에 달려 있다면, 그들이 보는 것을 빚는 것도 승부의 일부이기 때문이다. 그러나 다섯 가지 측정 옆에 놓고 읽으면, 그것은 사기꾼의 좌우명처럼 들리지 않는다. 상대에게는 안개를 준다. 자기편에게는 셈을 준다 — 눈을 똑바로 뜨고, 정확하게, 일찍 해 두는 셈을.</p>
+<h3>같은 겨울, 오클랜드에서</h3>
+<p>2002년, 오클랜드 애슬레틱스는 야구 시즌이 시작되기도 전에 이기려 했다. 팀 연봉 총액은 약 4,100만 달러였고, 뉴욕 양키스는 대략 1억 2,500만 달러를 썼다. 오클랜드의 단장 빌리 빈은 선수가 스타처럼 보이는지를 묻는 일을 그만두고, 대신 더 냉정한 질문을 던졌다. 기록은 무엇이 실제로 득점을 만드는지 말해 주는가. 대답은 인기가 없었다 — 출루였다. 가장 중요한 능력이었는데도, 아무도 그것을 대단하게 여기지 않아서 바로 그 이유로 쌌다. 오클랜드는 숫자가 가치 있게 여긴 것을 샀고, 103승을 거뒀으며, 20연승으로 리그 기록을 세웠다.</p>
+<p>사람들은 보통 마이클 루이스의 <em>『머니볼』</em>에 나오는 그 이야기를 데이터가 직감을 이긴 이야기로 말한다. 손자는 그것을 더 오래되고 더 단순한 이름으로 불렀을 것이다. 그는 그것을 묘산이라고 불렀을 것이다 — 모두가 느끼는 것으로 만족할 때, 기꺼이 셈하려는 사람들에 의해 겨울에, 종이 위에서 승부가 결정되는 것이다.</p>
+<p>우리 대부분은 반대로 한다. 중간에서 시작한다 — 논쟁, 출시, 대결 — 그러고 나서 기초를 찾으러 가는데, 대개 잔해 위에 서서 찾는다. 손자의 첫 번째 교훈은 그 순서를 뒤집을 수 없다는 것이다. 자제는 전략의 반대가 아니다. 자제는 전략 그 자체이며, 효력이 있을 만큼 일찍 적용된 전략이다.</p>
+<p>그래서 이 작은 책은 다시 읽을 가치가 있다. 평온한 때에 읽으면 그 장들은 상식처럼 읽힌다 — 고개를 끄덕이고, 페이지를 넘긴다. 그러나 정말로 대가가 따르는 결정의 전날 밤에 읽으면, 똑같은 문장들이 이빨을 가진 체크리스트로 변한다. 나와 함께 있는 사람들은 이것을 믿는가, 아니면 예의상 그러는 것인가. 지금이 그 계절인가, 아니면 급함으로 차려입은 내 조급함일 뿐인가. 나는 땅을 아는가, 아니면 내가 바라는 땅의 모습을 아는가. 손자는 당신을 용감하게 느끼게 하는 데 관심이 없다. 그는 당신이 분명히 보게 하는 데 관심이 있다 — 왜냐하면 그는 이천오백 년 전에 보았던 것을 지금도 보고 있기 때문이다. 군대가 만나기도 훨씬 전에 이미 진 승부를 지는 사람들, 셈을 한 번도 해 본 적 없는 장군들에 의해 지는 승부를.</p>
+<p>대부분의 패배는 첫 타격이 가해지기 전에 결정된다 — 셈을 한 번도 하지 않은 사람들에 의해서.</p>
+    </div>
+  </article>
+
+  <div class="endblock">
+    <div class="kick">책에서</div>
+    <div class="bt"><a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">The Art of War, Decoded</a></div>
+    <p>고전 전체를 쉬운 영어 이야기로 다시 전합니다 — 교훈은 강의가 아니라 이야기 속에 숨어 있습니다. <a href="https://www.amazon.com/dp/B0HPXZNHFW?tag=samdapau-20">Amazon에서 책 구매하기 ↗</a></p>
+    <p style="margin-top:12px"><a href="../#stories">← 이야기 더 보기</a> · <a href="../">Samdapau 홈</a></p>
+  </div>
+
+  <footer>
+    <span>© 2026 Samdapau</span>
+    <span>고전 명저를 이야기로 풀어 읽다.</span>
+  </footer>
+
+</div>
+
+<div id="tts-bar" role="region" aria-label="읽어주기 플레이어">
+  <div class="tts-in">
+    <button id="tts-prev" class="tts-btn" type="button" aria-label="이전 이야기"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M7 6h2.5v12H7zM19 6v12L10.5 12z"/></svg></button>
+    <button id="tts-play" class="tts-btn tts-main" type="button" aria-label="재생 또는 일시정지"><svg id="tts-ico-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8.5 5.5v13l11-6.5z"/></svg><svg id="tts-ico-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" style="display:none"><path d="M7.5 5.5h3.4v13H7.5zM13.1 5.5h3.4v13h-3.4z"/></svg></button>
+    <button id="tts-next" class="tts-btn" type="button" aria-label="다음 이야기"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M14.5 6H17v12h-2.5zM5 6v12l8.5-6z"/></svg></button>
+    <div class="tts-meta"><div id="tts-title">The General Who Drilled the Palace Ladies</div><div id="tts-prog">준비됨</div></div>
+    <div class="tts-rates" role="group" aria-label="읽기 속도"><button type="button" data-rate="1" class="on">1×</button><button type="button" data-rate="1.25">1.25×</button><button type="button" data-rate="1.5">1.5×</button><button type="button" data-rate="2">2×</button></div>
+    <button id="tts-close" class="tts-btn" type="button" aria-label="정지하고 플레이어 닫기"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<script>window.SAMDAPAU_TTS={"title": "The General Who Drilled the Palace Ladies", "artist": "Sun Tzu", "artwork": "../../assets/person-sunzi.webp", "lang": "ko-KR", "i18n": {"sentence": "전체 {b}문장 중 {a}번째", "finished": "끝", "tap": "계속하려면 재생을 누르세요", "nextStory": "다음 이야기…", "ready": "준비됨"}, "next": "the-river-that-wears-down-stone.html", "prev": null};</script>
+<script>
+
+/* =====================================================================
+   Samdapau read-aloud player — zero backend, zero recording, zero signup.
+   ---------------------------------------------------------------------
+   HOW IT WORKS
+   * Engine: the browser's built-in Web Speech API (speechSynthesis).
+     No audio files, no server, no account. The Listen pill starts it.
+   * Text: on first play, the article body (.article-body p / h3 /
+     blockquote) is split into sentences AT RUNTIME and each sentence is
+     wrapped in a span element (class tts-s), so the stored page HTML and the
+     article text itself are never modified on disk. Sentences are
+     spoken one utterance at a time.
+   * Highlight: the sentence being read gets .tts-cur (soft gold). Where
+     the browser fires utterance boundary events they refresh a progress
+     clock; where it does not, a watchdog timer estimates the sentence
+     duration from its character count (about 15 chars/sec at 1x for
+     Latin scripts, about 5.5 for CJK, scaled by the chosen rate) and
+     force-advances if an utterance's end event is ever lost, so
+     reading can never stall silently. Sentence splitting recognises
+     the CJK terminators 。！？ as well as . ! ?
+   * Controls (bar pinned to the bottom while active): play/pause,
+     previous/next story, speed 1x / 1.25x / 1.5x / 2x, progress
+     ("Sentence n of N"), and a close button that stops everything.
+     Changing speed mid-read restarts the current sentence at the new
+     rate. When a story ends, the next story in registry order opens
+     and keeps reading (?listen=1&rate=... in the URL); the last story
+     stops on a "Finished" state — no loop.
+   * Language: the article element carries data-read-lang (today
+     "en-US"); the voice picker prefers a natural/Google voice in that
+     language. Future translated articles only need a different
+     data-read-lang value — no code changes.
+   * Lock screen / media keys: the Media Session API publishes the
+     story title, the figure as artist, and the figure's portrait (or
+     the story art) as artwork, and wires play/pause/prev/next to the
+     same actions as the bar. A tiny looping silent audio element is
+     started alongside the speech so Android Chrome holds a media
+     session while TTS (which is not a media element) plays.
+   * Fallbacks & caveats: every Media Session / anchor step is guarded;
+     if anything is unavailable the in-page bar still works. iOS Safari
+     is the limited case: speech works in-page, but iOS gives web TTS
+     little to no lock-screen presence and pause() can be flaky — the
+     watchdog then restarts progress instead of hanging. Auto-start on
+     the next story is attempted, but a browser that demands a tap
+     leaves the bar open in a "Tap play to continue" state instead of
+     failing. Closing the page (pagehide) always cancels speech.
+   ===================================================================== */
+(function () {
+  "use strict";
+  var cfg = window.SAMDAPAU_TTS || {};
+  /* Status strings come from the page config (cfg.i18n) so translated
+     article pages speak their own UI language; defaults are the
+     original English strings, so English pages behave as before. */
+  var S = cfg.i18n || {};
+  S.sentence = S.sentence || "Sentence {a} of {b}";
+  S.finished = S.finished || "Finished";
+  S.tap = S.tap || "Tap play to continue";
+  S.nextStory = S.nextStory || "Next story…";
+  S.ready = S.ready || "Ready";
+  var synth = window.speechSynthesis || null;
+  var listenBtn = document.getElementById("listen-btn");
+  var bar = document.getElementById("tts-bar");
+  var bodyEl = document.querySelector(".article-body");
+  var artEl = document.querySelector("article.article");
+  if (!synth || !listenBtn || !bar || !bodyEl) {
+    if (listenBtn) listenBtn.style.display = "none";
+    return;
+  }
+
+  var lang = (artEl && artEl.getAttribute("data-read-lang")) || cfg.lang || "en-US";
+  var RATES = [1, 1.25, 1.5, 2];
+  var rate = 1;
+  var sentences = [];        // {text, chars, spans:[...]}
+  var idx = -1;
+  var built = false, started = false, playing = false, finished = false;
+  var curUtter = null, watchdog = null, lastProgress = 0, speechBegan = false;
+  var pendingRateRestart = false, voiceName = null, anchor = null, tapMsg = false;
+
+  var elProg = document.getElementById("tts-prog");
+  var btnPlay = document.getElementById("tts-play");
+  var btnPrev = document.getElementById("tts-prev");
+  var btnNext = document.getElementById("tts-next");
+  var btnClose = document.getElementById("tts-close");
+  var icoPlay = document.getElementById("tts-ico-play");
+  var icoPause = document.getElementById("tts-ico-pause");
+  var rateBtns = bar.querySelectorAll(".tts-rates button");
+
+  /* ------------------------------------------------ sentence splitting */
+  /* Terminators include the CJK full stop / exclamation / question
+     marks (。！？) alongside the Latin ones, so Chinese and Japanese
+     articles split into real sentences instead of whole paragraphs;
+     Latin texts never contain those characters, so their splits are
+     unchanged. */
+  var ABBR = { mr: 1, mrs: 1, ms: 1, dr: 1, st: 1, vs: 1, jr: 1, sr: 1, no: 1, "e.g": 1, "i.e": 1, "u.s": 1, "u.k": 1 };
+  function splitSentences(text) {
+    var ranges = [], n = text.length, start = 0, i = 0;
+    function flush(end) {
+      var a = start, b = end;
+      while (a < b && /\s/.test(text.charAt(a))) a++;
+      while (b > a && /\s/.test(text.charAt(b - 1))) b--;
+      if (b > a) ranges.push([a, b]);
+    }
+    while (i < n) {
+      var c = text.charAt(i);
+      if (c === "." || c === "!" || c === "?" || c === "…" || c === "。" || c === "！" || c === "？") {
+        var j = i + 1;
+        while (j < n && ".!?…。！？".indexOf(text.charAt(j)) >= 0) j++;
+        while (j < n && "\"'”’)]」』".indexOf(text.charAt(j)) >= 0) j++;
+        /* Latin sentences need whitespace (or end) after the terminator;
+           CJK sentences are not space-separated, so 。！？ split at once. */
+        if (j >= n || /\s/.test(text.charAt(j)) || c === "。" || c === "！" || c === "？") {
+          var word = text.slice(start, i).split(/\s+/).pop().toLowerCase();
+          if (c === "." && ABBR[word]) { i = j; continue; }
+          flush(j); start = j; i = j; continue;
+        }
+        i = j; continue;
+      }
+      i++;
+    }
+    flush(n);
+    return ranges;
+  }
+
+  function textNodesOf(block) {
+    var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null);
+    var nodes = [], node;
+    while ((node = walker.nextNode())) nodes.push(node);
+    return nodes;
+  }
+
+  function wrapRange(block, a, b, sentIdx) {
+    var nodes = textNodesOf(block), spans = [], pos = 0, k, nd, ns, ne;
+    var spansByNode = [];
+    for (k = 0; k < nodes.length; k++) {
+      nd = nodes[k]; ns = pos; ne = pos + nd.data.length; pos = ne;
+      if (ne <= a || ns >= b) continue;
+      spansByNode.push({ node: nd, s: Math.max(a, ns) - ns, e: Math.min(b, ne) - ns });
+    }
+    for (k = spansByNode.length - 1; k >= 0; k--) {
+      var part = spansByNode[k], target = part.node;
+      if (part.e < target.data.length) target.splitText(part.e);
+      if (part.s > 0) target = target.splitText(part.s);
+      var span = document.createElement("span");
+      span.className = "tts-s";
+      span.setAttribute("data-s", sentIdx);
+      target.parentNode.replaceChild(span, target);
+      span.appendChild(target);
+      spans.unshift(span);
+    }
+    return spans;
+  }
+
+  function buildSentences() {
+    if (built) return;
+    var blocks = bodyEl.querySelectorAll("p, h3, blockquote");
+    for (var bi = 0; bi < blocks.length; bi++) {
+      var block = blocks[bi], text = block.textContent;
+      var ranges = splitSentences(text), made = [];
+      for (var ri = 0; ri < ranges.length; ri++) {
+        made.push({
+          text: text.slice(ranges[ri][0], ranges[ri][1]),
+          chars: ranges[ri][1] - ranges[ri][0],
+          spans: null,
+          block: block, a: ranges[ri][0], b: ranges[ri][1]
+        });
+      }
+      for (var rj = made.length - 1; rj >= 0; rj--) {
+        var gi = sentences.length + rj;
+        made[rj].spans = wrapRange(block, made[rj].a, made[rj].b, gi);
+      }
+      sentences = sentences.concat(made);
+    }
+    built = true;
+  }
+
+  /* ------------------------------------------------------------- voice */
+  function pickVoice() {
+    var vs = [];
+    try { vs = synth.getVoices() || []; } catch (e) { }
+    if (!vs.length) return null;
+    var i, j;
+    if (voiceName) {
+      for (i = 0; i < vs.length; i++) if (vs[i].name === voiceName) return vs[i];
+    }
+    var base = lang.replace("_", "-").toLowerCase(), prim = base.split("-")[0];
+    function langOk(v) {
+      var l = (v.lang || "").replace("_", "-").toLowerCase();
+      return l === base || l.indexOf(prim) === 0;
+    }
+    var cand = [];
+    for (i = 0; i < vs.length; i++) if (langOk(vs[i])) cand.push(vs[i]);
+    if (!cand.length) cand = vs;
+    var prefs = ["google us english", "google", "natural", "neural", "aria", "jenny", "samantha", "zira", "karen"];
+    for (var p = 0; p < prefs.length; p++)
+      for (j = 0; j < cand.length; j++)
+        if (cand[j].name.toLowerCase().indexOf(prefs[p]) >= 0) { voiceName = cand[j].name; return cand[j]; }
+    for (j = 0; j < cand.length; j++)
+      if ((cand[j].lang || "").replace("_", "-").toLowerCase() === base) { voiceName = cand[j].name; return cand[j]; }
+    voiceName = cand[0].name;
+    return cand[0];
+  }
+  if (typeof synth.onvoiceschanged !== "undefined") {
+    synth.onvoiceschanged = function () { voiceName = null; };
+  }
+
+  /* ------------------------------------------------------- silent anchor */
+  function silentWavURL() {
+    var sr = 8000, len = sr / 2, buf = new ArrayBuffer(44 + len * 2), v = new DataView(buf);
+    function ws(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+    ws(0, "RIFF"); v.setUint32(4, 36 + len * 2, true); ws(8, "WAVEfmt ");
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true);
+    v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    ws(36, "data"); v.setUint32(40, len * 2, true);
+    return URL.createObjectURL(new Blob([buf], { type: "audio/wav" }));
+  }
+  function startAnchor() {
+    try {
+      if (!anchor) {
+        anchor = document.createElement("audio");
+        anchor.loop = true;
+        anchor.setAttribute("playsinline", "");
+        anchor.src = silentWavURL();
+        document.body.appendChild(anchor);
+      }
+      var p = anchor.play();
+      if (p && p.catch) p.catch(function () { });
+    } catch (e) { }
+  }
+  function pauseAnchor() { try { if (anchor) anchor.pause(); } catch (e) { } }
+
+  /* ------------------------------------------------------ media session */
+  function safeSetHandler(action, fn) {
+    try { navigator.mediaSession.setActionHandler(action, fn); } catch (e) { }
+  }
+  function mediaSetup() {
+    if (!("mediaSession" in navigator)) return;
+    try {
+      var art = cfg.artwork ? new URL(cfg.artwork, window.location.href).href : "";
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: cfg.title || document.title,
+        artist: cfg.artist || "Samdapau",
+        album: "Samdapau Stories",
+        artwork: art ? [{ src: art, type: "image/webp" }] : []
+      });
+    } catch (e) { return; }
+    safeSetHandler("play", function () { togglePlay(); });
+    safeSetHandler("pause", function () { if (playing) pauseTTS(); });
+    safeSetHandler("nexttrack", cfg.next ? function () { goArticle(cfg.next); } : null);
+    safeSetHandler("previoustrack", cfg.prev ? function () { goArticle(cfg.prev); } : null);
+  }
+  function mediaState(state) {
+    try { if ("mediaSession" in navigator) navigator.mediaSession.playbackState = state; } catch (e) { }
+  }
+
+  /* ------------------------------------------------------------ the bar */
+  function updateBar() {
+    icoPlay.style.display = playing ? "none" : "";
+    icoPause.style.display = playing ? "" : "none";
+    btnPrev.classList.toggle("off", !cfg.prev);
+    btnNext.classList.toggle("off", !cfg.next);
+    for (var i = 0; i < rateBtns.length; i++) {
+      rateBtns[i].classList.toggle("on", parseFloat(rateBtns[i].getAttribute("data-rate")) === rate);
+    }
+    if (finished) elProg.textContent = S.finished;
+    else if (tapMsg) elProg.textContent = S.tap;
+    else if (started && idx >= 0) elProg.textContent = S.sentence.replace("{a}", idx + 1).replace("{b}", sentences.length);
+    else elProg.textContent = S.ready;
+  }
+  function showBar() {
+    bar.classList.add("on");
+    document.body.classList.add("tts-on");
+  }
+  function hideBar() {
+    bar.classList.remove("on");
+    document.body.classList.remove("tts-on");
+  }
+
+  function setCurrent(i) {
+    for (var k = 0; k < sentences.length; k++) {
+      var on = (k === i);
+      for (var s = 0; s < sentences[k].spans.length; s++) {
+        sentences[k].spans[s].classList.toggle("tts-cur", on);
+      }
+    }
+    if (i >= 0 && sentences[i].spans.length) {
+      var r = sentences[i].spans[0].getBoundingClientRect();
+      if (r.top < 90 || r.bottom > window.innerHeight - 150) {
+        sentences[i].spans[0].scrollIntoView({ block: "center", behavior: "smooth" });
+      }
+    }
+  }
+
+  /* ----------------------------------------------------------- playback */
+  /* Speech-rate estimate for the watchdog: ~15 chars/sec for Latin
+     scripts, ~5.5 for CJK (a Chinese/Japanese/Korean character carries
+     a syllable each, so voices read far fewer of them per second). */
+  var CPS = /^(zh|ja|ko)/.test(lang) ? 5.5 : 15;
+  function estMs(chars) { return Math.ceil(chars / (CPS * rate) * 1000); }
+  function clearWatchdog() { if (watchdog) { clearTimeout(watchdog); watchdog = null; } }
+  function armWatchdog(u) {
+    clearWatchdog();
+    var wait = estMs(sentences[idx].chars) * 1.7 + 2500;
+    watchdog = setTimeout(function () {
+      if (curUtter !== u || !playing) return;
+      if (Date.now() - lastProgress < estMs(sentences[idx].chars)) { armWatchdog(u); return; }
+      curUtter = null;
+      try { synth.cancel(); } catch (e) { }
+      advance();
+    }, wait);
+  }
+
+  function speak(i) {
+    clearWatchdog();
+    idx = i;
+    setCurrent(i);
+    var u = new SpeechSynthesisUtterance(sentences[i].text);
+    u.lang = lang;
+    u.rate = rate;
+    var v = pickVoice();
+    if (v) u.voice = v;
+    speechBegan = false;
+    u.onstart = function () { speechBegan = true; lastProgress = Date.now(); };
+    u.onboundary = function () { lastProgress = Date.now(); if (curUtter === u) armWatchdog(u); };
+    u.onend = function () { if (curUtter === u) { curUtter = null; advance(); } };
+    u.onerror = function (ev) {
+      if (curUtter !== u) return;
+      curUtter = null;
+      if (ev.error === "not-allowed") { playing = false; tapMsg = true; updateBar(); mediaState("paused"); return; }
+      if (ev.error === "interrupted" || ev.error === "canceled") return;
+      advance();
+    };
+    curUtter = u;
+    playing = true;
+    tapMsg = false;
+    lastProgress = Date.now();
+    updateBar();
+    mediaState("playing");
+    synth.speak(u);
+    armWatchdog(u);
+  }
+
+  function advance() {
+    clearWatchdog();
+    if (idx + 1 < sentences.length) { speak(idx + 1); return; }
+    playing = false;
+    pauseAnchor();
+    if (cfg.next) {
+      elProg.textContent = S.nextStory;
+      mediaState("paused");
+      setTimeout(function () { goArticle(cfg.next); }, 400);
+    } else {
+      finished = true;
+      setCurrent(-1);
+      updateBar();
+      mediaState("paused");
+    }
+  }
+
+  function restartSentence() {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    var i = idx;
+    setTimeout(function () { if (started && !finished) speak(i); }, 60);
+  }
+
+  function startFrom(i) {
+    buildSentences();
+    if (!sentences.length) return;
+    showBar();
+    mediaSetup();
+    started = true; finished = false; pendingRateRestart = false;
+    startAnchor();
+    restartSentence0(i);
+  }
+  function restartSentence0(i) {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    setTimeout(function () { speak(i); }, 30);
+  }
+
+  function pauseTTS() {
+    try { synth.pause(); } catch (e) { }
+    playing = false;
+    clearWatchdog();
+    pauseAnchor();
+    updateBar();
+    mediaState("paused");
+  }
+  function resumeTTS() {
+    startAnchor();
+    if (pendingRateRestart) { pendingRateRestart = false; restartSentence(); return; }
+    try { synth.resume(); } catch (e) { }
+    playing = true;
+    lastProgress = Date.now();
+    if (curUtter) armWatchdog(curUtter);
+    updateBar();
+    mediaState("playing");
+  }
+  function togglePlay() {
+    if (!started || finished) { startFrom(0); return; }
+    if (tapMsg && idx >= 0) { tapMsg = false; restartSentence(); return; }
+    if (playing) pauseTTS(); else resumeTTS();
+  }
+  function stopAll() {
+    curUtter = null;
+    try { synth.cancel(); } catch (e) { }
+    playing = false; started = false; finished = false; pendingRateRestart = false;
+    clearWatchdog();
+    pauseAnchor();
+    setCurrent(-1);
+    idx = -1;
+    hideBar();
+    updateBar();
+    mediaState("none");
+  }
+
+  function goArticle(file) {
+    if (started) window.location.href = file + "?listen=1&rate=" + rate;
+    else window.location.href = file;
+  }
+
+  /* -------------------------------------------------------------- wiring */
+  listenBtn.addEventListener("click", function () {
+    if (!started) { startFrom(0); return; }
+    if (idx >= 0 && sentences[idx] && sentences[idx].spans.length) {
+      sentences[idx].spans[0].scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  });
+  btnPlay.addEventListener("click", togglePlay);
+  btnClose.addEventListener("click", stopAll);
+  btnPrev.addEventListener("click", function () { if (cfg.prev) goArticle(cfg.prev); });
+  btnNext.addEventListener("click", function () { if (cfg.next) goArticle(cfg.next); });
+  for (var rb = 0; rb < rateBtns.length; rb++) {
+    rateBtns[rb].addEventListener("click", function () {
+      var r = parseFloat(this.getAttribute("data-rate"));
+      if (RATES.indexOf(r) < 0 || r === rate) { if (r === rate) updateBar(); return; }
+      rate = r;
+      updateBar();
+      if (started && !finished && idx >= 0) {
+        if (playing) restartSentence();
+        else pendingRateRestart = true;
+      }
+    });
+  }
+  window.addEventListener("pagehide", function () {
+    try { synth.cancel(); } catch (e) { }
+  });
+  updateBar();
+
+  /* ------------------------------------------- auto-continue from ?listen */
+  try {
+    var q = new URLSearchParams(window.location.search);
+    if (q.get("listen") === "1") {
+      var qr = parseFloat(q.get("rate"));
+      if (RATES.indexOf(qr) >= 0) rate = qr;
+      updateBar();
+      startFrom(0);
+      setTimeout(function () {
+        if (started && playing && !speechBegan) {
+          playing = false;
+          clearWatchdog();
+          tapMsg = true;
+          updateBar();
+          mediaState("paused");
+        }
+      }, 1800);
+    }
+  } catch (e) { }
+})();
+
+</script>
+</body>
+</html>
