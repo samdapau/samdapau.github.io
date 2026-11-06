@@ -105,6 +105,9 @@
   .people-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
   .people-nav a{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05)}
   .people-nav a:hover{text-decoration:none;border-color:var(--faint)}
+  .people-nav button{font-family:Montserrat,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 13px;border-radius:999px;box-shadow:0 1px 2px rgba(26,26,26,.05);cursor:pointer}
+  .people-nav button:hover{border-color:var(--faint)}
+  .people-nav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .shelf-t{font-size:27px;font-weight:400;line-height:1.25;margin:38px 0 2px}
   .shelf-line{color:var(--soft);font-size:16px;margin:0 0 18px}
   /* stories wall: masonry via CSS columns, natural varied heights;
@@ -223,6 +226,7 @@
     </a>
     <div class="head-right">
       <nav>
+        <a href="./">主頁</a>
         <a href="#watch">觀看</a>
         <a href="#stories">故事</a>
         <a href="#play">玩遊戲</a>
@@ -249,371 +253,373 @@
 
   <section id="people">
     <h2>按人物瀏覽</h2>
-    <nav class="people-nav"><a href="#people-queens">Queens</a><a href="#people-sages">Sages & Strategists</a><a href="#people-commanders">Commanders</a><a href="#people-kings">Kings</a><a href="#people-minds">Minds</a><a href="#people-pioneers">Pioneers</a><a href="#people-wildcards">Wildcards</a></nav>
+    <nav class="people-nav" id="people-nav"><button type="button" class="on" data-filter="all">全部 49</button><button type="button" data-filter="queens">Queens 5</button><button type="button" data-filter="sages">Sages & Strategists 5</button><button type="button" data-filter="commanders">Commanders 8</button><button type="button" data-filter="kings">Kings 5</button><button type="button" data-filter="minds">Minds 12</button><button type="button" data-filter="pioneers">Pioneers 8</button><button type="button" data-filter="wildcards">Wildcards 6</button></nav>
+    <div class="people-fhead" data-head="queens" hidden>
     <h3 class="shelf-t" id="people-queens">Queens</h3>
     <p class="shelf-line">The firm is handed to you — or you take it — then you hold it.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-queen-who-spoke-nine-languages.html">
+    </div>
+    <div class="people-fhead" data-head="sages" hidden>
+    <h3 class="shelf-t" id="people-sages">Sages & Strategists</h3>
+    <p class="shelf-line">The house line — ancient teachers and strategists whose books we publish.</p>
+    </div>
+    <div class="people-fhead" data-head="commanders" hidden>
+    <h3 class="shelf-t" id="people-commanders">Commanders</h3>
+    <p class="shelf-line">Expansion, and the price of it.</p>
+    </div>
+    <div class="people-fhead" data-head="kings" hidden>
+    <h3 class="shelf-t" id="people-kings">Kings</h3>
+    <p class="shelf-line">His story is the crown itself: taking it, keeping it, remaking the state around it.</p>
+    </div>
+    <div class="people-fhead" data-head="minds" hidden>
+    <h3 class="shelf-t" id="people-minds">Minds</h3>
+    <p class="shelf-line">They lived by their heads — the idea, the work, the art was the battlefield.</p>
+    </div>
+    <div class="people-fhead" data-head="pioneers" hidden>
+    <h3 class="shelf-t" id="people-pioneers">Pioneers</h3>
+    <p class="shelf-line">They bet everything — life, money, freedom — on a road nobody had walked.</p>
+    </div>
+    <div class="people-fhead" data-head="wildcards" hidden>
+    <h3 class="shelf-t" id="people-wildcards">Wildcards</h3>
+    <p class="shelf-line">The person and the legend fight — and the legend is half the story.</p>
+    </div>
+    <div class="people" id="people-grid">
+      <a class="card person" data-group="queens" href="../stories/the-queen-who-spoke-nine-languages.html">
         <img class="portrait" src="../assets/person-cleopatra.webp" alt="Cleopatra" loading="lazy">
         <div class="p-name">Cleopatra</div>
         <div class="p-role">The Queen Who Spoke Nine Languages · 69–30 BC</div>
         <p class="p-hook">A twenty-one-year-old queen smuggled herself into her own palace in a sack to pitch Julius Caesar — and talked her way back onto the throne.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-teenager-who-inherited-the-world.html">
+      <a class="card person" data-group="queens" href="../stories/the-teenager-who-inherited-the-world.html">
         <img class="portrait" src="../assets/person-victoria.webp" alt="Queen Victoria" loading="lazy">
         <div class="p-name">Queen Victoria</div>
         <div class="p-role">The Teenager Who Inherited the World · 1819–1901</div>
         <p class="p-hook">At 6 a.m. an eighteen-year-old walked downstairs, accepted the largest empire on earth, and gave her first royal order: move my bed out of my mother's room.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-princess-who-was-written-off.html">
+      <a class="card person" data-group="queens" href="../stories/the-princess-who-was-written-off.html">
         <img class="portrait" src="../assets/person-elizabeth-i.webp" alt="Elizabeth I" loading="lazy">
         <div class="p-name">Elizabeth I</div>
         <div class="p-role">The Princess Who Was Written Off · 1533–1603</div>
         <p class="p-hook">In the Tower, suspected of treason, she bought her life with a letter — written in her largest hand, so the tide would miss the boat.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-foreign-bride-who-took-an-empire.html">
+      <a class="card person" data-group="queens" href="../stories/the-foreign-bride-who-took-an-empire.html">
         <img class="portrait" src="../assets/person-catherine-the-great.webp" alt="Catherine the Great" loading="lazy">
         <div class="p-name">Catherine the Great</div>
         <div class="p-role">The Foreign Bride Who Took an Empire · 1729–1796</div>
         <p class="p-hook">She arrived at fourteen with no Russian, no money, and one job: marry the heir, produce an heir, cause no trouble.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-queen-crowned-at-six-days-old.html">
+      <a class="card person" data-group="queens" href="../stories/the-queen-crowned-at-six-days-old.html">
         <img class="portrait" src="../assets/person-mary.webp" alt="Mary, Queen of Scots" loading="lazy">
         <div class="p-name">Mary, Queen of Scots</div>
         <div class="p-role">The Queen Crowned at Six Days Old · 1542–1587</div>
         <p class="p-hook">A queen at six days old, a widow before eighteen, deposed at twenty-four, a prisoner for nineteen years — and her son still ended up with both crowns.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-sages">Sages & Strategists</h3>
-    <p class="shelf-line">The house line — ancient teachers and strategists whose books we publish.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-librarian-who-disappeared.html">
+      <a class="card person" data-group="sages" href="../stories/the-librarian-who-disappeared.html">
         <img class="portrait" src="../assets/person-laozi.webp" alt="老子" loading="lazy">
         <div class="p-name">老子</div>
         <div class="p-role">消失的圖書管理員 · 公元前6世紀</div>
         <p class="p-hook">寫下五千個安靜的字，然後消失的老人。</p>
         <span class="chip">睡前故事 · 製作中</span>
       </a>
-      <a class="card person" href="../stories/the-prince-who-quit.html">
+      <a class="card person" data-group="sages" href="../stories/the-prince-who-quit.html">
         <img class="portrait" src="../assets/person-buddha.webp" alt="The Buddha" loading="lazy">
         <div class="p-name">The Buddha</div>
         <div class="p-role">The Prince Who Quit · c. 563–483 BC</div>
         <p class="p-hook">The heir of a small valley clan walked out of the palace at twenty-nine and never took another job — he spent forty-five years as a wandering teacher, and the resignation is still running.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-swordsman-who-painted.html">
+      <a class="card person" data-group="sages" href="../stories/the-swordsman-who-painted.html">
         <img class="portrait" src="../assets/person-musashi.webp" alt="宮本武藏" loading="lazy">
         <div class="p-name">宮本武藏</div>
         <div class="p-role">拿畫筆的劍客 · 1584–1645</div>
         <p class="p-hook">六十場決鬥，零敗績——然後他拿起了筆。</p>
         <span class="chip">即將推出</span>
       </a>
-      <a class="card person" href="../stories/the-teacher-nobody-would-hire.html">
+      <a class="card person" data-group="sages" href="../stories/the-teacher-nobody-would-hire.html">
         <img class="portrait" src="../assets/person-confucius.webp" alt="孔子" loading="lazy">
         <div class="p-name">孔子</div>
         <div class="p-role">沒人肯雇的老師 · 公元前551–前479</div>
         <p class="p-hook">一位流浪的教師，他的學生改變了一個帝國。</p>
         <span class="chip">即將推出</span>
       </a>
-      <a class="card person" href="../stories/the-consultant-who-wrote-one-book.html">
+      <a class="card person" data-group="sages" href="../stories/the-consultant-who-wrote-one-book.html">
         <img class="portrait" src="../assets/person-sunzi.webp" alt="孫子" loading="lazy">
         <div class="p-name">孫子</div>
         <div class="p-role">一本書就是他的求職簡歷 · 約公元前544–前496</div>
         <p class="p-hook">在戰爭開始之前就贏下戰爭的將軍。</p>
         <span class="chip">影片＋書 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-commanders">Commanders</h3>
-    <p class="shelf-line">Expansion, and the price of it.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-surveyor-who-gave-back-an-army.html">
+      <a class="card person" data-group="commanders" href="../stories/the-surveyor-who-gave-back-an-army.html">
         <img class="portrait" src="../assets/person-washington.webp" alt="George Washington" loading="lazy">
         <div class="p-name">George Washington</div>
         <div class="p-role">The Surveyor Who Gave Back an Army · 1732–1799</div>
         <p class="p-hook">Every general before him who won a revolution kept the power.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-lawyer-with-one-year-of-school.html">
+      <a class="card person" data-group="commanders" href="../stories/the-lawyer-with-one-year-of-school.html">
         <img class="portrait" src="../assets/person-lincoln.webp" alt="Abraham Lincoln" loading="lazy">
         <div class="p-name">Abraham Lincoln</div>
         <div class="p-role">The Lawyer with One Year of School · 1809–1865</div>
         <p class="p-hook">The most famous speech in American history took two minutes and followed a two-hour speech nobody remembers.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-little-corporal.html">
+      <a class="card person" data-group="commanders" href="../stories/the-little-corporal.html">
         <img class="portrait" src="../assets/person-napoleon.webp" alt="Napoleon Bonaparte" loading="lazy">
         <div class="p-name">Napoleon Bonaparte</div>
         <div class="p-role">The Little Corporal · 1769–1821</div>
         <p class="p-hook">He was a broke, struck-off general when Paris handed him a cannon.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-boy-who-inherited-an-army.html">
+      <a class="card person" data-group="commanders" href="../stories/the-boy-who-inherited-an-army.html">
         <img class="portrait" src="../assets/person-alexander.webp" alt="Alexander the Great" loading="lazy">
         <div class="p-name">Alexander the Great</div>
         <div class="p-role">The Boy Who Inherited an Army · 356–323 BC</div>
         <p class="p-hook">He did not build the weapon; he inherited it, loaded and aimed.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-orphan-in-the-wooden-collar.html">
+      <a class="card person" data-group="commanders" href="../stories/the-orphan-in-the-wooden-collar.html">
         <img class="portrait" src="../assets/person-genghis-khan.webp" alt="成吉思汗" loading="lazy">
         <div class="p-name">成吉思汗</div>
         <div class="p-role">戴木枷的孤兒 · 1162–1227</div>
         <p class="p-hook">統一草原、重繪世界地圖的孤兒。</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-hostage-who-raised-his-own-ransom.html">
+      <a class="card person" data-group="commanders" href="../stories/the-hostage-who-raised-his-own-ransom.html">
         <img class="portrait" src="../assets/person-caesar.webp" alt="Julius Caesar" loading="lazy">
         <div class="p-name">Julius Caesar</div>
         <div class="p-role">The Hostage Who Raised His Own Ransom · 100–44 BC</div>
         <p class="p-hook">Captured by pirates at twenty-five, he laughed at their price and told them to double it.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-enemy-everyone-respected.html">
+      <a class="card person" data-group="commanders" href="../stories/the-enemy-everyone-respected.html">
         <img class="portrait" src="../assets/person-saladin.webp" alt="Saladin" loading="lazy">
         <div class="p-name">Saladin</div>
         <div class="p-role">The Enemy Everyone Respected · 1137–1193</div>
         <p class="p-hook">The Crusaders took Jerusalem in blood in 1099.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-barbarian-in-the-wooden-palace.html">
+      <a class="card person" data-group="commanders" href="../stories/the-barbarian-in-the-wooden-palace.html">
         <img class="portrait" src="../assets/person-attila.webp" alt="Attila" loading="lazy">
         <div class="p-name">Attila</div>
         <div class="p-role">The Barbarian in the Wooden Palace · c. 406–453</div>
         <p class="p-hook">Rome paid him in gold, every year, not to visit.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-kings">Kings</h3>
-    <p class="shelf-line">His story is the crown itself: taking it, keeping it, remaking the state around it.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-king-who-would-not-take-no.html">
+      <a class="card person" data-group="kings" href="../stories/the-king-who-would-not-take-no.html">
         <img class="portrait" src="../assets/person-henry-viii.webp" alt="Henry VIII" loading="lazy">
         <div class="p-name">Henry VIII</div>
         <div class="p-role">The King Who Would Not Take No · 1491–1547</div>
         <p class="p-hook">His love letters survive.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-emperor-who-wrote-himself-notes.html">
+      <a class="card person" data-group="kings" href="../stories/the-emperor-who-wrote-himself-notes.html">
         <img class="portrait" src="../assets/person-marcus-aurelius.webp" alt="Marcus Aurelius" loading="lazy">
         <div class="p-name">Marcus Aurelius</div>
         <div class="p-role">The Emperor Who Wrote Himself Notes · AD 121–180</div>
         <p class="p-hook">Adopted, vetted and trained for twenty-three years, he was the ancient world's best-prepared chief executive.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-king-who-became-the-brand.html">
+      <a class="card person" data-group="kings" href="../stories/the-king-who-became-the-brand.html">
         <img class="portrait" src="../assets/person-louis-xiv.webp" alt="Louis XIV" loading="lazy">
         <div class="p-name">Louis XIV</div>
         <div class="p-role">The King Who Became the Brand · 1638–1715</div>
         <p class="p-hook">King at four, humiliated by revolt, boss at twenty-two by his own decree.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-king-who-could-not-write.html">
+      <a class="card person" data-group="kings" href="../stories/the-king-who-could-not-write.html">
         <img class="portrait" src="../assets/person-charlemagne.webp" alt="Charlemagne" loading="lazy">
         <div class="p-name">Charlemagne</div>
         <div class="p-role">The King Who Could Not Write · c. 747–814</div>
         <p class="p-hook">The emperor who rebuilt Europe's schools could not write his own name.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-boy-king-nobody-remembered.html">
+      <a class="card person" data-group="kings" href="../stories/the-boy-king-nobody-remembered.html">
         <img class="portrait" src="../assets/person-tutankhamun.webp" alt="Tutankhamun" loading="lazy">
         <div class="p-name">Tutankhamun</div>
         <div class="p-role">The Boy King Nobody Remembered · c. 1341–1323 BC</div>
         <p class="p-hook">Installed at nine as the face of a bankrupt rebrand, dead at nineteen, erased by his own government — and found, three thousand years later, under a rubbish heap, richer than any remembered king.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-minds">Minds</h3>
-    <p class="shelf-line">They lived by their heads — the idea, the work, the art was the battlefield.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-clerk-who-rewrote-the-universe.html">
+      <a class="card person" data-group="minds" href="../stories/the-clerk-who-rewrote-the-universe.html">
         <img class="portrait" src="../assets/person-einstein.webp" alt="Albert Einstein" loading="lazy">
         <div class="p-name">Albert Einstein</div>
         <div class="p-role">The Clerk Who Rewrote the Universe · 1879–1955</div>
         <p class="p-hook">No lab, no grant, no university post — a government clerk with a baby, a salary, and four papers in one year that changed what time means.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-actor-who-owned-the-theatre.html">
+      <a class="card person" data-group="minds" href="../stories/the-actor-who-owned-the-theatre.html">
         <img class="portrait" src="../assets/person-shakespeare.webp" alt="William Shakespeare" loading="lazy">
         <div class="p-name">William Shakespeare</div>
         <div class="p-role">The Actor Who Owned the Theatre · 1564–1616</div>
         <p class="p-hook">A glover's son with no university bought into the building.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-professor-who-hunted-counterfeiters.html">
+      <a class="card person" data-group="minds" href="../stories/the-professor-who-hunted-counterfeiters.html">
         <img class="portrait" src="../assets/person-newton.webp" alt="Isaac Newton" loading="lazy">
         <div class="p-name">Isaac Newton</div>
         <div class="p-role">The Professor Who Hunted Counterfeiters · 1643–1727</div>
         <p class="p-hook">The man who weighed the Moon ended up weighing pennies: plague-year genius, Cambridge chair, and England's most relentless hunter of fake coin.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-freelancer-who-wrote-too-fast.html">
+      <a class="card person" data-group="minds" href="../stories/the-freelancer-who-wrote-too-fast.html">
         <img class="portrait" src="../assets/person-mozart.webp" alt="Mozart" loading="lazy">
         <div class="p-name">Mozart</div>
         <div class="p-role">The Freelancer Who Wrote Too Fast · 1756–1791</div>
         <p class="p-hook">No salary, no pension, no safety net — just subscriptions, pupils, commissions and cash flow.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-singer-who-may-never-have-existed.html">
+      <a class="card person" data-group="minds" href="../stories/the-singer-who-may-never-have-existed.html">
         <img class="portrait" src="../assets/person-homer.webp" alt="Homer" loading="lazy">
         <div class="p-name">Homer</div>
         <div class="p-role">The Singer Who May Never Have Existed · 8th century BC</div>
         <p class="p-hook">No desk, no manuscript, no certain existence — just a voice by the fire and two poems that educated a civilisation for a thousand years.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-teacher-who-filed-the-world.html">
+      <a class="card person" data-group="minds" href="../stories/the-teacher-who-filed-the-world.html">
         <img class="portrait" src="../assets/person-aristotle.webp" alt="Aristotle" loading="lazy">
         <div class="p-name">Aristotle</div>
         <div class="p-role">The Teacher Who Filed the World · 384–322 BC</div>
         <p class="p-hook">Socrates filed nothing and wrote nothing.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-composer-who-could-not-hear.html">
+      <a class="card person" data-group="minds" href="../stories/the-composer-who-could-not-hear.html">
         <img class="portrait" src="../assets/person-beethoven.webp" alt="Beethoven" loading="lazy">
         <div class="p-name">Beethoven</div>
         <div class="p-role">The Composer Who Could Not Hear · 1770–1827</div>
         <p class="p-hook">A musician's ears are his tools, his shop and his licence to work.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-philosopher-who-never-wrote-a-word.html">
+      <a class="card person" data-group="minds" href="../stories/the-philosopher-who-never-wrote-a-word.html">
         <img class="portrait" src="../assets/person-socrates.webp" alt="Socrates" loading="lazy">
         <div class="p-name">Socrates</div>
         <div class="p-role">The Philosopher Who Never Wrote a Word · c. 470–399 BC</div>
         <p class="p-hook">He had no school, no premises, no book, no sign.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-student-who-built-a-school.html">
+      <a class="card person" data-group="minds" href="../stories/the-student-who-built-a-school.html">
         <img class="portrait" src="../assets/person-plato.webp" alt="Plato" loading="lazy">
         <div class="p-name">Plato</div>
         <div class="p-role">The Student Who Built a School · c. 428–348 BC</div>
         <p class="p-hook">Socrates had trusted the marketplace: show up, talk, let the truth fend for itself.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-naturalist-who-sat-on-his-idea.html">
+      <a class="card person" data-group="minds" href="../stories/the-naturalist-who-sat-on-his-idea.html">
         <img class="portrait" src="../assets/person-darwin.webp" alt="Charles Darwin" loading="lazy">
         <div class="p-name">Charles Darwin</div>
         <div class="p-role">The Naturalist Who Sat on His Idea · 1809–1882</div>
         <p class="p-hook">He had the theory of evolution written out and locked in a drawer while he spent eight years describing barnacles.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-sculptor-who-was-ordered-to-paint.html">
+      <a class="card person" data-group="minds" href="../stories/the-sculptor-who-was-ordered-to-paint.html">
         <img class="portrait" src="../assets/person-michelangelo.webp" alt="Michelangelo" loading="lazy">
         <div class="p-name">Michelangelo</div>
         <div class="p-role">The Sculptor Who Was Ordered to Paint · 1475–1564</div>
         <p class="p-hook">He signed his letters 'Michelangelo, sculptor' while painting the most famous ceiling on earth.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-astronomer-under-house-arrest.html">
+      <a class="card person" data-group="minds" href="../stories/the-astronomer-under-house-arrest.html">
         <img class="portrait" src="../assets/person-galileo.webp" alt="Galileo Galilei" loading="lazy">
         <div class="p-name">Galileo Galilei</div>
         <div class="p-role">The Astronomer Under House Arrest · 1564–1642</div>
         <p class="p-hook">He turned a Dutch toy into a product launch, a bestseller and a court title.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-pioneers">Pioneers</h3>
-    <p class="shelf-line">They bet everything — life, money, freedom — on a road nobody had walked.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-lawyer-who-could-not-plead.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-lawyer-who-could-not-plead.html">
         <img class="portrait" src="../assets/person-gandhi.webp" alt="Gandhi" loading="lazy">
         <div class="p-name">Gandhi</div>
         <div class="p-role">The Lawyer Who Could Not Plead · 1869–1948</div>
         <p class="p-hook">A first-class ticket, a freezing platform, and a shy young barrister who could not finish a speech in court.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-pitch-that-missed-asia.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-pitch-that-missed-asia.html">
         <img class="portrait" src="../assets/person-columbus.webp" alt="Christopher Columbus" loading="lazy">
         <div class="p-name">Christopher Columbus</div>
         <div class="p-role">The Pitch That Missed Asia · 1451–1506</div>
         <p class="p-hook">A weaver's son with the wrong maths spent the better part of a decade in royal waiting rooms, talked two monarchs into funding an impossible voyage on a founder's terms — and survived his own bad numbers only because a continent was in the way.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-engineer-who-won-the-argument.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-engineer-who-won-the-argument.html">
         <img class="portrait" src="../assets/person-tesla.webp" alt="Nikola Tesla" loading="lazy">
         <div class="p-name">Nikola Tesla</div>
         <div class="p-role">The Engineer Who Won the Argument and Lost the Money · 1856–1943</div>
         <p class="p-hook">He arrived in New York with four cents and a letter introducing him as a great man.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-governess-in-the-shed.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-governess-in-the-shed.html">
         <img class="portrait" src="../assets/person-curie.webp" alt="Marie Curie" loading="lazy">
         <div class="p-name">Marie Curie</div>
         <div class="p-role">The Governess in the Shed · 1867–1934</div>
         <p class="p-hook">Barred from every university in her own country, she spent years as a governess in other people's houses to buy two educations — her sister's and then her own.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-girl-who-auditioned-for-an-army.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-girl-who-auditioned-for-an-army.html">
         <img class="portrait" src="../assets/person-joan-of-arc.webp" alt="Joan of Arc" loading="lazy">
         <div class="p-name">Joan of Arc</div>
         <div class="p-role">The Girl Who Auditioned for an Army · c. 1412–1431</div>
         <p class="p-hook">She could not read, had never held a command, and was seventeen.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-wizard-who-built-the-lab.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-wizard-who-built-the-lab.html">
         <img class="portrait" src="../assets/person-edison.webp" alt="Thomas Edison" loading="lazy">
         <div class="p-name">Thomas Edison</div>
         <div class="p-role">The Wizard Who Built the Lab · 1847–1931</div>
         <p class="p-hook">The phonograph made him a wizard, but the magic was a system: a lab full of "muckers" working to a quota.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-monk-who-posted-a-notice.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-monk-who-posted-a-notice.html">
         <img class="portrait" src="../assets/person-luther.webp" alt="Martin Luther" loading="lazy">
         <div class="p-name">Martin Luther</div>
         <div class="p-role">The Monk Who Posted a Notice · 1483–1546</div>
         <p class="p-hook">The most famous scene in the Reformation — a monk nailing his protest to a church door — probably never happened.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-merchant-who-dictated-a-bestseller.html">
+      <a class="card person" data-group="pioneers" href="../stories/the-merchant-who-dictated-a-bestseller.html">
         <img class="portrait" src="../assets/person-marco-polo.webp" alt="Marco Polo" loading="lazy">
         <div class="p-name">Marco Polo</div>
         <div class="p-role">The Merchant Who Dictated a Bestseller · 1254–1324</div>
         <p class="p-hook">Marco Polo went to China at seventeen as the unpaid intern on his family's import account and came home twenty-four years later with the most valuable cargo a merchant can carry: information.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-    </div>
-    <h3 class="shelf-t" id="people-wildcards">Wildcards</h3>
-    <p class="shelf-line">The person and the legend fight — and the legend is half the story.</p>
-    <div class="people">
-      <a class="card person" href="../stories/the-painter-who-applied-as-an-engineer.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-painter-who-applied-as-an-engineer.html">
         <img class="portrait" src="../assets/person-leonardo.webp" alt="Leonardo da Vinci" loading="lazy">
         <div class="p-name">Leonardo da Vinci</div>
         <div class="p-role">The Painter Who Applied as an Engineer · 1452–1519</div>
         <p class="p-hook">No degree, no Latin, no family firm — so he pitched a duke nine paragraphs of weapons and mentioned the painting at the end.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-artist-nobody-bought.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-artist-nobody-bought.html">
         <img class="portrait" src="../assets/person-vangogh.webp" alt="Vincent van Gogh" loading="lazy">
         <div class="p-name">Vincent van Gogh</div>
         <div class="p-role">The Artist Nobody Bought · 1853–1890</div>
         <p class="p-hook">One stillborn brother's name on a gravestone, two careers, two dismissals, one confirmed sale.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-prince-they-turned-into-a-vampire.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-prince-they-turned-into-a-vampire.html">
         <img class="portrait" src="../assets/person-vlad.webp" alt="Vlad the Impaler" loading="lazy">
         <div class="p-name">Vlad the Impaler</div>
         <div class="p-role">The Prince They Turned Into a Vampire · c. 1431–1476</div>
         <p class="p-hook">Raised as a hostage inside the enemy's court, he came home to rule a buffer state between two empires.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-boy-who-never-took-the-crown.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-boy-who-never-took-the-crown.html">
         <img class="portrait" src="../assets/person-augustus.webp" alt="Augustus" loading="lazy">
         <div class="p-name">Augustus</div>
         <div class="p-role">The Boy Who Never Took the Crown · 63 BC–AD 14</div>
         <p class="p-hook">Rome stabbed Caesar for reaching for a crown.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-healer-who-never-held-office.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-healer-who-never-held-office.html">
         <img class="portrait" src="../assets/person-rasputin.webp" alt="Grigori Rasputin" loading="lazy">
         <div class="p-name">Grigori Rasputin</div>
         <div class="p-role">The Healer Who Never Held Office · 1869–1916</div>
         <p class="p-hook">No office, no title, no ordination — just a telegram that stopped a prince's bleeding.</p>
         <span class="chip">故事 · 已上線</span>
       </a>
-      <a class="card person" href="../stories/the-slave-who-beat-the-legions.html">
+      <a class="card person" data-group="wildcards" href="../stories/the-slave-who-beat-the-legions.html">
         <img class="portrait" src="../assets/person-spartacus.webp" alt="Spartacus" loading="lazy">
         <div class="p-name">Spartacus</div>
         <div class="p-role">The Slave Who Beat the Legions · c. 103–71 BC</div>
@@ -785,6 +791,37 @@ document.addEventListener('keydown',function(e){
     document.querySelectorAll('details.langmenu[open]').forEach(function(m){m.removeAttribute('open');});
   }
 });
+</script>
+<script>
+// People wall filter: the "All" pill shows one continuous grid with
+// every card; a group pill shows only that group's cards, with the
+// group's heading and fate line above the grid. Vanilla JS, no
+// libraries; works from file:// and on GitHub Pages.
+(function(){
+  var nav=document.getElementById('people-nav');
+  var grid=document.getElementById('people-grid');
+  if(!nav||!grid)return;
+  var heads=document.querySelectorAll('.people-fhead');
+  function apply(f){
+    var btns=nav.querySelectorAll('button[data-filter]');
+    for(var i=0;i<btns.length;i++){
+      if(btns[i].getAttribute('data-filter')===f){btns[i].classList.add('on');}
+      else{btns[i].classList.remove('on');}
+    }
+    var cards=grid.querySelectorAll('.person');
+    for(var j=0;j<cards.length;j++){
+      cards[j].style.display=(f==='all'||cards[j].getAttribute('data-group')===f)?'':'none';
+    }
+    for(var k=0;k<heads.length;k++){
+      heads[k].hidden=!(f!=='all'&&heads[k].getAttribute('data-head')===f);
+    }
+  }
+  nav.addEventListener('click',function(e){
+    var b=e.target;
+    while(b&&b!==nav&&!(b.tagName==='BUTTON'&&b.getAttribute('data-filter'))){b=b.parentNode;}
+    if(b&&b!==nav){apply(b.getAttribute('data-filter'));}
+  });
+})();
 </script>
 </body>
 </html>
